@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="background-toolbar">
+    <ion-buttons slot="end">
+      <ion-button (click)="showPopover($event)">
+        <ion-icon name="ellipsis-vertical" class="iconos"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="textColor">
+      NOVEDADES
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar class="background-toolbar">
+    <ion-segment value="all">
+      <ion-segment-button value="parati" class="background-button-toolbar1" (click)='this.pestanaParaTi()'>
+        PARA TI
+      </ion-segment-button>
+      <ion-segment-button value="fotos" class="background-button-toolbar" (click)='this.pestanaFotos()'>
+        FOTOS
+      </ion-segment-button>
+      <ion-segment-button value="rutas" class="background-button-toolbar" (click)='this.pestanaRutas()'>
+        RUTAS
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+
+<ion-content [fullscreen]="true" *ngIf='this.paraTi'>
+  <ion-list *ngFor="let Route of this.friendsRoutes; let i=index;">
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            {{Route.title}}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf='this.fotos'>
+  <ion-card>
+        <img src="{{this.myphoto}}" />
+        <ion-card-header>
+          <ion-card-title>Título de la ruta</ion-card-title>
+          <ion-card-subtitle>{{this.you.username}}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf='this.rutas'>
+  <ion-list *ngFor="let Route of this.routes; let i=index;">
+    <ion-item>
+        <app-mapa line="{{line}}" title="this.title"></app-mapa>
+    </ion-item>
+  </ion-list>
+</ion-content>
+</ion-header>
+
+

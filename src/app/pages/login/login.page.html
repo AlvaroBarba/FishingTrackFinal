@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar class="background-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="this.dismissLogin()" defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="textColor">INICION DE SESIÓN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="tasks" (ngSubmit)="this.login()">
+    <ion-item>
+      <ion-input formControlName="username" type="text" placeholder="Usuario"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+  
+    <ion-button type="submit" shape="round" class="background-button" [disabled]="!tasks.valid">Iniciar Sesion</ion-button>
+  </form>
+</ion-content>

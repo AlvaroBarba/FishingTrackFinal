@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar class="background-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="this.dismissRegister()" defaultHref="/welcome"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="textColor">REGISTRARSE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="content">
+    <form [formGroup]="regist" (ngSubmit)="this.registration()">
+      <ion-item>
+        <ion-input type="user" formControlName="username" placeholder="Nombre de Usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+                <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" shape="round" color="danger" [disabled]="!regist.valid">Registrarse</ion-button>
+    </form>
+  </div>
+</ion-content>

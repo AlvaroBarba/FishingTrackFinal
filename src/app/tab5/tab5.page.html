@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="background-toolbar">
+    <ion-buttons slot="end" *ngIf="this.searchB">
+      <ion-button (click)="this.showSearch()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="textColor">
+      AMIGOS
+    </ion-title>
+  </ion-toolbar>
+  <ion-searchbar placeholder="Buscar" (ionChange)="this.searchFriend($event)" *ngIf="searchBar"
+    (ionBlur)="this.closeSearch()"> </ion-searchbar>
+  <ion-toolbar class="background-toolbar">
+    <ion-segment value="all">
+      <ion-segment-button value="buscar" class="background-button-toolbar" (click)='this.goSearch()' class="background-button-toolbar1">
+        BUSCAR
+      </ion-segment-button>
+      <ion-segment-button value="peticiones" class="background-button-toolbar" (click)='this.goRequest()' class="background-button-toolbar">
+        PETICIONES
+      </ion-segment-button>
+      <ion-segment-button value="lista" class="background-button-toolbar" (click)='this.goList()' class="background-button-toolbar">
+        LISTA
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content *ngIf="this.search">
+  <ion-list>
+    <ion-item *ngFor="let User of this.users; let i=index">
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label>{{User.username}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="this.requests">
+  <ion-list>
+    <ion-item *ngFor="let User of this.friendReq; let i=index">
+      <ion-icon (click)="this.acceptFriend(User.id)" slot="end" src="assets/icon/accept.svg"></ion-icon>
+      <ion-icon slot="end" src="assets/icon/cancel.svg"></ion-icon>
+      <ion-label>{{User.username}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="this.list">
+  <ion-list>
+    <ion-item *ngFor="let User of this.friendList; let i=index">
+      <ion-avatar>
+        <img src="{{User.avatar}}">
+      </ion-avatar>
+      <ion-label>{{User.username}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

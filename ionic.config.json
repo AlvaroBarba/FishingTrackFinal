@@ -1,0 +1,7 @@
+{
+  "name": "FishingTrack",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
