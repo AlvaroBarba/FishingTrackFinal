@@ -29,14 +29,14 @@
 
 :root{
     .background-tab-bar{
-        --ion-tab-bar-background:rgba(160,0,255,1);
-        --ion-tab-bar-color-selected: #ffffff;
+        --ion-tab-bar-background:rgb(255, 255, 255);
+        --ion-tab-bar-color-selected:rgba(38,197,132);
     }
     .iconos{
-        color:rgb(255, 255, 255);
+        color:rgba(38,197,132);
         }
     .background-toolbar{
-        --ion-toolbar-background:linear-gradient(90deg, rgba(255,184,1,1) 0%, rgba(255,121,0,1) 5%, rgba(183,29,193,1) 18%, rgba(170,12,229,1) 62%, rgba(160,0,255,1) 100%);
+        --ion-toolbar-background:rgba(38,197,132);
     }    
     .textColor{
         color:#ffffff;
@@ -44,19 +44,19 @@
         font-family: appFont;
     }
     .background-button{
-        --background:rgba(170,12,229,1);
+        --background:rgba(38,197,132);
         color:rgb(255, 255, 255);
         }
     .background-button-toolbar{
-        --background:rgba(160,0,255,1);
-        --background-checked: rgba(170,12,229,1) 62%;
+        --background:rgba(38,197,132);
+        --background-checked: rgba(38,197,132);
         color:rgb(255, 255, 255);
         
     }    
 
     .background-button-toolbar1{
-        --background:linear-gradient(90deg, rgba(255,184,1,1) 0%, rgba(255,121,0,1) 5%, rgba(183,29,193,1) 18%, rgba(170,12,229,1) 62%, rgba(160,0,255,1) 100%);
-        --background-checked: rgba(170,12,229,1) 62%;
+        --background:rgba(38,197,132);
+        --background-checked: rgba(38,197,132);
         color:rgb(255, 255, 255);
         
     }  
@@ -105,7 +105,7 @@
     }  
     
     .fondoWelcome{
-        background-color: violet;
+        background-color: rgba(38,197,132);;
     }
       
    
