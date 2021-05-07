@@ -25,7 +25,6 @@ export class Tab5Page implements OnInit {
   list = true;
   requests = false;
   you:User;
-  flag = false;
 
 
   constructor(private http: HttpService,
@@ -39,10 +38,8 @@ export class Tab5Page implements OnInit {
   }
 
   ionViewWillEnter() {
-    if(this.flag){
       this.getFriends();
       this.friendRequest();
-    }
   }
 
   public goSearch(){
@@ -112,6 +109,21 @@ export class Tab5Page implements OnInit {
       }
       }).catch((err)=>{
         console.error("Fallo al aceptar la peticion");
+      })
+  }
+
+  public rejectFriend(id){
+    this.http.updateFriend(id, 3, this.you.id).then((data)=>{
+      if(data){
+        let dat = JSON.parse(data.data);
+        if(dat.status=="0"){
+          //Toast rechazo petición
+        }else{
+          //Error
+        }
+      }
+      }).catch((err)=>{
+        console.error("Fallo al rechazar la peticion");
       })
   }
 
