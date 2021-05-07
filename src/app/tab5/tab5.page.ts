@@ -25,6 +25,7 @@ export class Tab5Page implements OnInit {
   list = true;
   requests = false;
   you:User;
+  flag = false;
 
 
   constructor(private http: HttpService,
@@ -38,8 +39,10 @@ export class Tab5Page implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.getFriends();
-    this.friendRequest();
+    if(this.flag){
+      this.getFriends();
+      this.friendRequest();
+    }
   }
 
   public goSearch(){
@@ -131,10 +134,14 @@ export class Tab5Page implements OnInit {
                     aux.push(element);
               }
             });
+            //aux ALBA, ALVARO, ANDREA
+
             this.friendList.forEach(friend => {
+              //friendlist ALVARO
               let i = aux.indexOf(aux.find( x => friend));
               aux.splice(i, 1);
-            })
+            });
+
             const set = new Set(aux);
             result = [...set];
             this.users = result;
@@ -153,16 +160,12 @@ export class Tab5Page implements OnInit {
   }
 
   public sendFriendRequest(u2){
-    console.log("USUARIO " + u2);
     let user1 = this.you;
-    this.http.updateFriend(user1.id, 1, u2.id).then(async (data) =>{
+    this.http.addFriendRequest(user1.id, u2.id, 1).then(async (data) =>{
       if(data) {
-        console.log("LAGGGGGGGGGGGGGGGGGGGG");
         let dat = JSON.parse(data.data);
         if(dat.status == "0"){
-          dat.result.foreach(async element => {
             await this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
-          });
         }
       }
     }).catch(async (err) => {
@@ -179,6 +182,9 @@ export class Tab5Page implements OnInit {
         if (dat.status == "0") {
           //Todo ok
           dat.result.forEach(element => {
+            if(element.avatar == undefined){
+              element.avatar = "assets/icon/usuario.svg";
+            }
             this.friendReq.push(element);
           });
         }
