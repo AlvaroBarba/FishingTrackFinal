@@ -1,24 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="background-toolbar">
-    <ion-buttons slot="end">
-      <ion-button (click)="showPopover($event)">
-        <ion-icon name="ellipsis-vertical" class="iconos"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title class="textColor">
-      NOVEDADES
-    </ion-title>
-  </ion-toolbar>
-  <ion-toolbar class="background-toolbar">
     <ion-segment value="all">
       <ion-segment-button value="parati" class="background-button-toolbar1" (click)='this.pestanaParaTi()'>
-        PARA TI
+        Amigos
       </ion-segment-button>
       <ion-segment-button value="fotos" class="background-button-toolbar" (click)='this.pestanaFotos()'>
-        FOTOS
-      </ion-segment-button>
-      <ion-segment-button value="rutas" class="background-button-toolbar" (click)='this.pestanaRutas()'>
-        RUTAS
+        Tú
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
