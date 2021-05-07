@@ -55,7 +55,7 @@ export class Tab4Page implements OnInit {
   public async logout(){
     await this.authS.logout();
     if(!this.authS.isLogged()){
-      this.router.navigate(['/login'])
+      this.router.navigate(['/welcome'])
     }
   }
 

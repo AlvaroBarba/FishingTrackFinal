@@ -156,12 +156,10 @@ export class Tab5Page implements OnInit {
 
             this.friendList.forEach(friend => {
               //friendlist ALVARO, ANDREA
-              let i = aux.indexOf(aux.find( x => friend));
+              let i = aux.indexOf(friend);
               aux.splice(i, 1);
             });
-
-            const set = new Set(aux);
-            result = [...set];
+            
             this.users = aux;
           }
         } else {
