@@ -98,11 +98,12 @@ export class Tab5Page implements OnInit {
 
 
   public acceptFriend(id){
-    this.http.updateFriend(id, 2, this.you.id).then((data)=>{
+    this.http.updateFriend(id, 2, this.you.id).then(async (data)=>{
       if(data){
         let dat = JSON.parse(data.data);
         if(dat.status=="0"){
-          //Toast ahora sois amigos
+         await this.friendRequest();
+          this.toastS.createToastMiddle("Bien hora sois amigos!!", true, 350, "success");
         }else{
           //Error
         }
@@ -113,11 +114,12 @@ export class Tab5Page implements OnInit {
   }
 
   public rejectFriend(id){
-    this.http.updateFriend(id, 3, this.you.id).then((data)=>{
+    this.http.updateFriend(id, 3, this.you.id).then(async (data)=>{
       if(data){
         let dat = JSON.parse(data.data);
         if(dat.status=="0"){
-          //Toast rechazo petición
+         await this.friendRequest();
+         this.toastS.createToastMiddle("Ups rechazaste la petición", true, 350, "warning");
         }else{
           //Error
         }
@@ -146,17 +148,21 @@ export class Tab5Page implements OnInit {
                     aux.push(element);
               }
             });
+
+            aux.forEach(e => {
+              console.log("AUX => " + e.username);
+            })
             //aux ALBA, ALVARO, ANDREA
 
             this.friendList.forEach(friend => {
-              //friendlist ALVARO
+              //friendlist ALVARO, ANDREA
               let i = aux.indexOf(aux.find( x => friend));
               aux.splice(i, 1);
             });
 
             const set = new Set(aux);
             result = [...set];
-            this.users = result;
+            this.users = aux;
           }
         } else {
           //Error buscando usuario
