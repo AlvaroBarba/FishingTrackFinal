@@ -32,12 +32,12 @@
     <ion-item *ngFor="let User of this.users; let i=index">
       <ion-buttons slot="end">
         <ion-button>
-          <ion-icon name="checkmark-circle"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon name="close-circle"></ion-icon>
+          <ion-icon name="person-add-sharp" (click)="this.sendFriendRequest(User)"></ion-icon>
         </ion-button>
       </ion-buttons>
+      <ion-avatar>
+        <img src="{{User.avatar}}">
+      </ion-avatar>
       <ion-label>{{User.username}}</ion-label>
     </ion-item>
   </ion-list>
@@ -48,9 +48,16 @@
     <ion-item *ngFor="let User of this.friendReq; let i=index">
       <ion-icon (click)="this.acceptFriend(User.id)" slot="end" src="assets/icon/accept.svg"></ion-icon>
       <ion-icon slot="end" src="assets/icon/cancel.svg"></ion-icon>
-      <ion-label>{{User.username}}</ion-label>
+        <ion-avatar>
+          <img src="{{User.avatar}}">
+        </ion-avatar>
+        <ion-label>{{User.username}}</ion-label>
     </ion-item>
   </ion-list>
+  <p *ngIf = "this.friendReq.length == 0" style="text-align: center;">
+    No tienes peticiones por ahora
+    <ion-icon src="assets/icon/sad.svg"></ion-icon>
+  </p>
 </ion-content>
 
 <ion-content *ngIf="this.list">

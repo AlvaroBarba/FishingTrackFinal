@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
-import { geoJSON, Map, tileLayer } from 'leaflet';
+import { geoJSON, GeoJSON, Map, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-mapa',
@@ -22,15 +22,17 @@ export class MapaComponent implements OnInit {
 
   public createMap() {
     console.log("la linea -> " + this.line);
+    let myLine = GeoJSON.asFeature(this.line);
+    console.log("la linea 2 -> " + myLine.properties);
     this.created = true;
-    this.miMapa = new Map("miMapa").setView(this.line.coordinates.getCenter(), 20);
+    this.miMapa = new Map("miMapa").setView([1.12, 12.12], 20);
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
       .addTo(this.miMapa);
     setTimeout(() => {
       this.miMapa.invalidateSize();
     }, 400);
-    geoJSON(this.line).addTo(this.miMapa);
+    geoJSON(myLine).addTo(this.miMapa);
   }
 
 }

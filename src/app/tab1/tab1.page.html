@@ -51,7 +51,7 @@
 <ion-content [fullscreen]="true" *ngIf='this.rutas'>
   <ion-list *ngFor="let Route of this.routes; let i=index;">
     <ion-item>
-        <app-mapa line="{{line}}" title="this.title"></app-mapa>
+        <app-mapa line="{{this.Route.coordinates}}" title="this.title"></app-mapa>
     </ion-item>
   </ion-list>
 </ion-content>

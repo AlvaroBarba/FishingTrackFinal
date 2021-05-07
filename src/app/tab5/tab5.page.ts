@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Console } from 'console';
 import { element } from 'protractor';
+import { threadId } from 'worker_threads';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
@@ -34,7 +35,11 @@ export class Tab5Page implements OnInit {
     }
 
   ngOnInit() {
-    
+  }
+
+  ionViewWillEnter() {
+    this.getFriends();
+    this.friendRequest();
   }
 
   public goSearch(){
@@ -110,30 +115,68 @@ export class Tab5Page implements OnInit {
   public async searchFriend(evt: any) {
     const val = evt.target.value;
     this.users = [];
-    console.error(val);
+    let aux = [];
+    let toDelete = [];
     if (val && val.trim() != '') {
-      console.log("antes del http");
       this.http.getUserByUsername(val).then(async (data) => {
         if (data) {
           let dat = JSON.parse(data.data);
           if (dat.status == "0") {
             //Todo ok
             dat.result.forEach(element => {
-              console.log(element);
-              this.users.push(element);
+              if(element.id != this.you.id){
+                this.friendList.forEach(friend =>{
+                  if(friend.id != element.id){ 
+                    if(element.avatar == undefined){
+                      element.avatar = "assets/icon/usuario.svg";
+                    }
+                    aux.push(element);
+                  }else{
+                    toDelete.push(element);
+                  }
+                })
+              }
             });
+            toDelete.forEach(u => {
+              let i = aux.indexOf(u);
+                if(i != -1){
+                  aux.splice(i, 1);
+                }
+            });
+            
+            const aux2 = new Set(aux);
+            let result = [...aux2];
+            this.users = result;
           }
         } else {
           //Error buscando usuario
-          await this.toastS.createToastBottom("No hay coincidencias 1", true, 400, "danger");
+          await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
         }
         
       }).catch(async (err) => {
         //Toast
-        await this.toastS.createToastBottom("No hay coincidencias 2", true, 400, "danger");
+        await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
         console.log(err);
       })
     }
+  }
+
+  public sendFriendRequest(u2){
+    console.log("USUARIO " + u2);
+    let user1 = this.you;
+    this.http.updateFriend(user1.id, 1, u2.id).then(async (data) =>{
+      if(data) {
+        console.log("LAGGGGGGGGGGGGGGGGGGGG");
+        let dat = JSON.parse(data.data);
+        if(dat.status == "0"){
+          dat.result.foreach(async element => {
+            await this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
+          });
+        }
+      }
+    }).catch(async (err) => {
+      await this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");      
+    })
   }
 
   public friendRequest(){

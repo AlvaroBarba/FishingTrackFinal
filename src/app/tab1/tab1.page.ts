@@ -6,7 +6,6 @@ import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
 import { PopoverService } from '../services/popover.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { title } from 'process';
 
 @Component({
   selector: 'app-tab1',
@@ -23,7 +22,7 @@ export class Tab1Page {
   public friendsRoutes=[];
   private you:User;
   public mapas:Map[]=[];
-  line:any;
+  public line:any;
 
   constructor(private router:Router,
      private popover:PopoverService,
