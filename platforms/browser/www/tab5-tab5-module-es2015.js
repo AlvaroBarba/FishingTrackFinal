@@ -9,87 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"end\" *ngIf=\"this.searchB\">\n      <ion-button (click)=\"this.showSearch()\">\n        <ion-icon name=\"search-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">\n      AMIGOS\n    </ion-title>\n  </ion-toolbar>\n  <ion-searchbar placeholder=\"Buscar\" (ionChange)=\"this.searchFriend($event)\" *ngIf=\"searchBar\"\n    (ionBlur)=\"this.closeSearch()\"> </ion-searchbar>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-segment value=\"all\">\n      <ion-segment-button value=\"buscar\" class=\"background-button-toolbar\" (click)='this.goSearch()' class=\"background-button-toolbar1\">\n        BUSCAR\n      </ion-segment-button>\n      <ion-segment-button value=\"peticiones\" class=\"background-button-toolbar\" (click)='this.goRequest()' class=\"background-button-toolbar\">\n        PETICIONES\n      </ion-segment-button>\n      <ion-segment-button value=\"lista\" class=\"background-button-toolbar\" (click)='this.goList()' class=\"background-button-toolbar\">\n        LISTA\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content *ngIf=\"this.search\">\n  <ion-list>\n    <ion-item *ngFor=\"let User of this.users; let i=index\">\n      <ion-buttons slot=\"end\">\n        <ion-button>\n          <ion-icon name=\"checkmark-circle\"></ion-icon>\n        </ion-button>\n        <ion-button>\n          <ion-icon name=\"close-circle\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n      <ion-label>{{User.username}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-content *ngIf=\"this.requests\">\n  <ion-list>\n    <ion-item *ngFor=\"let User of this.friendReq; let i=index\">\n      <ion-icon (click)=\"this.acceptFriend(User.id)\" slot=\"end\" src=\"assets/icon/accept.svg\"></ion-icon>\n      <ion-icon slot=\"end\" src=\"assets/icon/cancel.svg\"></ion-icon>\n      <ion-label>{{User.username}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-content *ngIf=\"this.list\">\n  <ion-list>\n    <ion-item *ngFor=\"let User of this.friendList; let i=index\">\n      <ion-avatar>\n        <img src=\"{{User.avatar}}\">\n      </ion-avatar>\n      <ion-label>{{User.username}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>");
-
-/***/ }),
-
-/***/ "./src/app/services/auth.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/auth.service.ts ***!
-  \******************************************/
-/*! exports provided: AuthService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
-
-
-
-
-let AuthService = class AuthService {
-    constructor(storage, router) {
-        this.storage = storage;
-        this.router = router;
-        this.user = {
-            id: -1,
-            username: '',
-            password: '',
-            avatar: ''
-        };
-    }
-    logout() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.user = {
-                id: -1,
-                username: '',
-                password: '',
-                avatar: ''
-            };
-            yield this.storage.setItem("user", this.user);
-            this.router.navigate(["login"]);
-        });
-    }
-    login(user) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.user = yield this.storage.setItem("user", user);
-            this.router.navigate(["/"]);
-        });
-    }
-    canActivate(route) {
-        if (!this.isLogged()) {
-            this.router.navigate(["welcome"]);
-            return false;
-        }
-        return true;
-    }
-    isLogged() {
-        if (this.user.id != -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    getUser() {
-        return this.user;
-    }
-};
-AuthService.ctorParameters = () => [
-    { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
-];
-AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], AuthService);
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\" *ngIf=\"this.searchB\">\r\n      <ion-button (click)=\"this.showSearch()\">\r\n        <ion-icon name=\"search-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      AMIGOS\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-searchbar placeholder=\"Buscar\" (ionChange)=\"this.searchFriend($event)\" *ngIf=\"searchBar\"\r\n    (ionBlur)=\"this.closeSearch()\"> </ion-searchbar>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"buscar\" class=\"background-button-toolbar\" (click)='this.goSearch()' class=\"background-button-toolbar1\">\r\n        BUSCAR\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"peticiones\" class=\"background-button-toolbar\" (click)='this.goRequest()' class=\"background-button-toolbar\">\r\n        PETICIONES\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"lista\" class=\"background-button-toolbar\" (click)='this.goList()' class=\"background-button-toolbar\">\r\n        LISTA\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"this.search\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.users; let i=index\">\r\n      <ion-buttons slot=\"end\">\r\n        <ion-button>\r\n          <ion-icon name=\"person-add-sharp\" (click)=\"this.sendFriendRequest(User)\"></ion-icon>\r\n        </ion-button>\r\n      </ion-buttons>\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.requests\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendReq; let i=index\">\r\n      <ion-icon (click)=\"this.acceptFriend(User.id)\" slot=\"end\" src=\"assets/icon/accept.svg\"></ion-icon>\r\n      <ion-icon slot=\"end\" src=\"assets/icon/cancel.svg\"></ion-icon>\r\n        <ion-avatar>\r\n          <img src=\"{{User.avatar}}\">\r\n        </ion-avatar>\r\n        <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <p *ngIf = \"this.friendReq.length == 0\" style=\"text-align: center;\">\r\n    No tienes peticiones por ahora\r\n    <ion-icon src=\"assets/icon/sad.svg\"></ion-icon>\r\n  </p>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.list\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendList; let i=index\">\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>");
 
 /***/ }),
 
@@ -489,6 +409,10 @@ let Tab5Page = class Tab5Page {
     }
     ngOnInit() {
     }
+    ionViewWillEnter() {
+        this.getFriends();
+        this.friendRequest();
+    }
     goSearch() {
         if (!this.search) {
             this.list = false;
@@ -555,31 +479,59 @@ let Tab5Page = class Tab5Page {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const val = evt.target.value;
             this.users = [];
-            console.error(val);
+            let aux = [];
+            let result;
             if (val && val.trim() != '') {
-                console.log("antes del http");
                 this.http.getUserByUsername(val).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                     if (data) {
                         let dat = JSON.parse(data.data);
                         if (dat.status == "0") {
                             //Todo ok
                             dat.result.forEach(element => {
-                                console.log(element);
-                                this.users.push(element);
+                                if (element.id != this.you.id) {
+                                    if (element.avatar == undefined) {
+                                        element.avatar = "assets/icon/usuario.svg";
+                                    }
+                                    aux.push(element);
+                                }
                             });
+                            this.friendList.forEach(friend => {
+                                let i = aux.indexOf(aux.find(x => friend));
+                                aux.splice(i, 1);
+                            });
+                            const set = new Set(aux);
+                            result = [...set];
+                            this.users = result;
                         }
                     }
                     else {
                         //Error buscando usuario
-                        yield this.toastS.createToastBottom("No hay coincidencias 1", true, 400, "danger");
+                        yield this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
                     }
                 })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                     //Toast
-                    yield this.toastS.createToastBottom("No hay coincidencias 2", true, 400, "danger");
+                    yield this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
                     console.log(err);
                 }));
             }
         });
+    }
+    sendFriendRequest(u2) {
+        console.log("USUARIO " + u2);
+        let user1 = this.you;
+        this.http.updateFriend(user1.id, 1, u2.id).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (data) {
+                console.log("LAGGGGGGGGGGGGGGGGGGGG");
+                let dat = JSON.parse(data.data);
+                if (dat.status == "0") {
+                    dat.result.foreach((element) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                        yield this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
+                    }));
+                }
+            }
+        })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");
+        }));
     }
     friendRequest() {
         this.user = this.authS.getUser();

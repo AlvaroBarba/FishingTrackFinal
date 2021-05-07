@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-card>\n  <ion-card-header>\n    <ion-card-title>{{this.title}}</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n    <div id=\"miMapa\" style=\"height: fit-content; width: fit-content;\">\n      content\n    </div>\n  </ion-card-content>\n</ion-card>";
+      __webpack_exports__["default"] = "<ion-card>\r\n  <ion-card-header>\r\n    <ion-card-title>{{this.title}}</ion-card-title>\r\n  </ion-card-header>\r\n  <ion-card-content>\r\n    <div id=\"miMapa\" style=\"height: fit-content; width: fit-content;\">\r\n      content\r\n    </div>\r\n  </ion-card-content>\r\n</ion-card>";
       /***/
     },
 
@@ -42,7 +42,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"showPopover($event)\">\n        <ion-icon name=\"ellipsis-vertical\" class=\"iconos\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">\n      NOVEDADES\n    </ion-title>\n  </ion-toolbar>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-segment value=\"all\">\n      <ion-segment-button value=\"parati\" class=\"background-button-toolbar1\" (click)='this.pestanaParaTi()'>\n        PARA TI\n      </ion-segment-button>\n      <ion-segment-button value=\"fotos\" class=\"background-button-toolbar\" (click)='this.pestanaFotos()'>\n        FOTOS\n      </ion-segment-button>\n      <ion-segment-button value=\"rutas\" class=\"background-button-toolbar\" (click)='this.pestanaRutas()'>\n        RUTAS\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n\n\n<ion-content [fullscreen]=\"true\" *ngIf='this.paraTi'>\n  <ion-list *ngFor=\"let Route of this.friendsRoutes; let i=index;\">\n    <ion-item>\n      <ion-card>\n        <ion-card-header>\n          <ion-card-title>\n            {{Route.title}}\n          </ion-card-title>\n        </ion-card-header>\n      </ion-card>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-content [fullscreen]=\"true\" *ngIf='this.fotos'>\n  <ion-card>\n        <img src=\"{{this.myphoto}}\" />\n        <ion-card-header>\n          <ion-card-title>Título de la ruta</ion-card-title>\n          <ion-card-subtitle>{{this.you.username}}</ion-card-subtitle>\n        </ion-card-header>\n      </ion-card>\n</ion-content>\n\n<ion-content [fullscreen]=\"true\" *ngIf='this.rutas'>\n  <ion-list *ngFor=\"let Route of this.routes; let i=index;\">\n    <ion-item>\n        <app-mapa line=\"{{line}}\" title=\"this.title\"></app-mapa>\n    </ion-item>\n  </ion-list>\n</ion-content>\n</ion-header>\n\n\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"showPopover($event)\">\r\n        <ion-icon name=\"ellipsis-vertical\" class=\"iconos\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      NOVEDADES\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"parati\" class=\"background-button-toolbar1\" (click)='this.pestanaParaTi()'>\r\n        PARA TI\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"fotos\" class=\"background-button-toolbar\" (click)='this.pestanaFotos()'>\r\n        FOTOS\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"rutas\" class=\"background-button-toolbar\" (click)='this.pestanaRutas()'>\r\n        RUTAS\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.paraTi'>\r\n  <ion-list *ngFor=\"let Route of this.friendsRoutes; let i=index;\">\r\n    <ion-item>\r\n      <ion-card>\r\n        <ion-card-header>\r\n          <ion-card-title>\r\n            {{Route.title}}\r\n          </ion-card-title>\r\n        </ion-card-header>\r\n      </ion-card>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.fotos'>\r\n  <ion-card>\r\n        <img src=\"{{this.myphoto}}\" />\r\n        <ion-card-header>\r\n          <ion-card-title>Título de la ruta</ion-card-title>\r\n          <ion-card-subtitle>{{this.you.username}}</ion-card-subtitle>\r\n        </ion-card-header>\r\n      </ion-card>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.rutas'>\r\n  <ion-list *ngFor=\"let Route of this.routes; let i=index;\">\r\n    <ion-item>\r\n        <app-mapa line=\"{{this.Route.coordinates}}\" title=\"this.title\"></app-mapa>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n</ion-header>\r\n\r\n\r\n";
       /***/
     },
 
@@ -126,15 +126,17 @@
             var _this = this;
 
             console.log("la linea -> " + this.line);
+            var myLine = leaflet__WEBPACK_IMPORTED_MODULE_2__["GeoJSON"].asFeature(this.line);
+            console.log("la linea 2 -> " + myLine.properties);
             this.created = true;
-            this.miMapa = new leaflet__WEBPACK_IMPORTED_MODULE_2__["Map"]("miMapa").setView(this.line.coordinates.getCenter(), 20);
+            this.miMapa = new leaflet__WEBPACK_IMPORTED_MODULE_2__["Map"]("miMapa").setView([1.12, 12.12], 20);
             Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
               attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
             }).addTo(this.miMapa);
             setTimeout(function () {
               _this.miMapa.invalidateSize();
             }, 400);
-            Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["geoJSON"])(this.line).addTo(this.miMapa);
+            Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["geoJSON"])(myLine).addTo(this.miMapa);
           }
         }]);
 
@@ -434,10 +436,7 @@
               this.paraTi = false;
               this.fotos = false;
               this.rutas = true;
-
-              if (this.routes == null) {
-                this.getOwnRoutes();
-              }
+              this.getOwnRoutes();
             }
           }
         }, {
@@ -445,6 +444,7 @@
           value: function getOwnRoutes() {
             var _this2 = this;
 
+            console.log("HOLITAAAS");
             this.routes = [];
             this.mapas = [];
             this.line = null;
@@ -463,6 +463,7 @@
                         avatar: _this2.you.avatar,
                         coordinates: element.coordinates
                       };
+                      console.log(element.coordinates);
 
                       _this2.routes.push(route);
                     });

@@ -37,12 +37,20 @@
         }
     .background-toolbar{
         --ion-toolbar-background:rgba(38,197,132);
-    }    
+    }
+
     .textColor{
         color:#ffffff;
         text-align: center;
         font-family: appFont;
     }
+
+    .textColorTitulo{
+        color:#ffffff;
+        text-align: center;
+        font-family: appFont;
+    }
+
     .background-button{
         --background:rgba(38,197,132);
         color:rgb(255, 255, 255);
@@ -90,9 +98,10 @@
 
     @font-face {
         font-family: appFont;
-        font-style: normal;
-        src:url('assets/fonts/appFont.ttf');
-    }
+        font-style: bold;
+        src:url('assets\fonts\Forque.ttf');
+   }
+
 
     .color-register{
         --background:rgba(255,121,0,1) ;
