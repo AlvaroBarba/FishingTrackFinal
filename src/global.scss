@@ -52,7 +52,7 @@
     .textColorTitulo{
         color:#ffffff;
         text-align: center;
-        font-family: appFont;
+        font-family: Montez;
     }
 
     .background-button{
@@ -100,11 +100,11 @@
         text-align: center;        
     }  
 
-    @font-face {
-        font-family: appFont;
-        font-style: bold;
-        src:url('assets\fonts\Forque.ttf');
-   }
+   /** @font-face {
+        font-family: miLetra;
+        font-style: normal;
+        src: url('assets/fonts/emmasophia.ttf');
+   }**/
 
 
     .color-register{
@@ -114,7 +114,9 @@
 
     .centerText{
         text-align: center;  
-        margin-top: 100px;      
+        margin-top: 100px;
+       // font-family: miLetra;
+        font-size: 100px;
     }  
     
     .fondoWelcome{
