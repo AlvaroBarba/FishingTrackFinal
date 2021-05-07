@@ -9,8 +9,7 @@
       AMIGOS
     </ion-title>
   </ion-toolbar>
-  <ion-searchbar placeholder="Buscar" (ionChange)="this.searchFriend($event)" *ngIf="searchBar"
-    (ionBlur)="this.closeSearch()"> </ion-searchbar>
+  
   <ion-toolbar class="background-toolbar">
     <ion-segment value="all">
       <ion-segment-button value="buscar" class="background-button-toolbar" (click)='this.goSearch()' class="background-button-toolbar1">
@@ -28,6 +27,8 @@
 </ion-header>
 
 <ion-content *ngIf="this.search">
+  <ion-searchbar placeholder="Buscar" (ionChange)="this.searchFriend($event)" *ngIf="searchBar"
+  (ionBlur)="this.closeSearch()"> </ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let User of this.users; let i=index">
       <ion-buttons slot="end">
