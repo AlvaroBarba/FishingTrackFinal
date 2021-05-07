@@ -47,7 +47,7 @@
   <ion-list>
     <ion-item *ngFor="let User of this.friendReq; let i=index">
       <ion-icon (click)="this.acceptFriend(User.id)" slot="end" src="assets/icon/accept.svg"></ion-icon>
-      <ion-icon slot="end" src="assets/icon/cancel.svg"></ion-icon>
+      <ion-icon (click)="this.rejectFriend(User.id)" slot="end" src="assets/icon/cancel.svg"></ion-icon>
         <ion-avatar>
           <img src="{{User.avatar}}">
         </ion-avatar>
