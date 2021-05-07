@@ -115,8 +115,8 @@ export class Tab5Page implements OnInit {
   public async searchFriend(evt: any) {
     const val = evt.target.value;
     this.users = [];
-    let aux = [];
-    let toDelete = [];
+    let aux: User[] = [];
+    let result;
     if (val && val.trim() != '') {
       this.http.getUserByUsername(val).then(async (data) => {
         if (data) {
@@ -125,27 +125,18 @@ export class Tab5Page implements OnInit {
             //Todo ok
             dat.result.forEach(element => {
               if(element.id != this.you.id){
-                this.friendList.forEach(friend =>{
-                  if(friend.id != element.id){ 
                     if(element.avatar == undefined){
                       element.avatar = "assets/icon/usuario.svg";
                     }
                     aux.push(element);
-                  }else{
-                    toDelete.push(element);
-                  }
-                })
               }
             });
-            toDelete.forEach(u => {
-              let i = aux.indexOf(u);
-                if(i != -1){
-                  aux.splice(i, 1);
-                }
-            });
-            
-            const aux2 = new Set(aux);
-            let result = [...aux2];
+            this.friendList.forEach(friend => {
+              let i = aux.indexOf(aux.find( x => friend));
+              aux.splice(i, 1);
+            })
+            const set = new Set(aux);
+            result = [...set];
             this.users = result;
           }
         } else {
