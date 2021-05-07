@@ -32,28 +32,23 @@ export class Tab1Page {
        this.you = this.authS.getUser();
      }
 
+  ionViewWillEnter(){
+    this.paraTi = true;
+    this.pestanaParaTi();
+  }
+
   
   public pestanaParaTi(){
     if(!this.paraTi){
       this.rutas = false;
-      this.fotos = false;
       this.paraTi = true;
       this.getFriends();
-    }
-  }
-
-  public pestanaFotos(){
-    if(!this.fotos){
-      this.rutas = false;
-      this.paraTi = false;
-      this.fotos = true;
     }
   }
 
   public pestanaRutas(){
     if(!this.rutas){
       this.paraTi = false;
-      this.fotos = false;
       this.rutas = true;
       this.getOwnRoutes();
       
@@ -61,7 +56,6 @@ export class Tab1Page {
   }
 
   public getOwnRoutes(){
-    console.log("HOLITAAAS");
     this.routes = [];
     this.mapas = [];
     this.line = null;

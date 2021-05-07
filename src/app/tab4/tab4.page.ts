@@ -1,13 +1,9 @@
-import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { PopoverService } from '../services/popover.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ActionSheetController } from '@ionic/angular';
-import { File } from '@ionic-native/file/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer/ngx';
 import { HttpService } from '../services/http.service';
 
 
@@ -43,8 +39,6 @@ export class Tab4Page implements OnInit {
 
 
   ngOnInit() {
-    console.error("avatar " + this.usuario.avatar);
-    console.error("username " + this.usuario.username);
     this.avatar();
   }
 

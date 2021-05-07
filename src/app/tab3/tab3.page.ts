@@ -56,18 +56,15 @@ export class Tab3Page implements OnInit {
 
 
   public startLocation() {
-    console.log("Starting location....");
     this.location.startBackgroundGeolocation();
 
   }
 
   public stopLocation() {
-    console.log("Stoping location....");
     this.location.stopBackgroundGeolocation();
   }
 
   public changeButton(){
-    console.log("HOLAAAAAAAAAAAA");
     if(this.change){
       this.startLocation();
       this.change = false;
