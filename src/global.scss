@@ -30,6 +30,8 @@
 :root{
     
     //DEFAULT THEME
+    .defaultTheme{
+
     .background-tab-bar{
         --ion-tab-bar-background:rgb(255, 255, 255);
         --ion-tab-bar-color-selected:rgba(38,197,132);
@@ -124,6 +126,7 @@
         background-color: rgba(38,197,132);;
     }
     
+    }
     //DARK MODE
 
     .darkModeTheme{
