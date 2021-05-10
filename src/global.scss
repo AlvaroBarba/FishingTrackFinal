@@ -124,6 +124,7 @@
         background-color: rgba(38,197,132);;
     }
     
+    }
     //DARK MODE
 
     .darkModeTheme{
@@ -144,6 +145,9 @@
         --ion-toolbar-background:rgb(0, 0, 0);
         }
 
+        --ion-background-color: rgb(49, 43, 53);
+
+        --ion-text-color: rgb(255, 255, 255);
         .textColor{
         color:#ffffff;
         text-align: center;
@@ -225,4 +229,4 @@
       
    
     }
-}
+

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Map, Polyline, tileLayer } from 'leaflet';
 import { BackgroundGeoService } from '../services/background-geo.service';
-import { PopoverService } from '../services/popover.service';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class Tab3Page implements OnInit {
   change: boolean = true;
   button = "assets/buttons/play.png";
 
-  constructor(private popover: PopoverService,
+  constructor(
     private location: BackgroundGeoService,
     private storage: NativeStorage) {
   }
@@ -40,9 +39,6 @@ export class Tab3Page implements OnInit {
     }
   }
 
-  async showPopover(ev) {
-    this.popover.createPopover(ev);
-  }
 
   public async vistaMapa() {
     this.cargaMapa = true;

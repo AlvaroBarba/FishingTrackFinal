@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
-import { PopoverService } from '../services/popover.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { HttpService } from '../services/http.service';
 
@@ -28,7 +27,6 @@ export class Tab4Page implements OnInit {
 
 
   constructor(
-    private popover:PopoverService,
     private authS: AuthService, 
     private router: Router, 
     private camera: Camera,
@@ -40,10 +38,6 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() {
     this.avatar();
-  }
-
-  async showPopover(ev){
-    this.popover.createPopover(ev);
   }
 
   public async logout(){
