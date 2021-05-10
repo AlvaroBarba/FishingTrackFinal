@@ -72,7 +72,6 @@ export class Tab1Page {
                 avatar:this.you.avatar,
                 coordinates:element.coordinates
               }
-              console.log(element.coordinates)
               this.routes.push(route);
             });
           }else{
@@ -111,26 +110,19 @@ export class Tab1Page {
   }
 
   public getFriendsRoutes(){
-    console.error("FRIENDSROUTES");
     if(this.friends.length > 0){
-      console.error("FRIENDSROUTES 1if");
       this.friends.forEach((friend)=>{
-        console.error("FRIENDSROUTES FOR");
         this.http.getRoutes(friend.id).then((data)=>{
-          console.error("FRIENDSROUTES HTTP");
           if(data){
-            console.error("FRIENDSROUTES DATA");
             let dat = JSON.parse(data.data);
             if(dat.status == "0"){
               //todo ok
-              console.error("FRIENDSROUTES OK");
               let route = {
                 title:dat.result.title,
                 username:friend.username,
                 avatar:friend.avatar,
                 coordinates:dat.result.coordinates
               }
-              console.error("FRIENDSROUTES " + route.title);
               this.friendsRoutes.push(route);
             }else{
               //toast
