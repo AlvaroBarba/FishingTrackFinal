@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
-import { geoJSON, GeoJSON, Map, tileLayer } from 'leaflet';
+import { Component, Input, OnInit } from '@angular/core'
+import { geoJSON, Map, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-mapa',
@@ -21,9 +20,6 @@ export class MapaComponent implements OnInit {
   }
 
   public createMap() {
-    console.log("la linea -> " + this.line);
-    let myLine = GeoJSON.asFeature(this.line);
-    console.log("la linea 2 -> " + myLine.properties);
     this.created = true;
     this.miMapa = new Map("miMapa").setView([1.12, 12.12], 20);
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -32,7 +28,33 @@ export class MapaComponent implements OnInit {
     setTimeout(() => {
       this.miMapa.invalidateSize();
     }, 400);
-    geoJSON(myLine).addTo(this.miMapa);
+
+   /** let myLine = {
+      "type": "Feature" as const,
+      "properties": {
+          "name": "myGeometry",
+          "amenity": "Route",
+          "popupContent": this.title,
+      },
+      "geometry": this.line
+  };
+
+  geoJSON(myLine).addTo(this.miMapa); **/
+
+  /** let myLine: GeoJSON.Feature = {
+    "type": "Feature",
+    "properties": {
+        "name": "myGeometry",
+        "amenity": "Route",
+        "popupContent": this.title,
+    },
+    "geometry": this.line
+  };
+
+  geoJSON(myLine).addTo(this.miMapa); **/
+
+  
+    
   }
 
 }
