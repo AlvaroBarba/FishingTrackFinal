@@ -53,6 +53,8 @@ export class Tab1Page {
     }
   }
 
+ 
+
   public getOwnRoutes(){
     this.routes = [];
     this.mapas = [];
@@ -69,6 +71,7 @@ export class Tab1Page {
                 username:this.you.username,
                 avatar:this.you.avatar,
                 coordinates:element.coordinates
+                
               }
               this.routes.push(route);
             });

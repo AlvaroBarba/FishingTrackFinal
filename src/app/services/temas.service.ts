@@ -12,6 +12,7 @@ const M_SELECT='ModeSelect';
     renderer2: Renderer2;
   
     constructor(private rendererFactory: RendererFactory2, @Inject(DOCUMENT) private document: Document, private saveMode: Storage) {
+      saveMode.create();
       this.renderer2 = this.rendererFactory.createRenderer(null, null);
     }
   

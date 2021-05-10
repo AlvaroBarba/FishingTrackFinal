@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { geoJSON, Map, tileLayer } from 'leaflet';
+import { GeoJSON,geoJSON, Map, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-mapa',
@@ -12,6 +12,7 @@ export class MapaComponent implements OnInit {
   miMapa:Map;
   @Input() line: any
   title:string;
+  
 
   constructor() { }
 
@@ -21,43 +22,24 @@ export class MapaComponent implements OnInit {
 
   public createMap() {
     
+
     this.created = true;
-    this.miMapa = new Map("miMapa").setView([-104.99404, 39.75621], 20);
+    this.miMapa = new Map("miMapa");
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
       .addTo(this.miMapa);
     setTimeout(() => {
       this.miMapa.invalidateSize();
     }, 400);
-
-  let myLine: GeoJSON.Feature = {
-    "type": "Feature",
-    "properties": {
-        "name": "myGeometry",
-        "amenity": "Route",
-        "popupContent": this.title,
-    },
-    "geometry":this.line
-  };
-
-  geoJSON(myLine).addTo(this.miMapa);
-    
-  }
-
-
-
+    this.miMapa.on("load",()=>{
+      console.log("CARGADO");
+      let myroute:GeoJSON=new GeoJSON();
+    myroute.addTo(this.miMapa);
+    myroute.addData({
+      type:"FeatureCollection",
+      features: [this.line]
+    }as any);
+    });
   
-
-   /** let myLine = {
-      "type": "Feature" as const,
-      "properties": {
-          "name": "myGeometry",
-          "amenity": "Route",
-          "popupContent": this.title,
-      },
-      "geometry": this.line
-  };
-
-  geoJSON(myLine).addTo(this.miMapa); **/
-
+  }
 }
