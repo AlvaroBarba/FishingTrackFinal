@@ -28,6 +28,8 @@
 //COLORES PREDETERMINADOS.
 
 :root{
+    
+    //DEFAULT THEME
     .background-tab-bar{
         --ion-tab-bar-background:rgb(255, 255, 255);
         --ion-tab-bar-color-selected:rgba(38,197,132);
@@ -121,6 +123,106 @@
     .fondoWelcome{
         background-color: rgba(38,197,132);;
     }
+    
+    //DARK MODE
+
+    .darkModeTheme{
+  
+        .background-tab-bar{
+            --ion-tab-bar-background:rgb(0, 0, 0);
+            --ion-tab-bar-color-selected:rgba(38,197,132);
+        }
+
+        .iconos{
+        color:rgba(38,197,132);
+         }
+        .iconos2{
+            color:rgba(38,197,132);
+        }    
+
+        .background-toolbar{
+        --ion-toolbar-background:rgb(0, 0, 0);
+        }
+
+        .textColor{
+        color:#ffffff;
+        text-align: center;
+        font-weight: bold;
+        }
+
+        .textColorTitulo{
+        color:#ffffff;
+        text-align: center;
+         }
+
+        .background-button{
+        --background:rgb(0, 0, 0);
+        color:rgba(38,197,132);
+        }
+        .background-button-toolbar{
+        --background:rgb(0, 0, 0);
+        --background-checked: rgba(38,197,132);
+        color:rgb(255, 255, 255);
+        
+        }    
+
+        .background-button-toolbar1{
+        --background:rgb(0, 0, 0);
+        --background-checked: rgba(38,197,132);
+        color:rgb(255, 255, 255);
+        
+        }  
+
+        ion-card {
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+        overflow: visible;
+        margin: 16px 0 24px;
+        position: relative;
+        padding-top: 60px;
+        background-color: transparent;
+      
+        .img-wrapper {
+          position: absolute;
+          left: 50%;
+          top: 0px;
+          transform: translateX(-50%);
+          img {
+            border-radius: 10px;
+            width: 80px;
+            height: 80px;
+          }
+      
+          
+        }
+      }
+
+      .changeButton{
+        text-align: center;        
+    }  
+
+   /** @font-face {
+        font-family: miLetra;
+        font-style: normal;
+        src: url('assets/fonts/emmasophia.ttf');
+   }**/
+
+
+        .color-register{
+        --background:rgba(255,121,0,1) ;
+        color:#ffffff;
+        }
+
+        .centerText{
+        text-align: center;  
+        margin-top: 100px;
+       // font-family: miLetra;
+        font-size: 100px;
+        }  
+    
+        .fondoWelcome{
+        background-color: rgba(38,197,132);;
+        }
       
    
+    }
 }
