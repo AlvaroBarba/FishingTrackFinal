@@ -20,14 +20,36 @@ export class MapaComponent implements OnInit {
   }
 
   public createMap() {
+    
     this.created = true;
-    this.miMapa = new Map("miMapa").setView([1.12, 12.12], 20);
+    this.miMapa = new Map("miMapa").setView([-104.99404, 39.75621], 20);
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
       .addTo(this.miMapa);
     setTimeout(() => {
       this.miMapa.invalidateSize();
     }, 400);
+
+  /** let myLine: GeoJSON.Feature = {
+    "type": "Feature",
+    "properties": {
+        "name": "myGeometry",
+        "amenity": "Route",
+        "popupContent": this.title,
+    },
+    "geometry":{ 
+      type: 'Point',
+      coordinates: [-104.99404, 39.75621]
+    }
+  };
+
+  geoJSON(myLine).addTo(this.miMapa);*/
+    
+  }
+
+
+
+  
 
    /** let myLine = {
       "type": "Feature" as const,
@@ -40,21 +62,5 @@ export class MapaComponent implements OnInit {
   };
 
   geoJSON(myLine).addTo(this.miMapa); **/
-
-  /** let myLine: GeoJSON.Feature = {
-    "type": "Feature",
-    "properties": {
-        "name": "myGeometry",
-        "amenity": "Route",
-        "popupContent": this.title,
-    },
-    "geometry": this.line
-  };
-
-  geoJSON(myLine).addTo(this.miMapa); **/
-
-  
-    
-  }
 
 }
