@@ -44,9 +44,9 @@
     .background-toolbar{
         --ion-toolbar-background:rgba(38,197,132);
     }
-
+    --ion-text-color: rgb(0, 0, 0);
     .textColor{
-        color:#ffffff;
+        color:#000000;
         text-align: center;
         font-weight: bold;
     }
@@ -63,14 +63,14 @@
     .background-button-toolbar{
         --background:rgba(38,197,132);
         --background-checked: rgba(38,197,132);
-        color:rgb(255, 255, 255);
+        color:rgb(0, 0, 0);
         
     }    
 
     .background-button-toolbar1{
         --background:rgba(38,197,132);
         --background-checked: rgba(38,197,132);
-        color:rgb(255, 255, 255);
+        color:rgb(0, 0, 0);
         
     }  
 
@@ -100,13 +100,6 @@
       .changeButton{
         text-align: center;        
     }  
-
-   /** @font-face {
-        font-family: miLetra;
-        font-style: normal;
-        src: url('assets/fonts/emmasophia.ttf');
-   }**/
-
 
     .color-register{
         --background:rgba(255,121,0,1) ;
@@ -204,13 +197,6 @@
         text-align: center;        
     }  
 
-   /** @font-face {
-        font-family: miLetra;
-        font-style: normal;
-        src: url('assets/fonts/emmasophia.ttf');
-   }**/
-
-
         .color-register{
         --background:rgba(255,121,0,1) ;
         color:#ffffff;
@@ -229,4 +215,3 @@
       
    
     }
-
