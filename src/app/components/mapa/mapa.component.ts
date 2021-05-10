@@ -30,20 +30,17 @@ export class MapaComponent implements OnInit {
       this.miMapa.invalidateSize();
     }, 400);
 
-  /** let myLine: GeoJSON.Feature = {
+  let myLine: GeoJSON.Feature = {
     "type": "Feature",
     "properties": {
         "name": "myGeometry",
         "amenity": "Route",
         "popupContent": this.title,
     },
-    "geometry":{ 
-      type: 'Point',
-      coordinates: [-104.99404, 39.75621]
-    }
+    "geometry":this.line
   };
 
-  geoJSON(myLine).addTo(this.miMapa);*/
+  geoJSON(myLine).addTo(this.miMapa);
     
   }
 

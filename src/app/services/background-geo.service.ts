@@ -165,7 +165,7 @@ export class BackgroundGeoService {
   public createMap() {
     this.created = true;
     this.mapa = new Map("mapa").locate({ setView: true, maxZoom: 20 });
-    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
       .addTo(this.mapa);
     setTimeout(() => {
