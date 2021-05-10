@@ -30,8 +30,6 @@
 :root{
     
     //DEFAULT THEME
-    .defaultTheme{
-
     .background-tab-bar{
         --ion-tab-bar-background:rgb(255, 255, 255);
         --ion-tab-bar-color-selected:rgba(38,197,132);
@@ -147,6 +145,9 @@
         --ion-toolbar-background:rgb(0, 0, 0);
         }
 
+        --ion-background-color: rgb(49, 43, 53);
+
+        --ion-text-color: rgb(255, 255, 255);
         .textColor{
         color:#ffffff;
         text-align: center;
@@ -228,4 +229,4 @@
       
    
     }
-}
+

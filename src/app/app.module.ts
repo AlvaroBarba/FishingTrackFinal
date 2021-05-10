@@ -20,13 +20,15 @@ import { MenupopoverComponent } from './components/menupopover/menupopover.compo
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
+import { TemasService } from './services/temas.service';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 //MAPA
 
 @NgModule({
   declarations: [AppComponent,MenupopoverComponent],
   entryComponents: [MenupopoverComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
@@ -36,6 +38,7 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx'
     NativeStorage,
     Camera,
     FileTransfer,
+    TemasService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

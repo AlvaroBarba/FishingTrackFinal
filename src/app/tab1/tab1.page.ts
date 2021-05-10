@@ -4,7 +4,6 @@ import { Map, Polyline, tileLayer } from 'leaflet';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
-import { PopoverService } from '../services/popover.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
@@ -25,7 +24,6 @@ export class Tab1Page {
   public line:any;
 
   constructor(private router:Router,
-     private popover:PopoverService,
      private http:HttpService,
      private authS:AuthService,
      private camera:Camera) {
@@ -135,12 +133,4 @@ export class Tab1Page {
       });
     }
   }
-
-
-  public async showPopover(ev){
-    this.popover.createPopover(ev);
-  }
-
-  
-
 }

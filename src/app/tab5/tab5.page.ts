@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Console } from 'console';
-import { element } from 'protractor';
-import { threadId } from 'worker_threads';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';

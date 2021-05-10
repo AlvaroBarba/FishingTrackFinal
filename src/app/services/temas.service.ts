@@ -1,5 +1,6 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable, Renderer2, RendererFactory2 } from "@angular/core";
+import { Storage } from '@ionic/Storage';
 
 const M_SELECT='ModeSelect';
 
