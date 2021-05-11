@@ -1,24 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="background-toolbar">
-    <ion-title>Información</ion-title>
+    <ion-title class="textColor">Información</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h3 class="textColor">Creadores</h3>
   <div>
     <div class="horizontal">
-      <p class="font-size-16">Me Gusta, Sigue y Comparte</p>
+      <p class="font-size-22">Andrea Díaz</p>
     </div>
     <div class="horizontal">
       <div class="social-icons" (click)="socialMedia('FACEBOOK')">
-        <ion-icon name="logo-facebook"></ion-icon>
+        <ion-icon src="assets/icon/facebook.svg"></ion-icon>
       </div>
       <div class="social-icons" (click)="socialMedia('INSTAGRAM')">
-        <ion-icon name="logo-instagram"></ion-icon>
+        <ion-icon src="assets/icon/instagram.svg"></ion-icon>
       </div>
       <div class="social-icons" (click)="socialMedia('TWITTER')">
-        <ion-icon name="logo-twitter"></ion-icon>
+        <ion-icon src="assets/icon/twitter.svg"></ion-icon>
       </div>
       </div>
+      <div class="horizontal">
+        <p class="font-size-22">Álvaro Barba</p>
+      </div>
+      <div class="horizontal">
+        <div class="social-icons" (click)="socialMedia('FACEBOOK')">
+          <ion-icon src="assets/icon/facebook.svg"></ion-icon>
+        </div>
+        <div class="social-icons" (click)="socialMedia('INSTAGRAM')">
+          <ion-icon src="assets/icon/instagram.svg"></ion-icon>
+        </div>
+        <div class="social-icons" (click)="socialMedia('TWITTER')">
+          <ion-icon src="assets/icon/twitter.svg"></ion-icon>
+        </div>
+        </div>
     </div>
 </ion-content>
