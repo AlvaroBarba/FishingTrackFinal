@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
@@ -22,6 +23,7 @@ export class Tab5Page implements OnInit {
   list = true;
   requests = false;
   you:User;
+  yourFriends = [];
 
 
   constructor(private http: HttpService,
@@ -130,7 +132,6 @@ export class Tab5Page implements OnInit {
     const val = evt.target.value;
     this.users = [];
     let aux: User[] = [];
-    let result;
     if (val && val.trim() != '') {
       this.http.getUserByUsername(val).then(async (data) => {
         if (data) {
@@ -146,18 +147,11 @@ export class Tab5Page implements OnInit {
               }
             });
 
-            aux.forEach(e => {
-              console.log("AUX => " + e.username);
+            aux.forEach(element =>{
+              this.isFriend(element.id);
             })
-            //aux ALBA, ALVARO, ANDREA
 
-            this.friendList.forEach(friend => {
-              //friendlist ALVARO, ANDREA
-              let i = aux.indexOf(friend);
-              aux.splice(i, 1);
-            });
-            
-            this.users = aux;
+            this.users = this.yourFriends;
           }
         } else {
           //Error buscando usuario
@@ -167,8 +161,7 @@ export class Tab5Page implements OnInit {
       }).catch(async (err) => {
         //Toast
         await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
-        console.log(err);
-      })
+      });
     }
   }
 
@@ -184,6 +177,39 @@ export class Tab5Page implements OnInit {
     }).catch(async (err) => {
       await this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");      
     })
+  }
+
+  public isFriend(id2){
+    this.yourFriends = [];
+    let i = 0;
+    this.http.getPairOfFriends(this.you.id, id2).then(async (data) => {
+      if(data){
+        let dat = JSON.parse(data.data);
+        if(dat.status == "0"){
+          dat.result.forEach(element => {
+            i += 1;
+             let aux:User = {
+               id: i,
+               username: element,
+               isFriend: true
+             }  
+             
+             this.yourFriends.push(aux);
+          });
+        }else{
+          dat.result.forEach(element => {
+            i += 1;
+             let aux:User = {
+               id: i,
+               username: element,
+               isFriend: false
+             }  
+             
+             this.yourFriends.push(aux);
+          });
+        }
+      }
+    });
   }
 
   public friendRequest(){

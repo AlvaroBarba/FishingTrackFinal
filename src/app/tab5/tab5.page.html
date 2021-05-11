@@ -32,7 +32,7 @@
   <ion-list>
     <ion-item *ngFor="let User of this.users; let i=index">
       <ion-buttons slot="end">
-        <ion-button (click)="this.sendFriendRequest(User)">
+        <ion-button *ngIf="!this.User.isFriend" (click)="this.sendFriendRequest(User)">
           <ion-icon name="person-add-sharp"></ion-icon>
         </ion-button>
       </ion-buttons>

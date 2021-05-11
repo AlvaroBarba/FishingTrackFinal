@@ -3,4 +3,5 @@ export interface User{
     username:string,
     password?:string,
     avatar?:any
+    isFriend?:boolean
 }

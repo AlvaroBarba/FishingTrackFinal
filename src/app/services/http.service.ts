@@ -33,6 +33,11 @@ export class HttpService {
     return this.http.get(url, {}, { 'apikey': this.apiKey });
   }
 
+  public getPairOfFriends(id, id2): Promise<HTTPResponse>{
+    let url = this.ip + '/friends/'+ id + '/pair/' + id2;
+    return this.http.get(url, {}, { 'apikey': this.apiKey});
+  }
+
   public getRoutes(id: any): Promise<HTTPResponse> {
     let url = this.ip + '/route/' + id;
     return this.http.get(url, {}, { 'apikey': this.apiKey });
