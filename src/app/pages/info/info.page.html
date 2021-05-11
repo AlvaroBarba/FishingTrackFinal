@@ -5,5 +5,21 @@
 </ion-header>
 
 <ion-content>
-
+  <div>
+    <div class="horizontal">
+      <p class="font-size-16">Me Gusta, Sigue y Comparte</p>
+    </div>
+    <div class="horizontal">
+      <div class="social-icons" (click)="socialMedia('FACEBOOK')">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </div>
+      <div class="social-icons" (click)="socialMedia('INSTAGRAM')">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </div>
+      <div class="social-icons" (click)="socialMedia('TWITTER')">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

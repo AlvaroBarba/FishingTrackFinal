@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class=\"content\">\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\n      <ion-item>\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\n      </ion-item>\n\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\n    </form>\n  </div>\n</ion-content>";
+      __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<ion-content padding>\r\n  <div class=\"content\">\r\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\r\n      <ion-item>\r\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\r\n    </form>\r\n  </div>\r\n</ion-content>";
       /***/
     },
 
@@ -273,158 +273,6 @@
         /*! ./register.page.scss */
         "./src/app/pages/register/register.page.scss"))["default"]]
       })], RegisterPage);
-      /***/
-    },
-
-    /***/
-    "./src/app/services/auth.service.ts":
-    /*!******************************************!*\
-      !*** ./src/app/services/auth.service.ts ***!
-      \******************************************/
-
-    /*! exports provided: AuthService */
-
-    /***/
-    function srcAppServicesAuthServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AuthService", function () {
-        return AuthService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/router */
-      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-      /* harmony import */
-
-
-      var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @ionic-native/native-storage/ngx */
-      "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
-
-      var AuthService = /*#__PURE__*/function () {
-        function AuthService(storage, router) {
-          _classCallCheck(this, AuthService);
-
-          this.storage = storage;
-          this.router = router;
-          this.user = {
-            id: -1,
-            username: '',
-            password: '',
-            avatar: ''
-          };
-        }
-
-        _createClass(AuthService, [{
-          key: "logout",
-          value: function logout() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                while (1) {
-                  switch (_context4.prev = _context4.next) {
-                    case 0:
-                      this.user = {
-                        id: -1,
-                        username: '',
-                        password: '',
-                        avatar: ''
-                      };
-                      _context4.next = 3;
-                      return this.storage.setItem("user", this.user);
-
-                    case 3:
-                      this.router.navigate(["login"]);
-
-                    case 4:
-                    case "end":
-                      return _context4.stop();
-                  }
-                }
-              }, _callee4, this);
-            }));
-          }
-        }, {
-          key: "login",
-          value: function login(user) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-              return regeneratorRuntime.wrap(function _callee5$(_context5) {
-                while (1) {
-                  switch (_context5.prev = _context5.next) {
-                    case 0:
-                      _context5.next = 2;
-                      return this.storage.setItem("user", user);
-
-                    case 2:
-                      this.user = _context5.sent;
-                      this.router.navigate(["/"]);
-
-                    case 4:
-                    case "end":
-                      return _context5.stop();
-                  }
-                }
-              }, _callee5, this);
-            }));
-          }
-        }, {
-          key: "canActivate",
-          value: function canActivate(route) {
-            if (!this.isLogged()) {
-              this.router.navigate(["welcome"]);
-              return false;
-            }
-
-            return true;
-          }
-        }, {
-          key: "isLogged",
-          value: function isLogged() {
-            if (this.user.id != -1) {
-              return true;
-            } else {
-              return false;
-            }
-          }
-        }, {
-          key: "getUser",
-          value: function getUser() {
-            return this.user;
-          }
-        }]);
-
-        return AuthService;
-      }();
-
-      AuthService.ctorParameters = function () {
-        return [{
-          type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"]
-        }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-        }];
-      };
-
-      AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-      })], AuthService);
       /***/
     },
 
@@ -775,14 +623,14 @@
         _createClass(LoadingService, [{
           key: "createLoadingMsg",
           value: function createLoadingMsg(msg) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
               var loading, _yield$loading$onDidD, role, data;
 
-              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
-                  switch (_context6.prev = _context6.next) {
+                  switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context6.next = 2;
+                      _context4.next = 2;
                       return this.loadingC.create({
                         message: msg,
                         spinner: 'dots',
@@ -791,37 +639,37 @@
                       });
 
                     case 2:
-                      loading = _context6.sent;
-                      _context6.next = 5;
+                      loading = _context4.sent;
+                      _context4.next = 5;
                       return loading.present();
 
                     case 5:
-                      _context6.next = 7;
+                      _context4.next = 7;
                       return loading.onDidDismiss();
 
                     case 7:
-                      _yield$loading$onDidD = _context6.sent;
+                      _yield$loading$onDidD = _context4.sent;
                       role = _yield$loading$onDidD.role;
                       data = _yield$loading$onDidD.data;
 
                     case 10:
                     case "end":
-                      return _context6.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee6, this);
+              }, _callee4, this);
             }));
           }
         }, {
           key: "createLoading",
           value: function createLoading() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
               var loading;
-              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
                 while (1) {
-                  switch (_context7.prev = _context7.next) {
+                  switch (_context5.prev = _context5.next) {
                     case 0:
-                      _context7.next = 2;
+                      _context5.next = 2;
                       return this.loadingC.create({
                         spinner: 'dots',
                         mode: 'ios',
@@ -829,16 +677,16 @@
                       });
 
                     case 2:
-                      loading = _context7.sent;
-                      _context7.next = 5;
+                      loading = _context5.sent;
+                      _context5.next = 5;
                       return loading.present();
 
                     case 5:
                     case "end":
-                      return _context7.stop();
+                      return _context5.stop();
                   }
                 }
-              }, _callee7, this);
+              }, _callee5, this);
             }));
           }
         }, {
@@ -911,6 +759,70 @@
         _createClass(ToastService, [{
           key: "createToastTop",
           value: function createToastTop(msg, animation, time, color) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              var cToast;
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
+                while (1) {
+                  switch (_context6.prev = _context6.next) {
+                    case 0:
+                      _context6.next = 2;
+                      return this.toast.create({
+                        message: msg,
+                        animated: animation,
+                        duration: time,
+                        position: "top",
+                        color: color,
+                        mode: "ios"
+                      });
+
+                    case 2:
+                      cToast = _context6.sent;
+                      _context6.next = 5;
+                      return cToast.present();
+
+                    case 5:
+                    case "end":
+                      return _context6.stop();
+                  }
+                }
+              }, _callee6, this);
+            }));
+          }
+        }, {
+          key: "createToastBottom",
+          value: function createToastBottom(msg, animation, time, color) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              var cToast;
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      _context7.next = 2;
+                      return this.toast.create({
+                        message: msg,
+                        animated: animation,
+                        duration: time,
+                        position: 'bottom',
+                        color: color,
+                        mode: "ios"
+                      });
+
+                    case 2:
+                      cToast = _context7.sent;
+                      _context7.next = 5;
+                      return cToast.present();
+
+                    case 5:
+                    case "end":
+                      return _context7.stop();
+                  }
+                }
+              }, _callee7, this);
+            }));
+          }
+        }, {
+          key: "createToastMiddle",
+          value: function createToastMiddle(msg, animation, time, color) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
               var cToast;
               return regeneratorRuntime.wrap(function _callee8$(_context8) {
@@ -922,7 +834,7 @@
                         message: msg,
                         animated: animation,
                         duration: time,
-                        position: "top",
+                        position: 'middle',
                         color: color,
                         mode: "ios"
                       });
@@ -938,70 +850,6 @@
                   }
                 }
               }, _callee8, this);
-            }));
-          }
-        }, {
-          key: "createToastBottom",
-          value: function createToastBottom(msg, animation, time, color) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-              var cToast;
-              return regeneratorRuntime.wrap(function _callee9$(_context9) {
-                while (1) {
-                  switch (_context9.prev = _context9.next) {
-                    case 0:
-                      _context9.next = 2;
-                      return this.toast.create({
-                        message: msg,
-                        animated: animation,
-                        duration: time,
-                        position: 'bottom',
-                        color: color,
-                        mode: "ios"
-                      });
-
-                    case 2:
-                      cToast = _context9.sent;
-                      _context9.next = 5;
-                      return cToast.present();
-
-                    case 5:
-                    case "end":
-                      return _context9.stop();
-                  }
-                }
-              }, _callee9, this);
-            }));
-          }
-        }, {
-          key: "createToastMiddle",
-          value: function createToastMiddle(msg, animation, time, color) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
-              var cToast;
-              return regeneratorRuntime.wrap(function _callee10$(_context10) {
-                while (1) {
-                  switch (_context10.prev = _context10.next) {
-                    case 0:
-                      _context10.next = 2;
-                      return this.toast.create({
-                        message: msg,
-                        animated: animation,
-                        duration: time,
-                        position: 'middle',
-                        color: color,
-                        mode: "ios"
-                      });
-
-                    case 2:
-                      cToast = _context10.sent;
-                      _context10.next = 5;
-                      return cToast.present();
-
-                    case 5:
-                    case "end":
-                      return _context10.stop();
-                  }
-                }
-              }, _callee10, this);
             }));
           }
         }]);

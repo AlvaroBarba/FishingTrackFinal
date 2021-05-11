@@ -133,7 +133,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n";
+      __webpack_exports__["default"] = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
       /***/
     },
 
@@ -153,7 +153,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-list>\n  <ion-item>Tema Claro</ion-item>\n  <ion-item>Tema Oscuro</ion-item>\n  <ion-item>Idioma</ion-item>\n</ion-list>";
+      __webpack_exports__["default"] = "<ion-list>\r\n  <ion-item>Tema Claro</ion-item>\r\n  <ion-item>Tema Oscuro</ion-item>\r\n  <ion-item>Idioma</ion-item>\r\n</ion-list>";
       /***/
     },
 
@@ -194,6 +194,12 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! @angular/router */
       "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ./services/auth.service */
+      "./src/app/services/auth.service.ts");
 
       var routes = [{
         path: '',
@@ -205,7 +211,8 @@
           "./src/app/tabs/tabs.module.ts")).then(function (m) {
             return m.TabsPageModule;
           });
-        }
+        },
+        canActivate: [_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]]
       }, {
         path: 'login',
         loadChildren: function loadChildren() {
@@ -627,6 +634,158 @@
     },
 
     /***/
+    "./src/app/services/auth.service.ts":
+    /*!******************************************!*\
+      !*** ./src/app/services/auth.service.ts ***!
+      \******************************************/
+
+    /*! exports provided: AuthService */
+
+    /***/
+    function srcAppServicesAuthServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "AuthService", function () {
+        return AuthService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/router */
+      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+      /* harmony import */
+
+
+      var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @ionic-native/native-storage/ngx */
+      "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
+
+      var AuthService = /*#__PURE__*/function () {
+        function AuthService(storage, router) {
+          _classCallCheck(this, AuthService);
+
+          this.storage = storage;
+          this.router = router;
+          this.user = {
+            id: -1,
+            username: '',
+            password: '',
+            avatar: ''
+          };
+        }
+
+        _createClass(AuthService, [{
+          key: "logout",
+          value: function logout() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.user = {
+                        id: -1,
+                        username: '',
+                        password: '',
+                        avatar: ''
+                      };
+                      _context.next = 3;
+                      return this.storage.setItem("user", this.user);
+
+                    case 3:
+                      this.router.navigate(["login"]);
+
+                    case 4:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "login",
+          value: function login(user) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.storage.setItem("user", user);
+
+                    case 2:
+                      this.user = _context2.sent;
+                      this.router.navigate(["/"]);
+
+                    case 4:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "canActivate",
+          value: function canActivate(route) {
+            if (!this.isLogged()) {
+              this.router.navigate(["welcome"]);
+              return false;
+            }
+
+            return true;
+          }
+        }, {
+          key: "isLogged",
+          value: function isLogged() {
+            if (this.user.id != -1) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        }, {
+          key: "getUser",
+          value: function getUser() {
+            return this.user;
+          }
+        }]);
+
+        return AuthService;
+      }();
+
+      AuthService.ctorParameters = function () {
+        return [{
+          type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+        }];
+      };
+
+      AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+      })], AuthService);
+      /***/
+    },
+
+    /***/
     "./src/environments/environment.ts":
     /*!*****************************************!*\
       !*** ./src/environments/environment.ts ***!
@@ -723,7 +882,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       module.exports = __webpack_require__(
-      /*! /home/andrea/Documentos/2DAM/PMD/Ionic/ProyectoApp/FishingTrack/src/main.ts */
+      /*! C:\Users\reuniones\Desktop\ionic\FishingTrackFinal\src\main.ts */
       "./src/main.ts");
       /***/
     }

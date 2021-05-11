@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class=\"content\">\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\n      <ion-item>\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\n      </ion-item>\n\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\n    </form>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<ion-content padding>\r\n  <div class=\"content\">\r\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\r\n      <ion-item>\r\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-item>\r\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\r\n      </ion-item>\r\n\r\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\r\n    </form>\r\n  </div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -127,86 +127,6 @@ RegisterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./register.page.scss */ "./src/app/pages/register/register.page.scss")).default]
     })
 ], RegisterPage);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/auth.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/auth.service.ts ***!
-  \******************************************/
-/*! exports provided: AuthService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
-
-
-
-
-let AuthService = class AuthService {
-    constructor(storage, router) {
-        this.storage = storage;
-        this.router = router;
-        this.user = {
-            id: -1,
-            username: '',
-            password: '',
-            avatar: ''
-        };
-    }
-    logout() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.user = {
-                id: -1,
-                username: '',
-                password: '',
-                avatar: ''
-            };
-            yield this.storage.setItem("user", this.user);
-            this.router.navigate(["login"]);
-        });
-    }
-    login(user) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.user = yield this.storage.setItem("user", user);
-            this.router.navigate(["/"]);
-        });
-    }
-    canActivate(route) {
-        if (!this.isLogged()) {
-            this.router.navigate(["welcome"]);
-            return false;
-        }
-        return true;
-    }
-    isLogged() {
-        if (this.user.id != -1) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    getUser() {
-        return this.user;
-    }
-};
-AuthService.ctorParameters = () => [
-    { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
-];
-AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], AuthService);
 
 
 

@@ -403,6 +403,28 @@ module.exports = [
         "clobbers": [
             "plugins.backgroundGeoLocation"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-appavailability/www/AppAvailability.js",
+        "id": "cordova-plugin-appavailability.AppAvailability",
+        "pluginId": "cordova-plugin-appavailability",
+        "clobbers": [
+            "appAvailability"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/src/browser/InAppBrowserProxy.js",
+        "id": "cordova-plugin-inappbrowser.InAppBrowserProxy",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -421,7 +443,9 @@ module.exports.metadata =
     "cordova-plugin-advanced-http": "3.1.0",
     "cordova-plugin-geolocation": "4.1.0",
     "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-background-geolocation": "1.0.6"
+    "cordova-plugin-background-geolocation": "1.0.6",
+    "cordova-plugin-appavailability": "0.4.2",
+    "cordova-plugin-inappbrowser": "5.0.0"
 }
 // BOTTOM OF METADATA
 });

@@ -22,159 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-title class=\"textColor\">\n      PERFIL\n    </ion-title>\n  </ion-toolbar>\n  <ion-card color=\"light\">\n      <div class=\"img-wrapper\">\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\n          <img src=\"{{this.myphoto}}\">\n        </ion-avatar>\n      </div>\n    <ion-card-content class=\"ion-text-center\">\n      <h2 style=\"margin-top: 5%;\">{{this.usuario.username}}</h2>\n      <ion-text color=\"medium\">\n      </ion-text>\n    </ion-card-content>\n  </ion-card>\n  <ion-list>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Fotos</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Rutas</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Todo</ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-label></ion-label>\n    <ion-item>\n      <ion-button (click)=\"this.insertImagen()\" class=\"background-button\" shape=\"round\">Subir imagen<ion-icon name=\"camera-outline\"></ion-icon></ion-button>\n      <ion-button (click)=\"this.logout()\" class=\"background-button\" shape=\"round\">Cerrar Sesión<ion-icon\n          name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-item>\n  </ion-list>";
-      /***/
-    },
-
-    /***/
-    "./src/app/services/auth.service.ts":
-    /*!******************************************!*\
-      !*** ./src/app/services/auth.service.ts ***!
-      \******************************************/
-
-    /*! exports provided: AuthService */
-
-    /***/
-    function srcAppServicesAuthServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AuthService", function () {
-        return AuthService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/router */
-      "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-      /* harmony import */
-
-
-      var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! @ionic-native/native-storage/ngx */
-      "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
-
-      var AuthService = /*#__PURE__*/function () {
-        function AuthService(storage, router) {
-          _classCallCheck(this, AuthService);
-
-          this.storage = storage;
-          this.router = router;
-          this.user = {
-            id: -1,
-            username: '',
-            password: '',
-            avatar: ''
-          };
-        }
-
-        _createClass(AuthService, [{
-          key: "logout",
-          value: function logout() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      this.user = {
-                        id: -1,
-                        username: '',
-                        password: '',
-                        avatar: ''
-                      };
-                      _context.next = 3;
-                      return this.storage.setItem("user", this.user);
-
-                    case 3:
-                      this.router.navigate(["login"]);
-
-                    case 4:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _callee, this);
-            }));
-          }
-        }, {
-          key: "login",
-          value: function login(user) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      _context2.next = 2;
-                      return this.storage.setItem("user", user);
-
-                    case 2:
-                      this.user = _context2.sent;
-                      this.router.navigate(["/"]);
-
-                    case 4:
-                    case "end":
-                      return _context2.stop();
-                  }
-                }
-              }, _callee2, this);
-            }));
-          }
-        }, {
-          key: "canActivate",
-          value: function canActivate(route) {
-            if (!this.isLogged()) {
-              this.router.navigate(["welcome"]);
-              return false;
-            }
-
-            return true;
-          }
-        }, {
-          key: "isLogged",
-          value: function isLogged() {
-            if (this.user.id != -1) {
-              return true;
-            } else {
-              return false;
-            }
-          }
-        }, {
-          key: "getUser",
-          value: function getUser() {
-            return this.user;
-          }
-        }]);
-
-        return AuthService;
-      }();
-
-      AuthService.ctorParameters = function () {
-        return [{
-          type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"]
-        }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-        }];
-      };
-
-      AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-      })], AuthService);
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-title class=\"textColor\">\r\n      PERFIL\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-card color=\"light\">\r\n      <div class=\"img-wrapper\">\r\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\r\n          <img src=\"{{this.myphoto}}\">\r\n        </ion-avatar>\r\n      </div>\r\n    <ion-card-content class=\"ion-text-center\">\r\n      <h2 style=\"margin-top: 5%;\">{{this.usuario.username}}</h2>\r\n      <ion-text color=\"medium\">\r\n      </ion-text>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Fotos</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Rutas</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Todo</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <ion-list>\r\n    <ion-label></ion-label>\r\n    <ion-item>\r\n      <ion-button (click)=\"this.insertImagen()\" class=\"background-button\" shape=\"round\">Subir imagen<ion-icon name=\"camera-outline\"></ion-icon></ion-button>\r\n      <ion-button (click)=\"this.logout()\" class=\"background-button\" shape=\"round\">Cerrar Sesión<ion-icon\r\n          name=\"log-out-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-item>\r\n  </ion-list>";
       /***/
     },
 
@@ -531,32 +379,32 @@
         _createClass(PopoverService, [{
           key: "createPopover",
           value: function createPopover(ev) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var pop;
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context.prev = _context.next) {
                     case 0:
-                      _context3.next = 2;
+                      _context.next = 2;
                       return this.popover.create({
                         component: _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__["MenupopoverComponent"],
                         event: ev
                       });
 
                     case 2:
-                      pop = _context3.sent;
-                      _context3.next = 5;
+                      pop = _context.sent;
+                      _context.next = 5;
                       return pop.present();
 
                     case 5:
-                      return _context3.abrupt("return", _context3.sent);
+                      return _context.abrupt("return", _context.sent);
 
                     case 6:
                     case "end":
-                      return _context3.stop();
+                      return _context.stop();
                   }
                 }
-              }, _callee3, this);
+              }, _callee, this);
             }));
           }
         }]);
@@ -819,30 +667,30 @@
         }, {
           key: "showPopover",
           value: function showPopover(ev) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
-                  switch (_context4.prev = _context4.next) {
+                  switch (_context2.prev = _context2.next) {
                     case 0:
                       this.popover.createPopover(ev);
 
                     case 1:
                     case "end":
-                      return _context4.stop();
+                      return _context2.stop();
                   }
                 }
-              }, _callee4, this);
+              }, _callee2, this);
             }));
           }
         }, {
           key: "logout",
           value: function logout() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
-                  switch (_context5.prev = _context5.next) {
+                  switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context5.next = 2;
+                      _context3.next = 2;
                       return this.authS.logout();
 
                     case 2:
@@ -852,10 +700,10 @@
 
                     case 3:
                     case "end":
-                      return _context5.stop();
+                      return _context3.stop();
                   }
                 }
-              }, _callee5, this);
+              }, _callee3, this);
             }));
           }
         }, {

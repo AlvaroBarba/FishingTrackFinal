@@ -116,6 +116,16 @@
     .fondoWelcome{
         background-color: rgba(38,197,132);;
     }
+    .social-icons {
+        font-size: 30px;
+      }
+      .horizontal {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .font-size-16 {
+          font-size: 16px;
+      }
     
     }
     //DARK MODE
@@ -212,6 +222,16 @@
         .fondoWelcome{
         background-color: rgba(38,197,132);;
         }
+        .social-icons {
+            font-size: 30px;
+          }
+          .horizontal {
+            display: flex;
+            justify-content: space-evenly;
+          }
+          .font-size-16 {
+              font-size: 16px;
+          }
       
    
     }
