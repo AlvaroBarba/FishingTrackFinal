@@ -16,13 +16,13 @@ export class Tab5Page implements OnInit {
   searchB = false;
   searchBar = false;
   users: User[] = [];
-  friendReq:User[]=[];
-  friendList:User[]=[];
-  user:User;
+  friendReq: User[] = [];
+  friendList: User[] = [];
+  user: User;
   search = false;
   list = true;
   requests = false;
-  you:User;
+  you: User;
   yourFriends = [];
 
 
@@ -30,38 +30,38 @@ export class Tab5Page implements OnInit {
     private toastS: ToastService,
     private loading: LoadingService,
     private authS: AuthService) {
-      this.you = this.authS.getUser();
-    }
+    this.you = this.authS.getUser();
+  }
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
-      this.getFriends();
-      this.friendRequest();
+    this.getFriends();
+    this.friendRequest();
   }
 
-  public goSearch(){
-    if(!this.search){
-      this.list=false;
+  public goSearch() {
+    if (!this.search) {
+      this.list = false;
       this.requests = false;
       this.search = true;
       this.searchB = true;
     }
   }
 
-  public goList(){
-    if(!this.list){
-      this.search=false;
+  public goList() {
+    if (!this.list) {
+      this.search = false;
       this.requests = false;
       this.list = true;
       this.getFriends();
     }
   }
 
-  public goRequest(){
-    if(!this.requests){
-      this.list=false;
+  public goRequest() {
+    if (!this.requests) {
+      this.list = false;
       this.search = false;
       this.requests = true;
       this.friendRequest();
@@ -76,56 +76,56 @@ export class Tab5Page implements OnInit {
     this.searchBar = false;
   }
 
-  public getFriends(){
+  public getFriends() {
     this.friendList = [];
-    this.http.getFriends(this.you.id).then((data)=>{
-      if(data){
+    this.http.getFriends(this.you.id).then((data) => {
+      if (data) {
         let dat = JSON.parse(data.data);
-        if(dat.status=="0"){
+        if (dat.status == "0") {
           dat.result.forEach(element => {
-            if(element.avatar == undefined){
+            if (element.avatar == undefined) {
               element.avatar = "assets/icon/usuario.svg";
             }
             this.friendList.push(element);
           });
         }
       }
-    }).catch((err)=>{
+    }).catch((err) => {
 
     })
   }
 
 
-  public acceptFriend(id){
-    this.http.updateFriend(id, 2, this.you.id).then(async (data)=>{
-      if(data){
+  public acceptFriend(id) {
+    this.http.updateFriend(id, 2, this.you.id).then(async (data) => {
+      if (data) {
         let dat = JSON.parse(data.data);
-        if(dat.status=="0"){
-         await this.friendRequest();
+        if (dat.status == "0") {
+          await this.friendRequest();
           this.toastS.createToastMiddle("Bien hora sois amigos!!", true, 350, "success");
-        }else{
+        } else {
           //Error
         }
       }
-      }).catch((err)=>{
-        console.error("Fallo al aceptar la peticion");
-      })
+    }).catch((err) => {
+      console.error("Fallo al aceptar la peticion");
+    })
   }
 
-  public rejectFriend(id){
-    this.http.updateFriend(id, 3, this.you.id).then(async (data)=>{
-      if(data){
+  public rejectFriend(id) {
+    this.http.updateFriend(id, 3, this.you.id).then(async (data) => {
+      if (data) {
         let dat = JSON.parse(data.data);
-        if(dat.status=="0"){
-         await this.friendRequest();
-         this.toastS.createToastMiddle("Ups rechazaste la petición", true, 350, "warning");
-        }else{
+        if (dat.status == "0") {
+          await this.friendRequest();
+          this.toastS.createToastMiddle("Rechazaste la petición", true, 350, "warning");
+        } else {
           //Error
         }
       }
-      }).catch((err)=>{
-        console.error("Fallo al rechazar la peticion");
-      })
+    }).catch((err) => {
+      console.error("Fallo al rechazar la peticion");
+    })
   }
 
   public async searchFriend(evt: any) {
@@ -139,25 +139,24 @@ export class Tab5Page implements OnInit {
           if (dat.status == "0") {
             //Todo ok
             dat.result.forEach(element => {
-              if(element.id != this.you.id){
-                    if(element.avatar == undefined){
-                      element.avatar = "assets/icon/usuario.svg";
-                    }
-                    aux.push(element);
+              if (element.id != this.you.id) {
+                if (element.avatar == undefined) {
+                  element.avatar = "assets/icon/usuario.svg";
+                }
+                element.isFriend = false;
+                aux.push(element);
               }
             });
 
-            aux.forEach(element =>{
-              this.isFriend(element.id);
-            })
+            this.users = aux;
+            await this.isFriend();
 
-            this.users = this.yourFriends;
           }
         } else {
           //Error buscando usuario
           await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
         }
-        
+
       }).catch(async (err) => {
         //Toast
         await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
@@ -165,54 +164,31 @@ export class Tab5Page implements OnInit {
     }
   }
 
-  public sendFriendRequest(u2){
+  public sendFriendRequest(u2) {
     let user1 = this.you;
-    this.http.addFriendRequest(user1.id, u2.id, 1).then(async (data) =>{
-      if(data) {
+    this.http.addFriendRequest(user1.id, u2.id, 1).then(async (data) => {
+      if (data) {
         let dat = JSON.parse(data.data);
-        if(dat.status == "0"){
-            await this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
+        if (dat.status == "0") {
+          await this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
         }
       }
     }).catch(async (err) => {
-      await this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");      
+      await this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");
     })
   }
 
-  public isFriend(id2){
-    this.yourFriends = [];
-    let i = 0;
-    this.http.getPairOfFriends(this.you.id, id2).then(async (data) => {
-      if(data){
-        let dat = JSON.parse(data.data);
-        if(dat.status == "0"){
-          dat.result.forEach(element => {
-            i += 1;
-             let aux:User = {
-               id: i,
-               username: element,
-               isFriend: true
-             }  
-             
-             this.yourFriends.push(aux);
-          });
-        }else{
-          dat.result.forEach(element => {
-            i += 1;
-             let aux:User = {
-               id: i,
-               username: element,
-               isFriend: false
-             }  
-             
-             this.yourFriends.push(aux);
-          });
+  public isFriend() {
+    this.users.forEach(element => {
+      this.friendList.forEach(data =>{
+        if(element.username == data.username){
+          this.users[this.users.indexOf(element)].isFriend = true;
         }
-      }
+      })
     });
   }
 
-  public friendRequest(){
+  public friendRequest() {
     this.user = this.authS.getUser();
     this.friendReq = [];
     this.http.getFriendRequest(this.user.id).then(async (data) => {
@@ -221,7 +197,7 @@ export class Tab5Page implements OnInit {
         if (dat.status == "0") {
           //Todo ok
           dat.result.forEach(element => {
-            if(element.avatar == undefined){
+            if (element.avatar == undefined) {
               element.avatar = "assets/icon/usuario.svg";
             }
             this.friendReq.push(element);
