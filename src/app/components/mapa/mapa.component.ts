@@ -21,13 +21,11 @@ export class MapaComponent implements OnInit {
   }
 
   public createMap() {
-    
-
     this.created = true;
     this.miMapa = new Map("miMapa");
-    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
-      .addTo(this.miMapa);
+    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(this.miMapa);
     setTimeout(() => {
       this.miMapa.invalidateSize();
     }, 400);
