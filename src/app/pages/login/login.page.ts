@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
         username: ''
       }
       //Toast
-      await this.toastS.createToastBottom("Usuario o contraseña incorrectos", true, 400, "danger");
+      await this.toastS.createToastBottom("Tiempo de espera agotado... intentelo más tarde", true, 400, "danger");
       await this.loading.cancelLoading();
       console.log(err);
     })
