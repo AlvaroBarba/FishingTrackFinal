@@ -14,7 +14,7 @@ import { HttpService } from '../services/http.service';
 export class Tab4Page implements OnInit {
 
   usuario : User;
-  
+  nRoutes: number;
   myphoto:any;
 
   croppedImagepath = "";
@@ -38,6 +38,21 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() {
     this.avatar();
+    this.getCountRoutes();
+  }
+
+  public getCountRoutes() {
+    this.nRoutes = 0;
+    this.http.getCountRoutes(this.usuario.id).then((data) => {
+      if (data) {
+        let dat = JSON.parse(data.data);
+        if (dat.status == "0") {
+          dat.result.forEach(element => {
+            this.nRoutes = element.rutas       
+          });
+        }
+      }
+    }).catch((err) => {});
   }
 
   public async logout(){

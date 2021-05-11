@@ -38,6 +38,11 @@ export class HttpService {
     return this.http.get(url, {}, { 'apikey': this.apiKey });
   }
 
+  public getCountRoutes(id: any): Promise<HTTPResponse> {
+    let url = this.ip + '/routes/' + id;
+    return this.http.get(url, {}, { 'apikey': this.apiKey });
+  }
+
   public getPhotos(id: any): Promise<HTTPResponse> {
     let url = this.ip + '/photo/' + id;
     return this.http.get(url, {}, { 'apikey': this.apiKey });
