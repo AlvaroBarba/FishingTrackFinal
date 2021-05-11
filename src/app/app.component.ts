@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   
 })
 export class AppComponent {
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

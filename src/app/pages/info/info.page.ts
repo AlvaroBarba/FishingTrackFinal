@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
-import { Platform } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-info',
@@ -11,13 +12,21 @@ import { Platform } from '@ionic/angular';
 })
 export class InfoPage implements OnInit {
 
+  protected breadcrumb;
+
   constructor(
     private inAppBrowser: InAppBrowser,
     private appAvailability: AppAvailability,
     private platform: Platform,
+    private navctrl: NavController
   ) { }
 
   ngOnInit() {
+  }
+
+  public goBack(){
+    console.log("back");
+    this.navctrl.back();
   }
 
   socialMedia(type) {
