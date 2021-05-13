@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"showPopover($event)\">\r\n        <ion-icon name=\"ellipsis-vertical\" class=\"iconos\">\r\n        </ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      RUTA\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <div id=\"mapa\" style=\"height: 75%; width: 150%;\"></div>\r\n  <div class=\"changeButton\">\r\n    <button style=\"background-color: transparent; max-width: 125px; max-height: 125px;\" block (click)=\"this.changeButton()\" >\r\n      <ion-img src=\"assets/buttons/play.png\" *ngIf=\"this.change\"></ion-img>\r\n      <ion-img src=\"assets/buttons/stop.png\" *ngIf=\"!this.change\"></ion-img>\r\n    </button>\r\n  </div>\r\n\r\n</ion-content>\r\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-title class=\"textColor\">\r\n      Ruta\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <div id=\"mapa\" style=\"height: 75%; width: 150%;\"></div>\r\n  <div class=\"changeButton\">\r\n    <button style=\"background-color: transparent; max-width: 125px; max-height: 125px;\" block (click)=\"this.changeButton()\" >\r\n      <ion-img src=\"assets/buttons/play.png\" *ngIf=\"this.change\"></ion-img>\r\n      <ion-img src=\"assets/buttons/stop.png\" *ngIf=\"!this.change\"></ion-img>\r\n    </button>\r\n  </div>\r\n\r\n</ion-content>\r\n";
       /***/
     },
 
@@ -276,7 +276,7 @@
               maxZoom: 20
             });
             Object(leaflet__WEBPACK_IMPORTED_MODULE_5__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(this.mapa);
             setTimeout(function () {
               _this4.mapa.invalidateSize();
@@ -519,18 +519,11 @@
       var _services_background_geo_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ../services/background-geo.service */
       "./src/app/services/background-geo.service.ts");
-      /* harmony import */
-
-
-      var _services_popover_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../services/popover.service */
-      "./src/app/services/popover.service.ts");
 
       var Tab3Page = /*#__PURE__*/function () {
-        function Tab3Page(popover, location, storage) {
+        function Tab3Page(location, storage) {
           _classCallCheck(this, Tab3Page);
 
-          this.popover = popover;
           this.location = location;
           this.storage = storage;
           this.cargaMapa = false;
@@ -554,16 +547,17 @@
             }
           }
         }, {
-          key: "showPopover",
-          value: function showPopover(ev) {
+          key: "vistaMapa",
+          value: function vistaMapa() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
               return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
-                      this.popover.createPopover(ev);
+                      this.cargaMapa = true;
+                      this.mapa = this.location.createMap();
 
-                    case 1:
+                    case 2:
                     case "end":
                       return _context2.stop();
                   }
@@ -572,17 +566,16 @@
             }));
           }
         }, {
-          key: "vistaMapa",
-          value: function vistaMapa() {
+          key: "refreshRoute",
+          value: function refreshRoute() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
                   switch (_context3.prev = _context3.next) {
                     case 0:
-                      this.cargaMapa = true;
-                      this.mapa = this.location.createMap();
+                      if (this.cargaMapa) this.location.line.addTo(this.mapa);
 
-                    case 2:
+                    case 1:
                     case "end":
                       return _context3.stop();
                   }
@@ -591,40 +584,18 @@
             }));
           }
         }, {
-          key: "refreshRoute",
-          value: function refreshRoute() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                while (1) {
-                  switch (_context4.prev = _context4.next) {
-                    case 0:
-                      if (this.cargaMapa) this.location.line.addTo(this.mapa);
-
-                    case 1:
-                    case "end":
-                      return _context4.stop();
-                  }
-                }
-              }, _callee4, this);
-            }));
-          }
-        }, {
           key: "startLocation",
           value: function startLocation() {
-            console.log("Starting location....");
             this.location.startBackgroundGeolocation();
           }
         }, {
           key: "stopLocation",
           value: function stopLocation() {
-            console.log("Stoping location....");
             this.location.stopBackgroundGeolocation();
           }
         }, {
           key: "changeButton",
           value: function changeButton() {
-            console.log("HOLAAAAAAAAAAAA");
-
             if (this.change) {
               this.startLocation();
               this.change = false;
@@ -640,8 +611,6 @@
 
       Tab3Page.ctorParameters = function () {
         return [{
-          type: _services_popover_service__WEBPACK_IMPORTED_MODULE_4__["PopoverService"]
-        }, {
           type: _services_background_geo_service__WEBPACK_IMPORTED_MODULE_3__["BackgroundGeoService"]
         }, {
           type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__["NativeStorage"]

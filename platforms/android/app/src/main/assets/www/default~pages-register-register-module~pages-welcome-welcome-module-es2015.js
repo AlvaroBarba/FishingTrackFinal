@@ -175,6 +175,10 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
+    getCountRoutes(id) {
+        let url = this.ip + '/routes/' + id;
+        return this.http.get(url, {}, { 'apikey': this.apiKey });
+    }
     getPhotos(id) {
         let url = this.ip + '/photo/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });

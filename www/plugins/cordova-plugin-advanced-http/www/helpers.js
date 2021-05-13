@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.helpers", function(require, exports, module) { module.exports = function init(global, jsUtil, cookieHandler, messages, base64, errorCodes, dependencyValidator, ponyfills) {
+cordova.define("cordova-plugin-advanced-http.helpers", function(require, exports, module) {
+module.exports = function init(global, jsUtil, cookieHandler, messages, base64, errorCodes, dependencyValidator, ponyfills) {
   var validSerializers = ['urlencoded', 'json', 'utf8', 'raw', 'multipart'];
   var validCertModes = ['default', 'nocheck', 'pinned', 'legacy'];
   var validClientAuthModes = ['none', 'systemstore', 'buffer'];

@@ -870,7 +870,7 @@
                                   }; //Toast
 
                                   _context4.next = 3;
-                                  return this.toastS.createToastBottom("Usuario o contraseña incorrectos", true, 400, "danger");
+                                  return this.toastS.createToastBottom("Tiempo de espera agotado... intentelo más tarde", true, 400, "danger");
 
                                 case 3:
                                   _context4.next = 5;

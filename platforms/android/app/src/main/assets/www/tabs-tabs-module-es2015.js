@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs  class=\"background-tab-bar\">\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n    <ion-tab-button tab=\"tab1\" class=\"iconos\">\r\n      <ion-icon name=\"home-sharp\"></ion-icon>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab3\" class=\"iconos\">\r\n      <ion-icon name=\"compass-sharp\"></ion-icon>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab5\" class=\"iconos\">\r\n      <ion-icon name=\"people-sharp\"></ion-icon>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab4\" class=\"iconos\">\r\n      <ion-icon name=\"person-circle-sharp\"></ion-icon>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-tabs  class=\"background-tab-bar\">\r\n\r\n  <ion-tab-bar slot=\"bottom\">\r\n    <ion-tab-button tab=\"tab1\" class=\"iconos\">\r\n      <ion-icon name=\"home-sharp\"></ion-icon>\r\n      <p>Inicio</p>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab3\" class=\"iconos\">\r\n      <ion-icon name=\"compass-sharp\"></ion-icon>\r\n      <p>Tracker</p>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab5\" class=\"iconos\">\r\n      <ion-icon name=\"people-sharp\"></ion-icon>\r\n      <p>Amigos</p>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"tab4\" class=\"iconos\">\r\n      <ion-icon name=\"person-circle-sharp\"></ion-icon>\r\n      <p>Perfil</p>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n\r\n</ion-tabs>\r\n");
 
 /***/ }),
 

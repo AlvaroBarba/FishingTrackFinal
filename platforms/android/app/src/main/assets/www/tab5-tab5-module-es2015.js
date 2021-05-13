@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\" *ngIf=\"this.searchB\">\r\n      <ion-button (click)=\"this.showSearch()\">\r\n        <ion-icon name=\"search-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      AMIGOS\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-searchbar placeholder=\"Buscar\" (ionChange)=\"this.searchFriend($event)\" *ngIf=\"searchBar\"\r\n    (ionBlur)=\"this.closeSearch()\"> </ion-searchbar>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"buscar\" class=\"background-button-toolbar\" (click)='this.goSearch()' class=\"background-button-toolbar1\">\r\n        BUSCAR\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"peticiones\" class=\"background-button-toolbar\" (click)='this.goRequest()' class=\"background-button-toolbar\">\r\n        PETICIONES\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"lista\" class=\"background-button-toolbar\" (click)='this.goList()' class=\"background-button-toolbar\">\r\n        LISTA\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"this.search\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.users; let i=index\">\r\n      <ion-buttons slot=\"end\">\r\n        <ion-button>\r\n          <ion-icon name=\"person-add-sharp\" (click)=\"this.sendFriendRequest(User)\"></ion-icon>\r\n        </ion-button>\r\n      </ion-buttons>\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.requests\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendReq; let i=index\">\r\n      <ion-icon (click)=\"this.acceptFriend(User.id)\" slot=\"end\" src=\"assets/icon/accept.svg\"></ion-icon>\r\n      <ion-icon slot=\"end\" src=\"assets/icon/cancel.svg\"></ion-icon>\r\n        <ion-avatar>\r\n          <img src=\"{{User.avatar}}\">\r\n        </ion-avatar>\r\n        <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <p *ngIf = \"this.friendReq.length == 0\" style=\"text-align: center;\">\r\n    No tienes peticiones por ahora\r\n    <ion-icon src=\"assets/icon/sad.svg\"></ion-icon>\r\n  </p>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.list\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendList; let i=index\">\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\" *ngIf=\"this.searchB\">\r\n      <ion-button (click)=\"this.showSearch()\">\r\n        <ion-icon name=\"search-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      Amigos\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  \r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"buscar\" class=\"background-button-toolbar\" (click)='this.goSearch()' class=\"background-button-toolbar1\">\r\n        Busca\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"peticiones\" class=\"background-button-toolbar\" (click)='this.goRequest()' class=\"background-button-toolbar\">\r\n        Peticiones\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"lista\" class=\"background-button-toolbar\" (click)='this.goList()' class=\"background-button-toolbar\">\r\n        Lista\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"this.search\">\r\n  <ion-searchbar placeholder=\"Buscar\" (ionChange)=\"this.searchFriend($event)\" *ngIf=\"searchBar\"\r\n  (ionBlur)=\"this.closeSearch()\"> </ion-searchbar>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.users; let i=index\">\r\n      <ion-buttons slot=\"end\">\r\n        <ion-button *ngIf=\"!this.User.isFriend\" (click)=\"this.sendFriendRequest(User)\">\r\n          <ion-icon name=\"person-add-sharp\"></ion-icon>\r\n        </ion-button>\r\n      </ion-buttons>\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.requests\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendReq; let i=index\">\r\n      <ion-icon (click)=\"this.acceptFriend(User.id)\" slot=\"end\" src=\"assets/icon/accept.svg\"></ion-icon>\r\n      <ion-icon (click)=\"this.rejectFriend(User.id)\" slot=\"end\" src=\"assets/icon/cancel.svg\"></ion-icon>\r\n        <ion-avatar>\r\n          <img src=\"{{User.avatar}}\">\r\n        </ion-avatar>\r\n        <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <p *ngIf = \"this.friendReq.length == 0\" style=\"text-align: center;\">\r\n    No tienes peticiones por ahora\r\n    <ion-icon src=\"assets/icon/sad.svg\"></ion-icon>\r\n  </p>\r\n</ion-content>\r\n\r\n<ion-content *ngIf=\"this.list\">\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let User of this.friendList; let i=index\">\r\n      <ion-avatar>\r\n        <img src=\"{{User.avatar}}\">\r\n      </ion-avatar>\r\n      <ion-label>{{User.username}}</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>");
 
 /***/ }),
 
@@ -54,6 +54,10 @@ let HttpService = class HttpService {
     }
     getRoutes(id) {
         let url = this.ip + '/route/' + id;
+        return this.http.get(url, {}, { 'apikey': this.apiKey });
+    }
+    getCountRoutes(id) {
+        let url = this.ip + '/routes/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
     getPhotos(id) {
@@ -405,6 +409,7 @@ let Tab5Page = class Tab5Page {
         this.search = false;
         this.list = true;
         this.requests = false;
+        this.yourFriends = [];
         this.you = this.authS.getUser();
     }
     ngOnInit() {
@@ -461,18 +466,35 @@ let Tab5Page = class Tab5Page {
         });
     }
     acceptFriend(id) {
-        this.http.updateFriend(id, 2, this.you.id).then((data) => {
+        this.http.updateFriend(id, 2, this.you.id).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (data) {
                 let dat = JSON.parse(data.data);
                 if (dat.status == "0") {
-                    //Toast ahora sois amigos
+                    yield this.friendRequest();
+                    this.toastS.createToastMiddle("Bien hora sois amigos!!", true, 350, "success");
                 }
                 else {
                     //Error
                 }
             }
-        }).catch((err) => {
+        })).catch((err) => {
             console.error("Fallo al aceptar la peticion");
+        });
+    }
+    rejectFriend(id) {
+        this.http.updateFriend(id, 3, this.you.id).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (data) {
+                let dat = JSON.parse(data.data);
+                if (dat.status == "0") {
+                    yield this.friendRequest();
+                    this.toastS.createToastMiddle("Rechazaste la petición", true, 350, "warning");
+                }
+                else {
+                    //Error
+                }
+            }
+        })).catch((err) => {
+            console.error("Fallo al rechazar la peticion");
         });
     }
     searchFriend(evt) {
@@ -480,7 +502,6 @@ let Tab5Page = class Tab5Page {
             const val = evt.target.value;
             this.users = [];
             let aux = [];
-            let result;
             if (val && val.trim() != '') {
                 this.http.getUserByUsername(val).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                     if (data) {
@@ -492,16 +513,12 @@ let Tab5Page = class Tab5Page {
                                     if (element.avatar == undefined) {
                                         element.avatar = "assets/icon/usuario.svg";
                                     }
+                                    element.isFriend = false;
                                     aux.push(element);
                                 }
                             });
-                            this.friendList.forEach(friend => {
-                                let i = aux.indexOf(aux.find(x => friend));
-                                aux.splice(i, 1);
-                            });
-                            const set = new Set(aux);
-                            result = [...set];
-                            this.users = result;
+                            this.users = aux;
+                            yield this.isFriend();
                         }
                     }
                     else {
@@ -511,27 +528,31 @@ let Tab5Page = class Tab5Page {
                 })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                     //Toast
                     yield this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
-                    console.log(err);
                 }));
             }
         });
     }
     sendFriendRequest(u2) {
-        console.log("USUARIO " + u2);
         let user1 = this.you;
-        this.http.updateFriend(user1.id, 1, u2.id).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        this.http.addFriendRequest(user1.id, u2.id, 1).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             if (data) {
-                console.log("LAGGGGGGGGGGGGGGGGGGGG");
                 let dat = JSON.parse(data.data);
                 if (dat.status == "0") {
-                    dat.result.foreach((element) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-                        yield this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
-                    }));
+                    yield this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
                 }
             }
         })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             yield this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");
         }));
+    }
+    isFriend() {
+        this.users.forEach(element => {
+            this.friendList.forEach(data => {
+                if (element.username == data.username) {
+                    this.users[this.users.indexOf(element)].isFriend = true;
+                }
+            });
+        });
     }
     friendRequest() {
         this.user = this.authS.getUser();
@@ -542,6 +563,9 @@ let Tab5Page = class Tab5Page {
                 if (dat.status == "0") {
                     //Todo ok
                     dat.result.forEach(element => {
+                        if (element.avatar == undefined) {
+                            element.avatar = "assets/icon/usuario.svg";
+                        }
                         this.friendReq.push(element);
                     });
                 }

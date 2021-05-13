@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.global-configs", function(require, exports, module) { var globalConfigs = {
+cordova.define("cordova-plugin-advanced-http.global-configs", function(require, exports, module) {
+var globalConfigs = {
   headers: {},
   serializer: 'urlencoded',
   followRedirect: true,

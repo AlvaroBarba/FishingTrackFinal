@@ -270,7 +270,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\r\n  <ion-menu menuId=\"menu-main\" contentId=\"main\">\r\n    <ion-header>\r\n      <ion-toolbar class=\"background-toolbar\">\r\n        <ion-title class=\"textColor\">Menú</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item (click)=\"this.activateDarkMode()\"><ion-icon name=\"color-fill-outline\"></ion-icon>Modo Oscuro</ion-item>\r\n        <ion-item (click)=\"this.activateDefaultMode()\"><ion-icon name=\"color-fill-outline\"></ion-icon>Modo Claro</ion-item>\r\n        <ion-item (click)=\"this.goInfoPage()\"><ion-icon name=\"information-circle-outline\"></ion-icon>Sobre nosotros</ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu>\r\n  <ion-router-outlet id=\"main\"></ion-router-outlet>\r\n</ion-app>\r\n");
 
 /***/ }),
 
@@ -330,6 +330,10 @@ const routes = [
     {
         path: 'tab5',
         loadChildren: () => __webpack_require__.e(/*! import() | tab5-tab5-module */ "tab5-tab5-module").then(__webpack_require__.bind(null, /*! ./tab5/tab5.module */ "./src/app/tab5/tab5.module.ts")).then(m => m.Tab5PageModule)
+    },
+    {
+        path: 'info',
+        loadChildren: () => __webpack_require__.e(/*! import() | pages-info-info-module */ "pages-info-info-module").then(__webpack_require__.bind(null, /*! ./pages/info/info.module */ "./src/app/pages/info/info.module.ts")).then(m => m.InfoPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -375,29 +379,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _services_temas_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/temas.service */ "./src/app/services/temas.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
 
 
 
 
 
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar) {
+    constructor(platform, splashScreen, statusBar, theme, router) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
+        this.theme = theme;
+        this.router = router;
         this.initializeApp();
+    }
+    //ACTIVAR TEMAS
+    activateDarkMode() {
+        this.theme.enableDarkMode();
+    }
+    activateDefaultMode() {
+        this.theme.enableDefaultMode();
     }
     initializeApp() {
         this.platform.ready().then(() => {
-            this.statusBar.styleDefault();
+            this.statusBar.styleBlackTranslucent();
             this.splashScreen.hide();
+            this.theme.modeSelected();
         });
+    }
+    //SOCIAL MEDIA
+    goInfoPage() {
+        this.router.navigate(['/info']);
     }
 };
 AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
-    { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] }
+    { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
+    { type: _services_temas_service__WEBPACK_IMPORTED_MODULE_5__["TemasService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
 ];
 AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -437,6 +461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _ionic_native_background_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/background-geolocation/ngx */ "./node_modules/@ionic-native/background-geolocation/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _services_temas_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/temas.service */ "./src/app/services/temas.service.ts");
+/* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic/storage-angular */ "./node_modules/@ionic/storage-angular/__ivy_ngcc__/fesm2015/ionic-storage-angular.js");
 
 
 
@@ -455,6 +481,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 //MAPA
 let AppModule = class AppModule {
 };
@@ -462,7 +490,7 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"], _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_12__["MenupopoverComponent"]],
         entryComponents: [_components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_12__["MenupopoverComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]],
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"], _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_17__["IonicStorageModule"].forRoot()],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -472,6 +500,7 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_13__["NativeStorage"],
             _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_9__["Camera"],
             _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_11__["FileTransfer"],
+            _services_temas_service__WEBPACK_IMPORTED_MODULE_16__["TemasService"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
@@ -610,6 +639,82 @@ AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         providedIn: 'root'
     })
 ], AuthService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/temas.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/temas.service.ts ***!
+  \*******************************************/
+/*! exports provided: TemasService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemasService", function() { return TemasService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_Storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/Storage */ "./node_modules/@ionic/Storage/dist/esm/index.js");
+
+
+
+
+const M_SELECT = 'ModeSelect';
+let TemasService = class TemasService {
+    constructor(rendererFactory, document, saveMode) {
+        this.rendererFactory = rendererFactory;
+        this.document = document;
+        this.saveMode = saveMode;
+        saveMode.create();
+        this.renderer2 = this.rendererFactory.createRenderer(null, null);
+    }
+    //GUARDAR EL TEMA SELECCIONADO AL CERRA LA APP
+    modeSelected() {
+        this.saveMode.get(M_SELECT).then(value => {
+            if (value) {
+                this.renderer2.addClass(this.document.body, value);
+            }
+            else {
+                //this.renderer2.removeClass(this.document.body,'lightModeTheme');
+                this.renderer2.removeClass(this.document.body, 'darkModeTheme');
+            }
+        });
+    }
+    //ACTIVAR Y DESACTIVAR LOS TEMAS PARA SU CORRECTO USO
+    //MODO OSCURO (DARK MODE)
+    enableDarkMode() {
+        //this.renderer2.removeClass(this.document.body, 'lightModeTheme');
+        this.renderer2.addClass(this.document.body, 'darkModeTheme');
+        this.saveMode.set(M_SELECT, 'darkModeTheme');
+    }
+    //MODO CLARO (LIGHT MODE)
+    // enableLightMode() {
+    // this.renderer2.removeClass(this.document.body, 'darkModeTheme');
+    // this.renderer2.removeClass(this.document.body, 'rainbowModeTheme');
+    // this.renderer2.addClass(this.document.body, 'lightModeTheme');
+    // this.saveMode.set(M_SELECT,'lightModeTheme');
+    //}
+    //MODO POR DEFECTO (DEFAULT MODE)
+    enableDefaultMode() {
+        this.renderer2.removeClass(this.document.body, 'darkModeTheme');
+        //this.renderer2.removeClass(this.document.body, 'lightModeTheme');
+        //this.renderer2.removeClass(this.document.body, 'rainbowModeTheme');
+        this.saveMode.set(M_SELECT, null);
+    }
+};
+TemasService.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["RendererFactory2"] },
+    { type: Document, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] },
+    { type: _ionic_Storage__WEBPACK_IMPORTED_MODULE_3__["Storage"] }
+];
+TemasService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+        providedIn: 'root'
+    })
+], TemasService);
 
 
 

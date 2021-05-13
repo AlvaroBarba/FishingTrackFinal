@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.url-util", function(require, exports, module) { module.exports = function init(jsUtil) {
+cordova.define("cordova-plugin-advanced-http.url-util", function(require, exports, module) {
+module.exports = function init(jsUtil) {
   return {
     parseUrl: parseUrl,
     appendQueryParamsString: appendQueryParamsString,

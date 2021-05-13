@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-title class=\"textColor\">\r\n      PERFIL\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-card color=\"light\">\r\n      <div class=\"img-wrapper\">\r\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\r\n          <img src=\"{{this.myphoto}}\">\r\n        </ion-avatar>\r\n      </div>\r\n    <ion-card-content class=\"ion-text-center\">\r\n      <h2 style=\"margin-top: 5%;\">{{this.usuario.username}}</h2>\r\n      <ion-text color=\"medium\">\r\n      </ion-text>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Fotos</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Rutas</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Todo</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <ion-list>\r\n    <ion-label></ion-label>\r\n    <ion-item>\r\n      <ion-button (click)=\"this.insertImagen()\" class=\"background-button\" shape=\"round\">Subir imagen<ion-icon name=\"camera-outline\"></ion-icon></ion-button>\r\n      <ion-button (click)=\"this.logout()\" class=\"background-button\" shape=\"round\">Cerrar Sesión<ion-icon\r\n          name=\"log-out-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-item>\r\n  </ion-list>";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"start\">\r\n        <ion-menu-button menu=\"menu-main\"></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-buttons slot=\"end\">\r\n    <ion-button (click)=\"this.logout()\"><ion-icon name=\"log-out-outline\"></ion-icon></ion-button>\r\n  </ion-buttons>\r\n    \r\n    <ion-title class=\"textColor\">\r\n      Perfil\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-card color=\"light\">\r\n      <div class=\"img-wrapper\">\r\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\r\n          <img src=\"{{this.myphoto}}\">\r\n        </ion-avatar>\r\n      </div>\r\n    <ion-card-content class=\"ion-text-center\">\r\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\r\n      <ion-text color=\"medium\">\r\n      </ion-text>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Fotos</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Rutas</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Todo</ion-label>\r\n    </ion-item>\r\n  </ion-list>";
       /***/
     },
 
@@ -113,6 +113,14 @@
           key: "getRoutes",
           value: function getRoutes(id) {
             var url = this.ip + '/route/' + id;
+            return this.http.get(url, {}, {
+              'apikey': this.apiKey
+            });
+          }
+        }, {
+          key: "getCountRoutes",
+          value: function getCountRoutes(id) {
+            var url = this.ip + '/routes/' + id;
             return this.http.get(url, {}, {
               'apikey': this.apiKey
             });
@@ -326,105 +334,6 @@
     },
 
     /***/
-    "./src/app/services/popover.service.ts":
-    /*!*********************************************!*\
-      !*** ./src/app/services/popover.service.ts ***!
-      \*********************************************/
-
-    /*! exports provided: PopoverService */
-
-    /***/
-    function srcAppServicesPopoverServiceTs(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "PopoverService", function () {
-        return PopoverService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "./node_modules/tslib/tslib.es6.js");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/core */
-      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-      /* harmony import */
-
-
-      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @ionic/angular */
-      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-      /* harmony import */
-
-
-      var _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ../components/menupopover/menupopover.component */
-      "./src/app/components/menupopover/menupopover.component.ts");
-
-      var PopoverService = /*#__PURE__*/function () {
-        function PopoverService(popover) {
-          _classCallCheck(this, PopoverService);
-
-          this.popover = popover;
-        }
-
-        _createClass(PopoverService, [{
-          key: "createPopover",
-          value: function createPopover(ev) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var pop;
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      _context.next = 2;
-                      return this.popover.create({
-                        component: _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__["MenupopoverComponent"],
-                        event: ev
-                      });
-
-                    case 2:
-                      pop = _context.sent;
-                      _context.next = 5;
-                      return pop.present();
-
-                    case 5:
-                      return _context.abrupt("return", _context.sent);
-
-                    case 6:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _callee, this);
-            }));
-          }
-        }]);
-
-        return PopoverService;
-      }();
-
-      PopoverService.ctorParameters = function () {
-        return [{
-          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]
-        }];
-      };
-
-      PopoverService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-      })], PopoverService);
-      /***/
-    },
-
-    /***/
     "./src/app/tab4/tab4-routing.module.ts":
     /*!*********************************************!*\
       !*** ./src/app/tab4/tab4-routing.module.ts ***!
@@ -623,27 +532,20 @@
       /* harmony import */
 
 
-      var _services_popover_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! ../services/popover.service */
-      "./src/app/services/popover.service.ts");
-      /* harmony import */
-
-
-      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic-native/camera/ngx */
       "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
       /* harmony import */
 
 
-      var _services_http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _services_http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! ../services/http.service */
       "./src/app/services/http.service.ts");
 
       var Tab4Page = /*#__PURE__*/function () {
-        function Tab4Page(popover, authS, router, camera, http) {
+        function Tab4Page(authS, router, camera, http) {
           _classCallCheck(this, Tab4Page);
 
-          this.popover = popover;
           this.authS = authS;
           this.router = router;
           this.camera = camera;
@@ -660,50 +562,49 @@
         _createClass(Tab4Page, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            console.error("avatar " + this.usuario.avatar);
-            console.error("username " + this.usuario.username);
             this.avatar();
+            this.getCountRoutes();
           }
         }, {
-          key: "showPopover",
-          value: function showPopover(ev) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      this.popover.createPopover(ev);
+          key: "getCountRoutes",
+          value: function getCountRoutes() {
+            var _this = this;
 
-                    case 1:
-                    case "end":
-                      return _context2.stop();
-                  }
+            this.nRoutes = 0;
+            this.http.getCountRoutes(this.usuario.id).then(function (data) {
+              if (data) {
+                var dat = JSON.parse(data.data);
+
+                if (dat.status == "0") {
+                  dat.result.forEach(function (element) {
+                    _this.nRoutes = element.rutas;
+                  });
                 }
-              }, _callee2, this);
-            }));
+              }
+            })["catch"](function (err) {});
           }
         }, {
           key: "logout",
           value: function logout() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context.prev = _context.next) {
                     case 0:
-                      _context3.next = 2;
+                      _context.next = 2;
                       return this.authS.logout();
 
                     case 2:
                       if (!this.authS.isLogged()) {
-                        this.router.navigate(['/login']);
+                        this.router.navigate(['/welcome']);
                       }
 
                     case 3:
                     case "end":
-                      return _context3.stop();
+                      return _context.stop();
                   }
                 }
-              }, _callee3, this);
+              }, _callee, this);
             }));
           }
         }, {
@@ -733,7 +634,7 @@
         }, {
           key: "getImage",
           value: function getImage() {
-            var _this = this;
+            var _this2 = this;
 
             var options = {
               quality: 10,
@@ -742,9 +643,9 @@
               saveToPhotoAlbum: false
             };
             return this.camera.getPicture(options).then(function (imageData) {
-              _this.myphoto = 'data:image/jpeg;base64,' + imageData;
+              _this2.myphoto = 'data:image/jpeg;base64,' + imageData;
 
-              _this.newAvatar(_this.myphoto);
+              _this2.newAvatar(_this2.myphoto);
             }, function (err) {
               console.log(err);
             });
@@ -767,7 +668,7 @@
         }, {
           key: "insertImagen",
           value: function insertImagen() {
-            var _this2 = this;
+            var _this3 = this;
 
             var options = {
               quality: 10,
@@ -776,9 +677,9 @@
               saveToPhotoAlbum: false
             };
             return this.camera.getPicture(options).then(function (imageData) {
-              _this2.myphoto = 'data:image/jpeg;base64,' + imageData;
+              _this3.myphoto = 'data:image/jpeg;base64,' + imageData;
 
-              _this2.newPhoto(_this2.myphoto);
+              _this3.newPhoto(_this3.myphoto);
             }, function (err) {
               console.log(err);
             });
@@ -790,15 +691,13 @@
 
       Tab4Page.ctorParameters = function () {
         return [{
-          type: _services_popover_service__WEBPACK_IMPORTED_MODULE_4__["PopoverService"]
-        }, {
           type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
         }, {
-          type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"]
+          type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"]
         }, {
-          type: _services_http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"]
+          type: _services_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]
         }];
       };
 

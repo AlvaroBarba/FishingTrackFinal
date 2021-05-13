@@ -368,6 +368,14 @@
             });
           }
         }, {
+          key: "getCountRoutes",
+          value: function getCountRoutes(id) {
+            var url = this.ip + '/routes/' + id;
+            return this.http.get(url, {}, {
+              'apikey': this.apiKey
+            });
+          }
+        }, {
           key: "getPhotos",
           value: function getPhotos(id) {
             var url = this.ip + '/photo/' + id;

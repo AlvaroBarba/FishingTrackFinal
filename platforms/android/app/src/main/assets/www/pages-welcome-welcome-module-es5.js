@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content> \r\n<div class=\"centerText\"><h2>BIENVENIDOS</h2></div>\r\n<div class=\"changeButton\">\r\n  <ion-button shape=\"round\" class=\"background-button\" (click)=\"this.login()\">Inicia Sesión<ion-icon name=\"log-in-outline\"></ion-icon></ion-button></div>\r\n  <div class=\"changeButton\"><ion-button shape=\"round\" class=\"color-register\" (click)=\"this.register()\">¿Eres nuevo? ¡Registrate! <ion-icon name=\"person-add-sharp\"></ion-icon></ion-button>\r\n</div>\r\n</ion-content>\r\n";
+      __webpack_exports__["default"] = "<ion-content> \r\n<div class=\"centerText\"><h2>BIENVENIDOS</h2></div>\r\n<div class=\"changeButton\">\r\n  <ion-button shape=\"round\" class=\"background-button\" (click)=\"this.login()\">Inicia Sesión<ion-icon name=\"log-in-outline\"></ion-icon></ion-button></div>\r\n  <div class=\"changeButton\"><ion-button shape=\"round\" class=\"color-register\" (click)=\"this.register()\">¿Eres nuevo? ¡Registrate! <ion-icon name=\"person-add-sharp\"></ion-icon></ion-button>\r\n</div>\r\n<ion-img src=\"assets/icon/pantanoapp.png\"></ion-img>\r\n</ion-content>\r\n";
       /***/
     },
 

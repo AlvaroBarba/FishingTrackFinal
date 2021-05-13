@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.dependency-validator", function(require, exports, module) { module.exports = function init(global, console, messages) {
+cordova.define("cordova-plugin-advanced-http.dependency-validator", function(require, exports, module) {
+module.exports = function init(global, console, messages) {
   var interface = {
     checkBlobApi: checkBlobApi,
     checkFileReaderApi: checkFileReaderApi,

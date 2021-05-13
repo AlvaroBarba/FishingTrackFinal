@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.js-util", function(require, exports, module) { module.exports = {
+cordova.define("cordova-plugin-advanced-http.js-util", function(require, exports, module) {
+module.exports = {
   // typeof is not working reliably in JS
   getTypeOf: function (object) {
     switch (Object.prototype.toString.call(object)) {

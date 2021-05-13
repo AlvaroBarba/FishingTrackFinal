@@ -535,7 +535,7 @@ let LoginPage = class LoginPage {
                     username: ''
                 };
                 //Toast
-                yield this.toastS.createToastBottom("Usuario o contraseña incorrectos", true, 400, "danger");
+                yield this.toastS.createToastBottom("Tiempo de espera agotado... intentelo más tarde", true, 400, "danger");
                 yield this.loading.cancelLoading();
                 console.log(err);
             }));

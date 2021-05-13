@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.lodash", function(require, exports, module) { /**
+cordova.define("cordova-plugin-advanced-http.lodash", function(require, exports, module) {
+/**
  * @license
  * Lodash (Custom Build) lodash.com/license | Underscore.js 1.8.3 underscorejs.org/LICENSE
  * Build: `lodash include="get,set,unset,values" exports="node"`

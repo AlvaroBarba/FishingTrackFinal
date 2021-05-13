@@ -1,4 +1,5 @@
-cordova.define("cordova-plugin-advanced-http.http", function(require, exports, module) { /*
+cordova.define("cordova-plugin-advanced-http.http", function(require, exports, module) {
+/*
  * A native HTTP Plugin for Cordova / PhoneGap.
  */
 

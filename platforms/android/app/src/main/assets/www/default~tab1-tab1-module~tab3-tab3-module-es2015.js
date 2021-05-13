@@ -14211,6 +14211,10 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
+    getCountRoutes(id) {
+        let url = this.ip + '/routes/' + id;
+        return this.http.get(url, {}, { 'apikey': this.apiKey });
+    }
     getPhotos(id) {
         let url = this.ip + '/photo/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
@@ -14295,51 +14299,6 @@ HttpService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         providedIn: 'root'
     })
 ], HttpService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/popover.service.ts":
-/*!*********************************************!*\
-  !*** ./src/app/services/popover.service.ts ***!
-  \*********************************************/
-/*! exports provided: PopoverService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverService", function() { return PopoverService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/menupopover/menupopover.component */ "./src/app/components/menupopover/menupopover.component.ts");
-
-
-
-
-let PopoverService = class PopoverService {
-    constructor(popover) {
-        this.popover = popover;
-    }
-    createPopover(ev) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const pop = yield this.popover.create({
-                component: _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__["MenupopoverComponent"],
-                event: ev
-            });
-            return yield pop.present();
-        });
-    }
-};
-PopoverService.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] }
-];
-PopoverService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], PopoverService);
 
 
 

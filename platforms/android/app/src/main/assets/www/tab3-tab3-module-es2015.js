@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"showPopover($event)\">\r\n        <ion-icon name=\"ellipsis-vertical\" class=\"iconos\">\r\n        </ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      RUTA\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <div id=\"mapa\" style=\"height: 75%; width: 150%;\"></div>\r\n  <div class=\"changeButton\">\r\n    <button style=\"background-color: transparent; max-width: 125px; max-height: 125px;\" block (click)=\"this.changeButton()\" >\r\n      <ion-img src=\"assets/buttons/play.png\" *ngIf=\"this.change\"></ion-img>\r\n      <ion-img src=\"assets/buttons/stop.png\" *ngIf=\"!this.change\"></ion-img>\r\n    </button>\r\n  </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-title class=\"textColor\">\r\n      Ruta\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <div id=\"mapa\" style=\"height: 75%; width: 150%;\"></div>\r\n  <div class=\"changeButton\">\r\n    <button style=\"background-color: transparent; max-width: 125px; max-height: 125px;\" block (click)=\"this.changeButton()\" >\r\n      <ion-img src=\"assets/buttons/play.png\" *ngIf=\"this.change\"></ion-img>\r\n      <ion-img src=\"assets/buttons/stop.png\" *ngIf=\"!this.change\"></ion-img>\r\n    </button>\r\n  </div>\r\n\r\n</ion-content>\r\n");
 
 /***/ }),
 
@@ -170,8 +170,9 @@ let BackgroundGeoService = class BackgroundGeoService {
     createMap() {
         this.created = true;
         this.mapa = new leaflet__WEBPACK_IMPORTED_MODULE_5__["Map"]("mapa").locate({ setView: true, maxZoom: 20 });
-        Object(leaflet__WEBPACK_IMPORTED_MODULE_5__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' })
-            .addTo(this.mapa);
+        Object(leaflet__WEBPACK_IMPORTED_MODULE_5__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.mapa);
         setTimeout(() => {
             this.mapa.invalidateSize();
         }, 400);
@@ -307,15 +308,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/native-storage/ngx */ "./node_modules/@ionic-native/native-storage/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _services_background_geo_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/background-geo.service */ "./src/app/services/background-geo.service.ts");
-/* harmony import */ var _services_popover_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/popover.service */ "./src/app/services/popover.service.ts");
-
 
 
 
 
 let Tab3Page = class Tab3Page {
-    constructor(popover, location, storage) {
-        this.popover = popover;
+    constructor(location, storage) {
         this.location = location;
         this.storage = storage;
         this.cargaMapa = false;
@@ -333,11 +331,6 @@ let Tab3Page = class Tab3Page {
             this.vistaMapa();
         }
     }
-    showPopover(ev) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.popover.createPopover(ev);
-        });
-    }
     vistaMapa() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.cargaMapa = true;
@@ -351,15 +344,12 @@ let Tab3Page = class Tab3Page {
         });
     }
     startLocation() {
-        console.log("Starting location....");
         this.location.startBackgroundGeolocation();
     }
     stopLocation() {
-        console.log("Stoping location....");
         this.location.stopBackgroundGeolocation();
     }
     changeButton() {
-        console.log("HOLAAAAAAAAAAAA");
         if (this.change) {
             this.startLocation();
             this.change = false;
@@ -371,7 +361,6 @@ let Tab3Page = class Tab3Page {
     }
 };
 Tab3Page.ctorParameters = () => [
-    { type: _services_popover_service__WEBPACK_IMPORTED_MODULE_4__["PopoverService"] },
     { type: _services_background_geo_service__WEBPACK_IMPORTED_MODULE_3__["BackgroundGeoService"] },
     { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_2__["NativeStorage"] }
 ];

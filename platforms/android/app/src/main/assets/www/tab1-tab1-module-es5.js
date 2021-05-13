@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-card>\r\n  <ion-card-header>\r\n    <ion-card-title>{{this.title}}</ion-card-title>\r\n  </ion-card-header>\r\n  <ion-card-content>\r\n    <div id=\"miMapa\" style=\"height: fit-content; width: fit-content;\">\r\n      content\r\n    </div>\r\n  </ion-card-content>\r\n</ion-card>";
+      __webpack_exports__["default"] = "<ion-card>\r\n  <ion-card-header>\r\n    <ion-card-title>{{this.title}}</ion-card-title>\r\n  </ion-card-header>\r\n  <ion-card-content>\r\n    <div id=\"miMapa\" style=\"height: max-content; width: max-content;\"></div>\r\n  </ion-card-content>\r\n</ion-card>";
       /***/
     },
 
@@ -42,7 +42,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"showPopover($event)\">\r\n        <ion-icon name=\"ellipsis-vertical\" class=\"iconos\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"textColor\">\r\n      NOVEDADES\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"parati\" class=\"background-button-toolbar1\" (click)='this.pestanaParaTi()'>\r\n        PARA TI\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"fotos\" class=\"background-button-toolbar\" (click)='this.pestanaFotos()'>\r\n        FOTOS\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"rutas\" class=\"background-button-toolbar\" (click)='this.pestanaRutas()'>\r\n        RUTAS\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.paraTi'>\r\n  <ion-list *ngFor=\"let Route of this.friendsRoutes; let i=index;\">\r\n    <ion-item>\r\n      <ion-card>\r\n        <ion-card-header>\r\n          <ion-card-title>\r\n            {{Route.title}}\r\n          </ion-card-title>\r\n        </ion-card-header>\r\n      </ion-card>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.fotos'>\r\n  <ion-card>\r\n        <img src=\"{{this.myphoto}}\" />\r\n        <ion-card-header>\r\n          <ion-card-title>Título de la ruta</ion-card-title>\r\n          <ion-card-subtitle>{{this.you.username}}</ion-card-subtitle>\r\n        </ion-card-header>\r\n      </ion-card>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.rutas'>\r\n  <ion-list *ngFor=\"let Route of this.routes; let i=index;\">\r\n    <ion-item>\r\n        <app-mapa line=\"{{this.Route.coordinates}}\" title=\"this.title\"></app-mapa>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n</ion-header>\r\n\r\n\r\n";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-segment value=\"all\">\r\n      <ion-segment-button value=\"parati\" class=\"background-button-toolbar1\" (click)='this.pestanaParaTi()'>\r\n        Amigos\r\n      </ion-segment-button>\r\n      <ion-segment-button value=\"fotos\" class=\"background-button-toolbar\" (click)='this.pestanaRutas()'>\r\n        Tú\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n  </ion-toolbar>\r\n\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.paraTi'>\r\n  <ion-list *ngFor=\"let Route of this.friendsRoutes; let i=index;\">\r\n    <ion-item>\r\n      <ion-card>\r\n        <ion-card-header>\r\n          <ion-card-title>\r\n            {{Route.title}}\r\n          </ion-card-title>\r\n        </ion-card-header>\r\n      </ion-card>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.fotos'>\r\n  <ion-card>\r\n        <img src=\"{{this.myphoto}}\" />\r\n        <ion-card-header>\r\n          <ion-card-title>Título de la ruta</ion-card-title>\r\n          <ion-card-subtitle>{{this.you.username}}</ion-card-subtitle>\r\n        </ion-card-header>\r\n      </ion-card>\r\n</ion-content>\r\n\r\n<ion-content [fullscreen]=\"true\" *ngIf='this.rutas'>\r\n  <ion-list *ngFor=\"let Route of this.routes; let i=index;\">\r\n    <ion-item>\r\n        <app-mapa line=\"{{this.Route.coordinates}}\" title=\"this.title\"></app-mapa>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>\r\n</ion-header>\r\n\r\n\r\n";
       /***/
     },
 
@@ -125,18 +125,23 @@
           value: function createMap() {
             var _this = this;
 
-            console.log("la linea -> " + this.line);
-            var myLine = leaflet__WEBPACK_IMPORTED_MODULE_2__["GeoJSON"].asFeature(this.line);
-            console.log("la linea 2 -> " + myLine.properties);
             this.created = true;
-            this.miMapa = new leaflet__WEBPACK_IMPORTED_MODULE_2__["Map"]("miMapa").setView([1.12, 12.12], 20);
+            this.miMapa = new leaflet__WEBPACK_IMPORTED_MODULE_2__["Map"]("miMapa");
             Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(this.miMapa);
             setTimeout(function () {
               _this.miMapa.invalidateSize();
             }, 400);
-            Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["geoJSON"])(myLine).addTo(this.miMapa);
+            this.miMapa.on("load", function () {
+              console.log("CARGADO");
+              var myroute = new leaflet__WEBPACK_IMPORTED_MODULE_2__["GeoJSON"]();
+              myroute.addTo(_this.miMapa);
+              myroute.addData({
+                type: "FeatureCollection",
+                features: [_this.line]
+              });
+            });
           }
         }]);
 
@@ -381,22 +386,15 @@
       /* harmony import */
 
 
-      var _services_popover_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-      /*! ../services/popover.service */
-      "./src/app/services/popover.service.ts");
-      /* harmony import */
-
-
-      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @ionic-native/camera/ngx */
       "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
 
       var Tab1Page = /*#__PURE__*/function () {
-        function Tab1Page(router, popover, http, authS, camera) {
+        function Tab1Page(router, http, authS, camera) {
           _classCallCheck(this, Tab1Page);
 
           this.router = router;
-          this.popover = popover;
           this.http = http;
           this.authS = authS;
           this.camera = camera;
@@ -411,22 +409,18 @@
         }
 
         _createClass(Tab1Page, [{
+          key: "ionViewWillEnter",
+          value: function ionViewWillEnter() {
+            this.paraTi = true;
+            this.pestanaParaTi();
+          }
+        }, {
           key: "pestanaParaTi",
           value: function pestanaParaTi() {
             if (!this.paraTi) {
               this.rutas = false;
-              this.fotos = false;
               this.paraTi = true;
               this.getFriends();
-            }
-          }
-        }, {
-          key: "pestanaFotos",
-          value: function pestanaFotos() {
-            if (!this.fotos) {
-              this.rutas = false;
-              this.paraTi = false;
-              this.fotos = true;
             }
           }
         }, {
@@ -434,7 +428,6 @@
           value: function pestanaRutas() {
             if (!this.rutas) {
               this.paraTi = false;
-              this.fotos = false;
               this.rutas = true;
               this.getOwnRoutes();
             }
@@ -444,7 +437,6 @@
           value: function getOwnRoutes() {
             var _this2 = this;
 
-            console.log("HOLITAAAS");
             this.routes = [];
             this.mapas = [];
             this.line = null;
@@ -463,7 +455,6 @@
                         avatar: _this2.you.avatar,
                         coordinates: element.coordinates
                       };
-                      console.log(element.coordinates);
 
                       _this2.routes.push(route);
                     });
@@ -512,30 +503,20 @@
           value: function getFriendsRoutes() {
             var _this4 = this;
 
-            console.error("FRIENDSROUTES");
-
             if (this.friends.length > 0) {
-              console.error("FRIENDSROUTES 1if");
               this.friends.forEach(function (friend) {
-                console.error("FRIENDSROUTES FOR");
-
                 _this4.http.getRoutes(friend.id).then(function (data) {
-                  console.error("FRIENDSROUTES HTTP");
-
                   if (data) {
-                    console.error("FRIENDSROUTES DATA");
                     var dat = JSON.parse(data.data);
 
                     if (dat.status == "0") {
                       //todo ok
-                      console.error("FRIENDSROUTES OK");
                       var route = {
                         title: dat.result.title,
                         username: friend.username,
                         avatar: friend.avatar,
                         coordinates: dat.result.coordinates
                       };
-                      console.error("FRIENDSROUTES " + route.title);
 
                       _this4.friendsRoutes.push(route);
                     } else {//toast
@@ -548,24 +529,6 @@
               });
             }
           }
-        }, {
-          key: "showPopover",
-          value: function showPopover(ev) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      this.popover.createPopover(ev);
-
-                    case 1:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _callee, this);
-            }));
-          }
         }]);
 
         return Tab1Page;
@@ -575,13 +538,11 @@
         return [{
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
         }, {
-          type: _services_popover_service__WEBPACK_IMPORTED_MODULE_5__["PopoverService"]
-        }, {
           type: _services_http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"]
         }, {
           type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]
         }, {
-          type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__["Camera"]
+          type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"]
         }];
       };
 

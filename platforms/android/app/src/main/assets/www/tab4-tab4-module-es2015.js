@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-title class=\"textColor\">\r\n      PERFIL\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-card color=\"light\">\r\n      <div class=\"img-wrapper\">\r\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\r\n          <img src=\"{{this.myphoto}}\">\r\n        </ion-avatar>\r\n      </div>\r\n    <ion-card-content class=\"ion-text-center\">\r\n      <h2 style=\"margin-top: 5%;\">{{this.usuario.username}}</h2>\r\n      <ion-text color=\"medium\">\r\n      </ion-text>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Fotos</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Rutas</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Todo</ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n  <ion-list>\r\n    <ion-label></ion-label>\r\n    <ion-item>\r\n      <ion-button (click)=\"this.insertImagen()\" class=\"background-button\" shape=\"round\">Subir imagen<ion-icon name=\"camera-outline\"></ion-icon></ion-button>\r\n      <ion-button (click)=\"this.logout()\" class=\"background-button\" shape=\"round\">Cerrar Sesión<ion-icon\r\n          name=\"log-out-outline\"></ion-icon>\r\n      </ion-button>\r\n    </ion-item>\r\n  </ion-list>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar class=\"background-toolbar\">\r\n    <ion-buttons slot=\"start\">\r\n        <ion-menu-button menu=\"menu-main\"></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-buttons slot=\"end\">\r\n    <ion-button (click)=\"this.logout()\"><ion-icon name=\"log-out-outline\"></ion-icon></ion-button>\r\n  </ion-buttons>\r\n    \r\n    <ion-title class=\"textColor\">\r\n      Perfil\r\n    </ion-title>\r\n  </ion-toolbar>\r\n  <ion-card color=\"light\">\r\n      <div class=\"img-wrapper\">\r\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\r\n          <img src=\"{{this.myphoto}}\">\r\n        </ion-avatar>\r\n      </div>\r\n    <ion-card-content class=\"ion-text-center\">\r\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\r\n      <ion-text color=\"medium\">\r\n      </ion-text>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-list>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Fotos</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Rutas</ion-label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\r\n      <ion-label>Todo</ion-label>\r\n    </ion-item>\r\n  </ion-list>");
 
 /***/ }),
 
@@ -54,6 +54,10 @@ let HttpService = class HttpService {
     }
     getRoutes(id) {
         let url = this.ip + '/route/' + id;
+        return this.http.get(url, {}, { 'apikey': this.apiKey });
+    }
+    getCountRoutes(id) {
+        let url = this.ip + '/routes/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
     getPhotos(id) {
@@ -140,51 +144,6 @@ HttpService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         providedIn: 'root'
     })
 ], HttpService);
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/popover.service.ts":
-/*!*********************************************!*\
-  !*** ./src/app/services/popover.service.ts ***!
-  \*********************************************/
-/*! exports provided: PopoverService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverService", function() { return PopoverService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/menupopover/menupopover.component */ "./src/app/components/menupopover/menupopover.component.ts");
-
-
-
-
-let PopoverService = class PopoverService {
-    constructor(popover) {
-        this.popover = popover;
-    }
-    createPopover(ev) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const pop = yield this.popover.create({
-                component: _components_menupopover_menupopover_component__WEBPACK_IMPORTED_MODULE_3__["MenupopoverComponent"],
-                event: ev
-            });
-            return yield pop.present();
-        });
-    }
-};
-PopoverService.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] }
-];
-PopoverService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    })
-], PopoverService);
 
 
 
@@ -296,10 +255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_popover_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/popover.service */ "./src/app/services/popover.service.ts");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
-/* harmony import */ var _services_http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/http.service */ "./src/app/services/http.service.ts");
-
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
+/* harmony import */ var _services_http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/http.service */ "./src/app/services/http.service.ts");
 
 
 
@@ -307,8 +264,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let Tab4Page = class Tab4Page {
-    constructor(popover, authS, router, camera, http) {
-        this.popover = popover;
+    constructor(authS, router, camera, http) {
         this.authS = authS;
         this.router = router;
         this.camera = camera;
@@ -322,20 +278,27 @@ let Tab4Page = class Tab4Page {
         this.usuario = authS.getUser();
     }
     ngOnInit() {
-        console.error("avatar " + this.usuario.avatar);
-        console.error("username " + this.usuario.username);
         this.avatar();
+        this.getCountRoutes();
     }
-    showPopover(ev) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            this.popover.createPopover(ev);
-        });
+    getCountRoutes() {
+        this.nRoutes = 0;
+        this.http.getCountRoutes(this.usuario.id).then((data) => {
+            if (data) {
+                let dat = JSON.parse(data.data);
+                if (dat.status == "0") {
+                    dat.result.forEach(element => {
+                        this.nRoutes = element.rutas;
+                    });
+                }
+            }
+        }).catch((err) => { });
     }
     logout() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             yield this.authS.logout();
             if (!this.authS.isLogged()) {
-                this.router.navigate(['/login']);
+                this.router.navigate(['/welcome']);
             }
         });
     }
@@ -401,11 +364,10 @@ let Tab4Page = class Tab4Page {
     }
 };
 Tab4Page.ctorParameters = () => [
-    { type: _services_popover_service__WEBPACK_IMPORTED_MODULE_4__["PopoverService"] },
     { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_5__["Camera"] },
-    { type: _services_http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"] }
+    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"] },
+    { type: _services_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"] }
 ];
 Tab4Page = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
