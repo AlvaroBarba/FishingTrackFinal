@@ -23,7 +23,6 @@ const M_SELECT='ModeSelect';
         if(value){
           this.renderer2.addClass(this.document.body, value);
         }else{
-          //this.renderer2.removeClass(this.document.body,'lightModeTheme');
           this.renderer2.removeClass(this.document.body,'darkModeTheme');
         }
       })
@@ -34,24 +33,13 @@ const M_SELECT='ModeSelect';
   
     //MODO OSCURO (DARK MODE)
     enableDarkMode() {
-      //this.renderer2.removeClass(this.document.body, 'lightModeTheme');
       this.renderer2.addClass(this.document.body, 'darkModeTheme');
       this.saveMode.set(M_SELECT,'darkModeTheme');
     }
-    
-    //MODO CLARO (LIGHT MODE)
-   // enableLightMode() {
-     // this.renderer2.removeClass(this.document.body, 'darkModeTheme');
-     // this.renderer2.removeClass(this.document.body, 'rainbowModeTheme');
-     // this.renderer2.addClass(this.document.body, 'lightModeTheme');
-     // this.saveMode.set(M_SELECT,'lightModeTheme');
-    //}
   
     //MODO POR DEFECTO (DEFAULT MODE)
     enableDefaultMode() {
       this.renderer2.removeClass(this.document.body, 'darkModeTheme');
-      //this.renderer2.removeClass(this.document.body, 'lightModeTheme');
-      //this.renderer2.removeClass(this.document.body, 'rainbowModeTheme');
       this.saveMode.set(M_SELECT,null);
     }
      }

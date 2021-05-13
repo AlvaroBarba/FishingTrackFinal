@@ -14,20 +14,18 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer/ngx';
 
-//POPOVER
-import { MenupopoverComponent } from './components/menupopover/menupopover.component';
-
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 import { TemasService } from './services/temas.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 //MAPA
 
 @NgModule({
-  declarations: [AppComponent,MenupopoverComponent],
-  entryComponents: [MenupopoverComponent],
+  declarations: [AppComponent],
+  entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot()],
   providers: [
     StatusBar,

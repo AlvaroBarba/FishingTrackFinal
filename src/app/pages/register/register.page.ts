@@ -13,10 +13,12 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+
   public user:User;
   public regist: FormGroup;
 
-  constructor(private modalcontroller: ModalController,
+  constructor(
+    private modalcontroller: ModalController,
     private formBuilder: FormBuilder,
     private http: HttpService,
     private authService: AuthService,
@@ -71,7 +73,6 @@ export class RegisterPage implements OnInit {
 
       //Eliminando loading
       await this.loading.cancelLoading();
-      console.error(err);
     }
     )}
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
@@ -25,10 +24,9 @@ export class Tab5Page implements OnInit {
   you: User;
   yourFriends = [];
 
-
-  constructor(private http: HttpService,
-    private toastS: ToastService,
-    private loading: LoadingService,
+  constructor(
+    private http: HttpService,
+    private toast: ToastService,
     private authS: AuthService) {
     this.you = this.authS.getUser();
   }
@@ -91,10 +89,9 @@ export class Tab5Page implements OnInit {
         }
       }
     }).catch((err) => {
-
+      this.toast.createToastBottom("Revise su conexión a internet...", true, 400, "warning");
     })
   }
-
 
   public acceptFriend(id) {
     this.http.updateFriend(id, 2, this.you.id).then(async (data) => {
@@ -102,13 +99,13 @@ export class Tab5Page implements OnInit {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
           await this.friendRequest();
-          this.toastS.createToastMiddle("Bien hora sois amigos!!", true, 350, "success");
+          this.toast.createToastMiddle("Bien hora sois amigos!!", true, 350, "success");
         } else {
           //Error
         }
       }
     }).catch((err) => {
-      console.error("Fallo al aceptar la peticion");
+      this.toast.createToastBottom("Revise su conexión a internet...", true, 400, "warning");
     })
   }
 
@@ -118,13 +115,13 @@ export class Tab5Page implements OnInit {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
           await this.getFriends();
-          this.toastS.createToastMiddle("Dejasteis de ser amigos", true, 350, "warning");
+          this.toast.createToastMiddle("Dejasteis de ser amigos", true, 350, "warning");
         } else {
           //Error
         }
       }
     }).catch((err) => {
-      console.error("Fallo al borrar amigo");
+      this.toast.createToastBottom("Revise su conexión a internet...", true, 400, "warning");
     })
   }
 
@@ -134,13 +131,13 @@ export class Tab5Page implements OnInit {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
           await this.friendRequest();
-          this.toastS.createToastMiddle("Rechazaste la petición", true, 350, "warning");
+          this.toast.createToastMiddle("Rechazaste la petición", true, 350, "warning");
         } else {
           //Error
         }
       }
     }).catch((err) => {
-      console.error("Fallo al rechazar la peticion");
+      this.toast.createToastBottom("Revise su conexión a internet...", true, 400, "warning");
     })
   }
 
@@ -170,12 +167,12 @@ export class Tab5Page implements OnInit {
           }
         } else {
           //Error buscando usuario
-          await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
+          await this.toast.createToastBottom("No hay coincidencias", true, 400, "danger");
         }
 
       }).catch(async (err) => {
         //Toast
-        await this.toastS.createToastBottom("No hay coincidencias", true, 400, "danger");
+        await this.toast.createToastBottom("No hay coincidencias", true, 400, "danger");
       });
     }
   }
@@ -186,11 +183,11 @@ export class Tab5Page implements OnInit {
       if (data) {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
-          await this.toastS.createToastBottom("Petición enviada con éxito", true, 300, "success");
+          await this.toast.createToastBottom("Petición enviada con éxito", true, 300, "success");
         }
       }
     }).catch(async (err) => {
-      await this.toastS.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");
+      await this.toast.createToastBottom("Error enviando petición pruebe más tarde", true, 400, "danger");
     })
   }
 
@@ -222,9 +219,7 @@ export class Tab5Page implements OnInit {
       }
     }).catch(async (err) => {
       //Toast
-      await this.toastS.createToastBottom("Fallo al cargar peticiones de amistad", true, 400, "danger");
-      console.log(err);
+      await this.toast.createToastBottom("Fallo al cargar peticiones de amistad", true, 400, "danger");
     })
   }
-
 }

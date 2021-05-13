@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-import { Map, Polyline, tileLayer } from 'leaflet';
+import { Map, Polyline} from 'leaflet';
 import { BackgroundGeoService } from '../services/background-geo.service';
 
 
@@ -39,7 +39,6 @@ export class Tab3Page implements OnInit {
     }
   }
 
-
   public async vistaMapa() {
     this.cargaMapa = true;
     this.mapa = this.location.createMap();
@@ -49,7 +48,6 @@ export class Tab3Page implements OnInit {
     if (this.cargaMapa)
       this.location.line.addTo(this.mapa);
   }
-
 
   public startLocation() {
     this.location.startBackgroundGeolocation();

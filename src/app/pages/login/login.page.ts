@@ -13,8 +13,10 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   private user: User;
   public tasks: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private modalcontroller: ModalController,
@@ -31,8 +33,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     
   }
-
-
 
   public async login() {
     //Creando Loading
