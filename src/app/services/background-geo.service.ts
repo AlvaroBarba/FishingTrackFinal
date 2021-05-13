@@ -55,8 +55,8 @@ export class BackgroundGeoService {
 
   public setDefaultPolyline(){
     this.coordinates={
-      lat: null,
-      lng: null
+      lat: undefined,
+      lng: undefined
     }
     if(!this.created){
       this.polyline = new Polyline([], {
@@ -103,10 +103,15 @@ export class BackgroundGeoService {
 
   public async stopBackgroundGeolocation() {
     this.geolocation.stop();
+    await this.waterLevel();
+    this.flag = true;
+  }
+
+  public async routeTitle(level:number){
     const alert = await this.alert.create({
       cssClass: "custom",
       header: "Guardar Ruta",
-      subHeader:"Titulo de esta ruta",
+      subHeader:"Titulo de la ruta",
       inputs: [
         {
           name: "title",
@@ -127,7 +132,7 @@ export class BackgroundGeoService {
         {
           text: "Si",
           handler: (data) => {
-            this.saveRoute(data.title);
+            this.saveRoute(data.title, level);
             this.mapa.removeLayer(this.polyline);
             this.setDefaultPolyline();
           }
@@ -135,12 +140,63 @@ export class BackgroundGeoService {
       ]
     });
     await alert.present();
-    this.flag = true;
   }
 
-  public saveRoute(title) {
+  public async waterLevel(){
+    let selected = -1;
+    const alertWater = await this.alert.create({
+      cssClass: "custom",
+      header: "Nivel del agua",
+      subHeader: "Elija el nivel del agua actual",
+      inputs: [
+        {
+          name: "highLevel",
+          type: "radio",
+          label: "Nivel Optimo",
+          value: "1",
+          checked: true
+        },
+        {
+          name: "mediunLevel",
+          type: "radio",
+          label: "Nivel Medio",
+          value: "2"
+        },
+        {
+          name: "lowLevel",
+          type: "radio",
+          label: "Nivel Bajo",
+          value: "3"
+        }
+      ],
+      buttons: [
+        {
+          text: "No",
+          role: "cancel",
+          handler: () => {
+            this.mapa.removeLayer(this.polyline);
+            this.setDefaultPolyline();
+          }
+        },
+        {
+          text: "Si",
+          handler: (data:number) => {
+            selected = data;
+            this.mapa.removeLayer(this.polyline);
+            this.setDefaultPolyline();
+          }
+        }
+      ]
+    });
+    await alertWater.present();
+    alertWater.onDidDismiss().then(() => {
+      this.routeTitle(selected);
+    });
+  }
+
+  public saveRoute(title, level) {
     let input = this.polyline.toGeoJSON();
-      this.http.addRoute(this.user.id, title, input).then((data)=>{
+      this.http.addRoute(this.user.id, title, input, level).then((data)=>{
         if (data) {
           let dat = JSON.parse(data.data);
           if (dat.status == "0") {

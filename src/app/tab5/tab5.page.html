@@ -64,6 +64,7 @@
 <ion-content *ngIf="this.list">
   <ion-list>
     <ion-item *ngFor="let User of this.friendList; let i=index">
+      <ion-icon (click)="this.deleteFriend(User.id)" slot="end" src="assets/icon/delete-friend.svg"></ion-icon>
       <ion-avatar>
         <img src="{{User.avatar}}">
       </ion-avatar>

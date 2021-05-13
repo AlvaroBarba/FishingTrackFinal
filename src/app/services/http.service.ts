@@ -70,9 +70,9 @@ export class HttpService {
     return this.http.post(url, { 'idUser1': idUser1, 'idUser2': idUser2, 'friendStatus': status }, { 'apikey': this.apiKey });
   }
 
-  public addRoute(idUser: any, title: string, coordinates: any): Promise<HTTPResponse> {
+  public addRoute(idUser: any, title: string, coordinates: any, level:any): Promise<HTTPResponse> {
     let url = this.ip + '/route/add';
-    return this.http.post(url, { 'idUser': idUser, 'title': title, 'coordinates': coordinates }, { 'apikey': this.apiKey });
+    return this.http.post(url, { 'idUser': idUser, 'title': title, 'coordinates': coordinates, 'level': level }, { 'apikey': this.apiKey });
   }
 
   public addPhoto(idUser: any, title: string, description: any, image: any): Promise<HTTPResponse> {

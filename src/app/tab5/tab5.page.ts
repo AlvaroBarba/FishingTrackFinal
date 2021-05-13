@@ -112,6 +112,22 @@ export class Tab5Page implements OnInit {
     })
   }
 
+  public deleteFriend(id) {
+    this.http.deleteFriend(this.you.id, id).then(async (data) => {
+      if (data) {
+        let dat = JSON.parse(data.data);
+        if (dat.status == "0") {
+          await this.getFriends();
+          this.toastS.createToastMiddle("Dejasteis de ser amigos", true, 350, "warning");
+        } else {
+          //Error
+        }
+      }
+    }).catch((err) => {
+      console.error("Fallo al borrar amigo");
+    })
+  }
+
   public rejectFriend(id) {
     this.http.updateFriend(id, 3, this.you.id).then(async (data) => {
       if (data) {
