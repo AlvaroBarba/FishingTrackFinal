@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { NavController, Platform } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-info',
@@ -12,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfoPage implements OnInit {
 
-  protected breadcrumb;
 
   constructor(
     private inAppBrowser: InAppBrowser,
@@ -24,8 +22,7 @@ export class InfoPage implements OnInit {
   ngOnInit() {
   }
 
-  public goBack(){
-    console.log("back");
+  public goBack() {
     this.navctrl.back();
   }
 
@@ -62,7 +59,7 @@ export class InfoPage implements OnInit {
       }
       ).catch(err => {
         this.openInApp('https://twitter.com/' + name);
-});
+      });
   }
   openFacebook(name, url) {
     let app;
