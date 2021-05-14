@@ -18,7 +18,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 import { TemasService } from './services/temas.service';
-import { IonicStorageModule } from '@ionic/storage-angular';
+//import { IonicStorageModule } from '@ionic/storage-angular';
 import { MapaComponent } from './components/mapa/mapa.component';
 
 //MAPA
@@ -26,7 +26,7 @@ import { MapaComponent } from './components/mapa/mapa.component';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,/**IonicStorageModule.forRoot()**/],
   providers: [
     StatusBar,
     SplashScreen,
