@@ -38,5 +38,5 @@
 </ion-content>
 
 <ion-content [fullscreen]="true" *ngIf='this.rutas'>
-        <app-mapa *ngFor="let Route of this.routes; let i=index;" line="{{this.Route.coordinates}}" title="this.title" style="position:absolute;width:100%;height:100%"></app-mapa>
+        <app-mapa *ngFor="let Route of this.routes; let i=index;" mapaId="{{i}}" line="{{this.Route.coordinates}}" title="this.title" style="position:absolute;width:100%;height:100%"></app-mapa>
 </ion-content>
