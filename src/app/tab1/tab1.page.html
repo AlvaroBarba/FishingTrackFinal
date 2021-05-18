@@ -11,6 +11,8 @@
   </ion-toolbar>
 
 
+
+</ion-header>
 <ion-content [fullscreen]="true" *ngIf='this.paraTi'>
   <ion-list *ngFor="let Route of this.friendsRoutes; let i=index;">
     <ion-item>
@@ -36,12 +38,5 @@
 </ion-content>
 
 <ion-content [fullscreen]="true" *ngIf='this.rutas'>
-  <ion-list *ngFor="let Route of this.routes; let i=index;">
-    <ion-item>
-        <app-mapa line="{{this.Route.coordinates}}" title="this.title"></app-mapa>
-    </ion-item>
-  </ion-list>
+        <app-mapa *ngFor="let Route of this.routes; let i=index;" line="{{this.Route.coordinates}}" title="this.title" style="position:absolute;width:100%;height:100%"></app-mapa>
 </ion-content>
-</ion-header>
-
-

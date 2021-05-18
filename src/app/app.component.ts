@@ -21,7 +21,7 @@ export class AppComponent {
     private theme:TemasService,
     private router: Router
   ) {
-    this.initializeApp();
+    //this.initializeApp();
   }
 
    //ACTIVAR TEMAS
@@ -38,7 +38,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
-      this.theme.modeSelected();
+      //this.theme.modeSelected();
     });
   }
 
