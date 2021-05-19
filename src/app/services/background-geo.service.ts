@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationEvents, BackgroundGeolocationLocationProvider, BackgroundGeolocationProvider, BackgroundGeolocationResponse } from '@ionic-native/background-geolocation/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AlertController } from '@ionic/angular';
-import { Map, Polyline, tileLayer } from 'leaflet';
+import { geoJSON, Map, Polyline, tileLayer } from 'leaflet';
 import { addListener } from 'process';
 import { User } from '../model/User';
 import { AuthService } from './auth.service';
@@ -183,8 +183,6 @@ export class BackgroundGeoService {
           text: "Si",
           handler: (data: number) => {
             selected = data;
-            this.mapa.removeLayer(this.polyline);
-            this.setDefaultPolyline();
           }
         }
       ]
@@ -196,8 +194,9 @@ export class BackgroundGeoService {
   }
 
   public saveRoute(title, level) {
+    console.log("Me cagao 2 " + this.polyline.getLatLngs());
     let input = this.polyline.toGeoJSON();
-    this.http.addRoute(this.user.id, title, input, level).then((data) => {
+    this.http.addRoute(this.authS.getUser().id, title, input, level).then((data) => {
       if (data) {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
