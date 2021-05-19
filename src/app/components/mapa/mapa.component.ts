@@ -12,7 +12,7 @@ export class MapaComponent implements OnInit {
   miMapa:Map;
   @Input() line: any
   title:string;
-  @Input() mapaId;
+  @Input() route;
   id:string = "";
   
 
@@ -24,8 +24,8 @@ export class MapaComponent implements OnInit {
 
   public createMap() {
     this.created = true;
-    this.id = "mimapa" + this.mapaId;
-    this.miMapa = new Map(this.id);
+    console.log("ID MAPA -> " + this.route);
+    this.miMapa = new Map(this.route);
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(this.miMapa);
