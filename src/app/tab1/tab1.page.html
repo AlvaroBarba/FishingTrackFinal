@@ -10,8 +10,6 @@
     </ion-segment>
   </ion-toolbar>
 
-
-
 </ion-header>
 <ion-content [fullscreen]="true" *ngIf='this.paraTi'>
   <ion-list *ngFor="let Route of this.friendsRoutes; let i=index;">
@@ -38,8 +36,18 @@
 </ion-content>
 
 <ion-content [fullscreen]="true" *ngIf='this.rutas'>
-  <div style="height: 30vh; width: 100vw;" *ngFor="let Route of this.routes; let i=index;">
+  <ion-card style="height: 70%; width: 100%;" *ngFor="let Route of this.routes; let i=index;">
+    <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="{{this.you.avatar}}">
+        </ion-avatar>
+        <ion-label>{{this.you.username}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
     <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
-      style="position:absolute;width:100%;height:100%"></app-mapa>
-  </div>
+      style="position: absolute; height: 50%; width: 100%;">
+    </app-mapa>
+  </ion-card>
 </ion-content>
