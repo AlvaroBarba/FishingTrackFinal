@@ -6,8 +6,8 @@ import { HttpService } from '../services/http.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ToastService } from '../services/toast.service';
 import { Router } from '@angular/router';
-import { ElementFinder } from 'protractor';
-import { threadId } from 'worker_threads';
+import { ModalController } from '@ionic/angular';
+import { EditPage } from '../pages/edit/edit.page';
 
 @Component({
   selector: 'app-tab1',
@@ -16,31 +16,39 @@ import { threadId } from 'worker_threads';
 })
 export class Tab1Page {
 
-  private paraTi = true;
-  private fotos = false;
-  private rutas = false;
+  private paraTi = false;
+  private rutas = true;
   private friends: User[] = [];
   public routes = [];
   public friendsRoutes = [];
   private you: User;
   public mapas: Map[] = [];
   public line: any;
+  public flagLike = false;
 
   constructor(
     private toast: ToastService,
+    public modalcontroller: ModalController,
     private http: HttpService,
     private authS: AuthService,
     private camera: Camera,
     private router: Router) {
     this.you = this.authS.getUser();
-    if(this.you.avatar == undefined || this.you.avatar == null){
+    if (this.you.avatar == undefined || this.you.avatar == null) {
       this.you.avatar = "assets/icon/usuario.svg"
     }
   }
 
   ionViewWillEnter() {
-    this.paraTi = true;
-    this.pestanaParaTi();
+    this.getOwnRoutes();
+  }
+
+  public changeIcon(){
+    if(this.flagLike){
+      this.flagLike = false;
+    }else{
+      this.flagLike = true;
+    }
   }
 
   public pestanaParaTi() {
@@ -70,13 +78,14 @@ export class Tab1Page {
           let dat = JSON.parse(data.data);
           if (dat.status == "0") {
             //todo ok
-            dat.result.forEach(element => {
+            dat.result.forEach(async element => {
               let route = {
+                id: element.id,
                 title: element.title,
                 username: this.you.username,
                 avatar: this.you.avatar,
-                coordinates: element.coordinates
-
+                coordinates: element.coordinates,
+                waterLevel: element.level
               }
               this.routes.push(route);
             });
@@ -101,7 +110,7 @@ export class Tab1Page {
               username: element.username,
               avatar: element.avatar
             }
-            if(aux.avatar == undefined){
+            if (aux.avatar == undefined) {
               aux.avatar = "assets/icon/usuario.svg"
             }
             this.friends.push(aux);
@@ -126,10 +135,12 @@ export class Tab1Page {
               //todo ok
               dat.result.forEach(element => {
                 let route = {
+                  id: element.id,
                   title: element.title,
                   username: friend.username,
                   avatar: friend.avatar,
-                  coordinates: element.coordinates
+                  coordinates: element.coordinates,
+                  waterLevel: element.level
                 }
                 aux.push(route);
               });
@@ -146,12 +157,23 @@ export class Tab1Page {
     }
   }
 
-  public onlyUnique(value, index, self) { 
+  public onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
-}
+  }
 
-  public goEditPage(){
+  public goEditPage() {
     this.router.navigate(['/edit']);
+  }
+
+  public async editaNota(route) {
+    const modal = await this.modalcontroller.create({
+      component: EditPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        route: route
+      }
+    });
+    return await modal.present();
   }
 
 

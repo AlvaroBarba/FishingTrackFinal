@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { GeoJSON,geoJSON, Map, Marker, marker, Point, tileLayer } from 'leaflet';
+import { Draggable, GeoJSON,geoJSON, icon, LatLng, Map, Marker, marker, Point, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-mapa',
@@ -14,8 +14,7 @@ export class MapaComponent implements OnInit {
   title:string;
   @Input() route;
   id:string = "";
-  center: any;
-  
+  center: any;  
 
   constructor() { }
 
@@ -26,9 +25,13 @@ export class MapaComponent implements OnInit {
   public createMap() {
     this.created = true;
     this.miMapa = new Map(this.route);
+    this.miMapa.dragging.disable();
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(this.miMapa);
+
+
+ //let coordenadas1:LatLng = JSON.parse(this.line).coordinates[0]; obtener 1 punto de la ruta
 
   this.miMapa.setView([40,-3], 10);
 
@@ -36,7 +39,6 @@ export class MapaComponent implements OnInit {
       this.miMapa.invalidateSize();
     }, 400);
     let myroute:GeoJSON=new GeoJSON(JSON.parse(this.line));
-    
     myroute.addTo(this.miMapa);
     this.miMapa.fitBounds(myroute.getBounds());
 
@@ -53,5 +55,10 @@ export class MapaComponent implements OnInit {
       color: "red",
       opacity: 60
     });
+
+    this.miMapa.on("click", ()=>{
+      this.miMapa.dragging.enable();
+    })
+
   }
 }

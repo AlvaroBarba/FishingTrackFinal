@@ -40,8 +40,11 @@
         </ion-avatar>
         <ion-label>{{this.you.username}}</ion-label>
         <ion-buttons>
-        <ion-button (click)="this.goEditPage()"><ion-icon slot="end" src="assets/icon/editar.svg"></ion-icon></ion-button>
-        <ion-button><ion-icon slot="end" src="assets/icon/corazon.svg"></ion-icon></ion-button>
+        <ion-button (click)="this.editaNota(Route)"><ion-icon slot="end" src="assets/icon/editar.svg"></ion-icon></ion-button>
+        <ion-button  (click)="this.changeIcon()" >
+          <ion-icon *ngIf="!this.flagLike" slot="end" src="assets/icon/corazon.svg"></ion-icon>
+          <ion-icon *ngIf="this.flagLike" slot="end"src="assets/icon/heart.svg"></ion-icon>
+        </ion-button>
       </ion-buttons>
       </ion-item>
     </ion-list>

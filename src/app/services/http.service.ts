@@ -48,9 +48,14 @@ export class HttpService {
     return this.http.get(url, {}, { 'apikey': this.apiKey });
   }
 
-  public getLike(id: any): Promise<HTTPResponse> {
-    let url = this.ip + '/photo/like';
-    return this.http.get(url, { 'id_photo': id }, { 'apikey': this.apiKey });
+  public getLikes(id: any): Promise<HTTPResponse> {
+    let url = this.ip + '/route/likes';
+    return this.http.post(url, { 'id_route': id }, { 'apikey': this.apiKey });
+  }
+
+  public getLike(id: any, id_user:any): Promise<HTTPResponse> {
+    let url = this.ip + '/route/user/like';
+    return this.http.post(url, { 'id_route': id, 'id_user': id_user}, { 'apikey': this.apiKey });
   }
 
   //POST methods
@@ -85,9 +90,9 @@ export class HttpService {
     return this.http.post(url, { 'idPhoto': idPhoto, 'idRoute': idRoute }, { 'apikey': this.apiKey });
   }
 
-  public addLike(idPhoto: any, idUser: any): Promise<HTTPResponse> {
-    let url = this.ip + '/photo/like';
-    return this.http.post(url, { 'id_photo': idPhoto, 'id_user': idUser }, { 'apikey': this.apiKey });
+  public addLike(idRoute: any, idUser: any): Promise<HTTPResponse> {
+    let url = this.ip + '/route/like';
+    return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
   }
 
 
@@ -103,9 +108,9 @@ export class HttpService {
     return this.http.put(url, { 'id': id, 'friendStatus': status, 'id2': id2 }, { 'apikey': this.apiKey });
   }
 
-  public updateRoute(id: any, title: string): Promise<HTTPResponse> {
+  public updateRoute(id: any, title: string, level:number): Promise<HTTPResponse> {
     let url = this.ip + '/route/update';
-    return this.http.put(url, { 'id': id, 'title': title }, { 'apikey': this.apiKey });
+    return this.http.put(url, { 'id': id, 'title': title, 'level': level }, { 'apikey': this.apiKey });
   }
 
   public updatePhoto(id: any, title: string, description: string): Promise<HTTPResponse> {
@@ -135,9 +140,9 @@ export class HttpService {
     return this.http.delete(url, {}, { 'apikey': this.apiKey });
   }
 
-  public deleteLike(id_photo: any, id_user: any): Promise<HTTPResponse> {
-    let url = this.ip + '/photo/like';
-    return this.http.delete(url, { 'id_photo': id_photo, 'id_user': id_user }, { 'apikey': this.apiKey });
+  public deleteLike(id_route: any, id_user: any): Promise<HTTPResponse> {
+    let url = this.ip + '/route/like';
+    return this.http.delete(url, { 'id_route': id_route, 'id_user': id_user }, { 'apikey': this.apiKey });
   }
 
 }
