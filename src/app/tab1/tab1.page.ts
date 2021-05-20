@@ -29,6 +29,9 @@ export class Tab1Page {
     private authS: AuthService,
     private camera: Camera) {
     this.you = this.authS.getUser();
+    if(this.you.avatar == undefined || this.you.avatar == null){
+      this.you.avatar = "assets/icon/usuario.svg"
+    }
   }
 
   ionViewWillEnter() {
