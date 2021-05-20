@@ -109,7 +109,16 @@ export class Tab1Page {
     });
   }
 
+  public checkDuplicates(arr:any[]){
+    arr.forEach(element => {
+      if(arr.lastIndexOf(element) != -1){
+
+      }
+    });
+  }
+
   public getFriendsRoutes() {
+    let aux = [];
     if (this.friends.length > 0) {
       this.friends.forEach((friend) => {
         this.http.getRoutes(friend.id).then((data) => {
@@ -117,13 +126,25 @@ export class Tab1Page {
             let dat = JSON.parse(data.data);
             if (dat.status == "0") {
               //todo ok
-              let route = {
-                title: dat.result.title,
-                username: friend.username,
-                avatar: friend.avatar,
-                coordinates: dat.result.coordinates
+              dat.result.forEach(element => {
+                let route = {
+                  title: element.title,
+                  username: friend.username,
+                  avatar: friend.avatar,
+                  coordinates: element.coordinates
+                }
+                aux.push(route);
+              });
+
+              aux.forEach(route => {
+
+              if(this.friendsRoutes.length > 0){
+                
+              }else{
+                this.friendsRoutes.push(route);
               }
-              this.friendsRoutes.push(route);
+
+              });
             }
           }
         }).catch((err) => {
