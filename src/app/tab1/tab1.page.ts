@@ -6,6 +6,8 @@ import { HttpService } from '../services/http.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ToastService } from '../services/toast.service';
 import { Router } from '@angular/router';
+import { ElementFinder } from 'protractor';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-tab1',
@@ -99,6 +101,9 @@ export class Tab1Page {
               username: element.username,
               avatar: element.avatar
             }
+            if(aux.avatar == undefined){
+              aux.avatar = "assets/icon/usuario.svg"
+            }
             this.friends.push(aux);
             this.getFriendsRoutes();
           });
@@ -109,16 +114,9 @@ export class Tab1Page {
     });
   }
 
-  public checkDuplicates(arr:any[]){
-    arr.forEach(element => {
-      if(arr.lastIndexOf(element) != -1){
-
-      }
-    });
-  }
-
   public getFriendsRoutes() {
     let aux = [];
+    let flag = true;
     if (this.friends.length > 0) {
       this.friends.forEach((friend) => {
         this.http.getRoutes(friend.id).then((data) => {
@@ -136,15 +134,8 @@ export class Tab1Page {
                 aux.push(route);
               });
 
-              aux.forEach(route => {
+              this.friendsRoutes = aux.filter(this.onlyUnique);
 
-              if(this.friendsRoutes.length > 0){
-                
-              }else{
-                this.friendsRoutes.push(route);
-              }
-
-              });
             }
           }
         }).catch((err) => {
@@ -155,8 +146,11 @@ export class Tab1Page {
     }
   }
 
+  public onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
   public goEditPage(){
-    console.log("HOLA");
     this.router.navigate(['/edit']);
   }
 
