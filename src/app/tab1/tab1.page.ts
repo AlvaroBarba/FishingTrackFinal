@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ToastService } from '../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -27,7 +28,8 @@ export class Tab1Page {
     private toast: ToastService,
     private http: HttpService,
     private authS: AuthService,
-    private camera: Camera) {
+    private camera: Camera,
+    private router: Router) {
     this.you = this.authS.getUser();
     if(this.you.avatar == undefined || this.you.avatar == null){
       this.you.avatar = "assets/icon/usuario.svg"
@@ -131,4 +133,11 @@ export class Tab1Page {
       });
     }
   }
+
+  public goEditPage(){
+    console.log("HOLA");
+    this.router.navigate(['/edit']);
+  }
+
+
 }
