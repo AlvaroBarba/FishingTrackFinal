@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, Platform } from '@ionic/angular';
 
 
 @Component({
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditPage implements OnInit {
 
-  constructor() { }
+  constructor(private navctrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  public goBack() {
+    this.navctrl.back();
   }
 
 
