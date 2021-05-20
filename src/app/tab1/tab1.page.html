@@ -36,11 +36,15 @@
           <img src="{{this.you.avatar}}">
         </ion-avatar>
         <ion-label>{{this.you.username}}</ion-label>
+        <ion-icon slot="end" src="assets/icon/corazon.svg"></ion-icon>
       </ion-item>
     </ion-list>
     <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
     <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
       style="position: absolute; height: 50%; width: 100%;">
     </app-mapa>
+
+    <ion-button><ion-icon  src="assets/icon/corazon.svg"></ion-icon></ion-button>
+
   </ion-card>
 </ion-content>
