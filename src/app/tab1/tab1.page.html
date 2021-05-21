@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf='this.paraTi'>
-  <ion-card (click)="this.goShowRoute()" style="height: 70%; width: 100%;" *ngFor="let Route of this.friendsRoutes; let i=index;">
+  <ion-card (click)="this.goShowRoute(Route)" style="height: 70%; width: 100%;" *ngFor="let Route of this.friendsRoutes; let i=index;">
     <ion-list>
       <ion-item>
         <ion-avatar slot="start">

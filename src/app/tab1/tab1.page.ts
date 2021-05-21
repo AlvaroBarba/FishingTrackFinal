@@ -8,6 +8,7 @@ import { ToastService } from '../services/toast.service';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { EditPage } from '../pages/edit/edit.page';
+import { ShowRoutePage } from '../pages/show-route/show-route.page';
 
 @Component({
   selector: 'app-tab1',
@@ -161,8 +162,15 @@ export class Tab1Page {
     return self.indexOf(value) === index;
   }
 
-  public goShowRoute(){
-    this.router.navigate(['/show-route']);
+  public async goShowRoute(route){
+    const modal = await this.modalcontroller.create({
+      component: ShowRoutePage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        route: route
+      }
+    });
+    return await modal.present();
   }
 
   public async editaRuta(route) {
