@@ -6,7 +6,7 @@ import { HttpService } from '../services/http.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { ToastService } from '../services/toast.service';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { EditPage } from '../pages/edit/edit.page';
 import { ShowRoutePage } from '../pages/show-route/show-route.page';
 
@@ -30,6 +30,7 @@ export class Tab1Page {
   constructor(
     private toast: ToastService,
     public modalcontroller: ModalController,
+    private alert: AlertController,
     private http: HttpService,
     private authS: AuthService,
     private camera: Camera,
@@ -182,6 +183,45 @@ export class Tab1Page {
       }
     });
     return await modal.present();
+  }
+
+  public async confirmDelete(route){
+    const alert = await this.alert.create({
+      cssClass: "custom",
+      header: "Borrar " + route.title,
+      subHeader: "¿Seguro que desea borrar su ruta?",
+      buttons: [
+        {
+          text: "No",
+          role: "cancel",
+          handler: () => {
+            alert.dismiss();
+          }
+        },
+        {
+          text: "Si",
+          handler: () => {
+            this.deleteRoute(route);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  public async deleteRoute(route){
+    this.http.deleteRoute(route.id).then((data)=>{
+      if(data){
+        let dat = JSON.parse(data.data);
+        if(dat.status = "0"){
+          this.toast.createToastBottom("Ruta borrada con éxito", true, 350, "info");
+        }else{
+          this.toast.createToastBottom("Error borrando ruta", true, 350, "warning");
+        }
+      }
+    }).catch(err=>{
+      this.toast.createToastBottom("Error de conexión, pruebe más tarde ", true, 350, "warning");
+    })
   }
 
 
