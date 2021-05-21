@@ -161,11 +161,11 @@ export class Tab1Page {
     return self.indexOf(value) === index;
   }
 
-  public goEditPage() {
-    this.router.navigate(['/edit']);
+  public goShowRoute(){
+    this.router.navigate(['/show-route']);
   }
 
-  public async editaNota(route) {
+  public async editaRuta(route) {
     const modal = await this.modalcontroller.create({
       component: EditPage,
       cssClass: 'my-custom-class',

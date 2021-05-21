@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'edit',
     loadChildren: () => import('./pages/edit/edit.module').then( m => m.EditPageModule)
+  },
+  {
+    path: 'show-route',
+    loadChildren: () => import('./pages/show-route/show-route.module').then( m => m.ShowRoutePageModule)
   }
 
 ];
