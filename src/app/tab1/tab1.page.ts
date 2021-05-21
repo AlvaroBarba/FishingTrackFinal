@@ -200,8 +200,9 @@ export class Tab1Page {
         },
         {
           text: "Si",
-          handler: () => {
-            this.deleteRoute(route);
+          handler: async () => {
+            await this.deleteRoute(route);
+            await this.getOwnRoutes();
           }
         }
       ]

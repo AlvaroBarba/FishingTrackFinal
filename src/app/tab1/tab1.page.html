@@ -12,23 +12,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf='this.paraTi'>
-  <ion-card (click)="this.goShowRoute(Route)" style="height: 70%; width: 100%;" *ngFor="let Route of this.friendsRoutes; let i=index;">
+  <ion-card style="height: 70%; width: 100%;" *ngFor="let Route of this.friendsRoutes; let i=index;">
     <ion-list>
       <ion-item>
         <ion-avatar slot="start">
           <img src="{{this.Route.avatar}}">
         </ion-avatar>
         <ion-label>{{this.Route.username}}</ion-label>
-          <ion-buttons>
-          <ion-button><ion-icon slot="end" src="assets/icon/corazon.svg"></ion-icon></ion-button>
-          </ion-buttons>
+        <ion-buttons>
+          <ion-button>
+            <ion-icon slot="end" src="assets/icon/corazon.svg"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </ion-list>
-    <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
-    <ion-card-subtitle>Nivel del agua: {{this.Route.waterLevel}}</ion-card-subtitle>
-    <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
-      style="position: absolute; height: 50%; width: 100%;">
-    </app-mapa>
+    <div (click)="this.goShowRoute(Route)">
+      <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
+      <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
+        style="position: absolute; height: 50%; width: 100%;">
+      </app-mapa>
+    </div>
   </ion-card>
 </ion-content>
 
@@ -41,17 +44,24 @@
         </ion-avatar>
         <ion-label>{{this.you.username}}</ion-label>
         <ion-buttons>
-        <ion-button (click)="this.editaRuta(Route)"><ion-icon slot="end" src="assets/icon/editar.svg"></ion-icon></ion-button>
-        <ion-button  (click)="this.changeIcon()" >
-          <ion-icon *ngIf="!this.flagLike" slot="end" src="assets/icon/corazon.svg"></ion-icon>
-          <ion-icon *ngIf="this.flagLike" slot="end"src="assets/icon/heart.svg"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+          <ion-button (click)="this.editaRuta(Route)">
+            <ion-icon slot="end" src="assets/icon/editar.svg"></ion-icon>
+          </ion-button>
+          <ion-button (click)="this.confirmDelete(Route)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-button (click)="this.changeIcon()">
+            <ion-icon *ngIf="!this.flagLike" slot="end" src="assets/icon/corazon.svg"></ion-icon>
+            <ion-icon *ngIf="this.flagLike" slot="end" src="assets/icon/heart.svg"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </ion-list>
-    <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
-    <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
-      style="position: absolute; height: 50%; width: 100%;">
-    </app-mapa>
+    <div (click)="this.goShowRoute(Route)">
+      <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
+      <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
+        style="position: absolute; height: 50%; width: 100%;">
+      </app-mapa>
+    </div>
   </ion-card>
 </ion-content>
