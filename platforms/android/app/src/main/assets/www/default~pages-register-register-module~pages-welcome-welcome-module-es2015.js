@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class=\"content\">\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\n      <ion-item>\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\n      </ion-item>\n\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\n    </form>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissRegister()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">REGISTRARSE</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content padding>\n  <div class=\"content\">\n    <form [formGroup]=\"regist\" (ngSubmit)=\"this.registration()\">\n      <ion-item>\n        <ion-input type=\"user\" formControlName=\"username\" placeholder=\"Nombre de Usuario\"></ion-input>\n      </ion-item>\n      \n      <ion-item>\n                <ion-input type=\"password\" formControlName=\"password\" placeholder=\"Contraseña\"></ion-input>\n      </ion-item>\n      <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!regist.valid\">Registrarse</ion-button>\n    </form>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -182,9 +182,13 @@ let HttpService = class HttpService {
         let url = this.ip + '/photo/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
-    getLike(id) {
-        let url = this.ip + '/photo/like';
-        return this.http.get(url, { 'id_photo': id }, { 'apikey': this.apiKey });
+    getLikes(id) {
+        let url = this.ip + '/route/likes';
+        return this.http.post(url, { 'id_route': id }, { 'apikey': this.apiKey });
+    }
+    getLike(id, id_user) {
+        let url = this.ip + '/route/user/like';
+        return this.http.post(url, { 'id_route': id, 'id_user': id_user }, { 'apikey': this.apiKey });
     }
     //POST methods
     addUser(username, password) {
@@ -211,9 +215,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/newPhoto';
         return this.http.post(url, { 'idPhoto': idPhoto, 'idRoute': idRoute }, { 'apikey': this.apiKey });
     }
-    addLike(idPhoto, idUser) {
-        let url = this.ip + '/photo/like';
-        return this.http.post(url, { 'id_photo': idPhoto, 'id_user': idUser }, { 'apikey': this.apiKey });
+    addLike(idRoute, idUser) {
+        let url = this.ip + '/route/like';
+        return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
     }
     //PUT methods
     updateUser(password, username) {
@@ -224,9 +228,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/user/friends/update';
         return this.http.put(url, { 'id': id, 'friendStatus': status, 'id2': id2 }, { 'apikey': this.apiKey });
     }
-    updateRoute(id, title) {
+    updateRoute(id, title, level) {
         let url = this.ip + '/route/update';
-        return this.http.put(url, { 'id': id, 'title': title }, { 'apikey': this.apiKey });
+        return this.http.put(url, { 'id': id, 'title': title, 'level': level }, { 'apikey': this.apiKey });
     }
     updatePhoto(id, title, description) {
         let url = this.ip + '/photo/update';
@@ -249,9 +253,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/photo/remove/' + id;
         return this.http.delete(url, {}, { 'apikey': this.apiKey });
     }
-    deleteLike(id_photo, id_user) {
-        let url = this.ip + '/photo/like';
-        return this.http.delete(url, { 'id_photo': id_photo, 'id_user': id_user }, { 'apikey': this.apiKey });
+    deleteLike(id_route, id_user) {
+        let url = this.ip + '/route/like';
+        return this.http.delete(url, { 'id_route': id_route, 'id_user': id_user }, { 'apikey': this.apiKey });
     }
 };
 HttpService.ctorParameters = () => [

@@ -434,6 +434,19 @@ const openURL = async (url, ev, direction, animation) => {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-title class=\"textColor\">Editar</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"this.goBack()\">\n        <ion-icon name=\"arrow-back-sharp\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"content\">\n    <form [formGroup]=\"routeEdit\" (ngSubmit)=\"this.editRoute()\">\n      <ion-item lines=\"none\">\n        <ion-label>Titulo de la ruta</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type=\"text\" formControlName=\"title\" placeholder=\"{{this.route.title}}\"></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>Nivel del agua (optimo-medio-bajo)</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type=\"text\" formControlName=\"waterLevel\" placeholder=\"{{this.level}}\"></ion-input>\n      </ion-item>\n      <ion-buttons>\n        <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!routeEdit.valid\">Guardar Cambios</ion-button>\n        <ion-button><ion-icon name=\"image\"></ion-icon></ion-button>\n      </ion-buttons>\n    </form>\n  </div>\n</ion-content>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html":
 /*!***********************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
@@ -444,6 +457,158 @@ const openURL = async (url, ev, direction, animation) => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissLogin()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">INICIO DE SESIÓN</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"tasks\" (ngSubmit)=\"this.login()\">\n    <ion-item>\n      <ion-input formControlName=\"username\" type=\"text\" placeholder=\"Usuario\"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-input formControlName=\"password\" type=\"password\" placeholder=\"Contraseña\"></ion-input>\n    </ion-item>\n  \n    <ion-button type=\"submit\" shape=\"round\" class=\"background-button\" [disabled]=\"!tasks.valid\">Iniciar Sesion</ion-button>\n  </form>\n</ion-content>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-title class=\"textColor\">Ruta</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"this.goBack()\">\n        <ion-icon name=\"arrow-back-sharp\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"content\">\n      <ion-item lines=\"none\">\n        <ion-label><h1 class=\"textColor\">Título de la ruta</h1></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label><h1 style=\"text-align: center;\">{{this.route.title}}</h1></ion-label>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label><h1 class=\"textColor\">Nivel del agua</h1></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label><h1 style=\"text-align: center;\">{{this.level}}</h1></ion-label>\n      </ion-item>\n  </div>\n</ion-content>");
+
+/***/ }),
+
+/***/ "./src/app/pages/edit/edit.page.scss":
+/*!*******************************************!*\
+  !*** ./src/app/pages/edit/edit.page.scss ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2VkaXQvZWRpdC5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/edit/edit.page.ts":
+/*!*****************************************!*\
+  !*** ./src/app/pages/edit/edit.page.ts ***!
+  \*****************************************/
+/*! exports provided: EditPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditPage", function() { return EditPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+/* harmony import */ var src_app_services_http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/http.service */ "./src/app/services/http.service.ts");
+/* harmony import */ var src_app_services_loading_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/loading.service */ "./src/app/services/loading.service.ts");
+/* harmony import */ var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/toast.service */ "./src/app/services/toast.service.ts");
+
+
+
+
+
+
+
+let EditPage = class EditPage {
+    constructor(formBuilder, loading, toastS, modalController, http, navctrl) {
+        this.formBuilder = formBuilder;
+        this.loading = loading;
+        this.toastS = toastS;
+        this.modalController = modalController;
+        this.http = http;
+        this.navctrl = navctrl;
+        this.routeEdit = this.formBuilder.group({
+            title: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            waterLevel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+    }
+    ngOnInit() {
+        switch (this.route.waterLevel) {
+            case 1:
+                this.level = "Óptimo";
+                break;
+            case 2:
+                this.level = "Medio";
+                break;
+            case 3:
+                this.level = "Bajo";
+                break;
+            default:
+                this.level = "Sin datos...";
+                break;
+        }
+    }
+    getLevel(level) {
+        level = level.toLowerCase();
+        switch (level) {
+            case 'optimo':
+                return 1;
+                break;
+            case 'medio':
+                return 2;
+                break;
+            case 'bajo':
+                return 3;
+                break;
+            default:
+                return 2;
+        }
+    }
+    editRoute() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            //Creando Loading
+            yield this.loading.createLoading();
+            //Añadir nuevo usuario
+            this.http.updateRoute(this.route.id, this.routeEdit.get("title").value, this.getLevel(this.routeEdit.get("waterLevel").value)).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                if (data) {
+                    let dat = JSON.parse(data.data);
+                    if (dat.status == "0") {
+                        //Todo ok
+                        this.toastS.createToastBottom("Actualizado correctamente!", true, 350, "success");
+                        this.modalController.dismiss();
+                    }
+                    else {
+                        //Error
+                        yield this.toastS.createToastBottom("Fallo al actualizar 1", true, 400, "danger");
+                        this.modalController.dismiss();
+                    }
+                }
+                //Eliminando loading
+                yield this.loading.cancelLoading();
+            })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                //toast
+                yield this.toastS.createToastBottom("Fallo al actualizar 2", true, 400, "danger");
+                this.modalController.dismiss();
+                //Eliminando loading
+                yield this.loading.cancelLoading();
+            }));
+        });
+    }
+    goBack() {
+        this.modalController.dismiss();
+    }
+};
+EditPage.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: src_app_services_loading_service__WEBPACK_IMPORTED_MODULE_5__["LoadingService"] },
+    { type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__["ToastService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: src_app_services_http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] }
+];
+EditPage.propDecorators = {
+    route: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
+EditPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-edit',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./edit.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./edit.page.scss */ "./src/app/pages/edit/edit.page.scss")).default]
+    })
+], EditPage);
+
+
 
 /***/ }),
 
@@ -560,6 +725,77 @@ LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./login.page.scss */ "./src/app/pages/login/login.page.scss")).default]
     })
 ], LoginPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/show-route/show-route.page.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/pages/show-route/show-route.page.scss ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Nob3ctcm91dGUvc2hvdy1yb3V0ZS5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/show-route/show-route.page.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/show-route/show-route.page.ts ***!
+  \*****************************************************/
+/*! exports provided: ShowRoutePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowRoutePage", function() { return ShowRoutePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+let ShowRoutePage = class ShowRoutePage {
+    constructor(modalController) {
+        this.modalController = modalController;
+    }
+    ngOnInit() {
+        switch (this.route.waterLevel) {
+            case 1:
+                this.level = "Óptimo";
+                break;
+            case 2:
+                this.level = "Medio";
+                break;
+            case 3:
+                this.level = "Bajo";
+                break;
+            default:
+                this.level = "Sin datos...";
+                break;
+        }
+    }
+    goBack() {
+        this.modalController.dismiss();
+    }
+};
+ShowRoutePage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+ShowRoutePage.propDecorators = {
+    route: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
+ShowRoutePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-show-route',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./show-route.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html")).default,
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./show-route.page.scss */ "./src/app/pages/show-route/show-route.page.scss")).default]
+    })
+], ShowRoutePage);
 
 
 

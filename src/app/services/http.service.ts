@@ -95,6 +95,10 @@ export class HttpService {
     return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
   }
 
+  public avatar(id_user, avatar): Promise<HTTPResponse> {
+    let url = this.ip + '/user/' + id_user + "/avatar";
+    return this.http.post(url, avatar, { 'apikey': this.apiKey });
+  }
 
   //PUT methods
 

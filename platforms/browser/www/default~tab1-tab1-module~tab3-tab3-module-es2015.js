@@ -14219,9 +14219,13 @@ let HttpService = class HttpService {
         let url = this.ip + '/photo/' + id;
         return this.http.get(url, {}, { 'apikey': this.apiKey });
     }
-    getLike(id) {
-        let url = this.ip + '/photo/like';
-        return this.http.get(url, { 'id_photo': id }, { 'apikey': this.apiKey });
+    getLikes(id) {
+        let url = this.ip + '/route/likes';
+        return this.http.post(url, { 'id_route': id }, { 'apikey': this.apiKey });
+    }
+    getLike(id, id_user) {
+        let url = this.ip + '/route/user/like';
+        return this.http.post(url, { 'id_route': id, 'id_user': id_user }, { 'apikey': this.apiKey });
     }
     //POST methods
     addUser(username, password) {
@@ -14248,9 +14252,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/newPhoto';
         return this.http.post(url, { 'idPhoto': idPhoto, 'idRoute': idRoute }, { 'apikey': this.apiKey });
     }
-    addLike(idPhoto, idUser) {
-        let url = this.ip + '/photo/like';
-        return this.http.post(url, { 'id_photo': idPhoto, 'id_user': idUser }, { 'apikey': this.apiKey });
+    addLike(idRoute, idUser) {
+        let url = this.ip + '/route/like';
+        return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
     }
     //PUT methods
     updateUser(password, username) {
@@ -14261,9 +14265,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/user/friends/update';
         return this.http.put(url, { 'id': id, 'friendStatus': status, 'id2': id2 }, { 'apikey': this.apiKey });
     }
-    updateRoute(id, title) {
+    updateRoute(id, title, level) {
         let url = this.ip + '/route/update';
-        return this.http.put(url, { 'id': id, 'title': title }, { 'apikey': this.apiKey });
+        return this.http.put(url, { 'id': id, 'title': title, 'level': level }, { 'apikey': this.apiKey });
     }
     updatePhoto(id, title, description) {
         let url = this.ip + '/photo/update';
@@ -14286,9 +14290,9 @@ let HttpService = class HttpService {
         let url = this.ip + '/photo/remove/' + id;
         return this.http.delete(url, {}, { 'apikey': this.apiKey });
     }
-    deleteLike(id_photo, id_user) {
-        let url = this.ip + '/photo/like';
-        return this.http.delete(url, { 'id_photo': id_photo, 'id_user': id_user }, { 'apikey': this.apiKey });
+    deleteLike(id_route, id_user) {
+        let url = this.ip + '/route/like';
+        return this.http.delete(url, { 'id_route': id_route, 'id_user': id_user }, { 'apikey': this.apiKey });
     }
 };
 HttpService.ctorParameters = () => [

@@ -664,6 +664,26 @@
     },
 
     /***/
+    "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html":
+    /*!*********************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html ***!
+      \*********************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function node_modulesRawLoaderDistCjsJsSrcAppPagesEditEditPageHtml(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-title class=\"textColor\">Editar</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"this.goBack()\">\n        <ion-icon name=\"arrow-back-sharp\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"content\">\n    <form [formGroup]=\"routeEdit\" (ngSubmit)=\"this.editRoute()\">\n      <ion-item lines=\"none\">\n        <ion-label>Titulo de la ruta</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type=\"text\" formControlName=\"title\" placeholder=\"{{this.route.title}}\"></ion-input>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label>Nivel del agua (optimo-medio-bajo)</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-input type=\"text\" formControlName=\"waterLevel\" placeholder=\"{{this.level}}\"></ion-input>\n      </ion-item>\n      <ion-buttons>\n        <ion-button type=\"submit\" shape=\"round\" color=\"danger\" [disabled]=\"!routeEdit.valid\">Guardar Cambios</ion-button>\n        <ion-button><ion-icon name=\"image\"></ion-icon></ion-button>\n      </ion-buttons>\n    </form>\n  </div>\n</ion-content>";
+      /***/
+    },
+
+    /***/
     "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html":
     /*!***********************************************************************************!*\
       !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
@@ -680,6 +700,300 @@
 
 
       __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button (click)=\"this.dismissLogin()\" defaultHref=\"/welcome\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"textColor\">INICIO DE SESIÓN</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form [formGroup]=\"tasks\" (ngSubmit)=\"this.login()\">\n    <ion-item>\n      <ion-input formControlName=\"username\" type=\"text\" placeholder=\"Usuario\"></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-input formControlName=\"password\" type=\"password\" placeholder=\"Contraseña\"></ion-input>\n    </ion-item>\n  \n    <ion-button type=\"submit\" shape=\"round\" class=\"background-button\" [disabled]=\"!tasks.valid\">Iniciar Sesion</ion-button>\n  </form>\n</ion-content>";
+      /***/
+    },
+
+    /***/
+    "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html":
+    /*!*********************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html ***!
+      \*********************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function node_modulesRawLoaderDistCjsJsSrcAppPagesShowRouteShowRoutePageHtml(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-title class=\"textColor\">Ruta</ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"this.goBack()\">\n        <ion-icon name=\"arrow-back-sharp\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"content\">\n      <ion-item lines=\"none\">\n        <ion-label><h1 class=\"textColor\">Título de la ruta</h1></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label><h1 style=\"text-align: center;\">{{this.route.title}}</h1></ion-label>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label><h1 class=\"textColor\">Nivel del agua</h1></ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label><h1 style=\"text-align: center;\">{{this.level}}</h1></ion-label>\n      </ion-item>\n  </div>\n</ion-content>";
+      /***/
+    },
+
+    /***/
+    "./src/app/pages/edit/edit.page.scss":
+    /*!*******************************************!*\
+      !*** ./src/app/pages/edit/edit.page.scss ***!
+      \*******************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function srcAppPagesEditEditPageScss(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2VkaXQvZWRpdC5wYWdlLnNjc3MifQ== */";
+      /***/
+    },
+
+    /***/
+    "./src/app/pages/edit/edit.page.ts":
+    /*!*****************************************!*\
+      !*** ./src/app/pages/edit/edit.page.ts ***!
+      \*****************************************/
+
+    /*! exports provided: EditPage */
+
+    /***/
+    function srcAppPagesEditEditPageTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "EditPage", function () {
+        return EditPage;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/forms */
+      "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+      /* harmony import */
+
+
+      var src_app_services_http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! src/app/services/http.service */
+      "./src/app/services/http.service.ts");
+      /* harmony import */
+
+
+      var src_app_services_loading_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! src/app/services/loading.service */
+      "./src/app/services/loading.service.ts");
+      /* harmony import */
+
+
+      var src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! src/app/services/toast.service */
+      "./src/app/services/toast.service.ts");
+
+      var EditPage = /*#__PURE__*/function () {
+        function EditPage(formBuilder, loading, toastS, modalController, http, navctrl) {
+          _classCallCheck(this, EditPage);
+
+          this.formBuilder = formBuilder;
+          this.loading = loading;
+          this.toastS = toastS;
+          this.modalController = modalController;
+          this.http = http;
+          this.navctrl = navctrl;
+          this.routeEdit = this.formBuilder.group({
+            title: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            waterLevel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+          });
+        }
+
+        _createClass(EditPage, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {
+            switch (this.route.waterLevel) {
+              case 1:
+                this.level = "Óptimo";
+                break;
+
+              case 2:
+                this.level = "Medio";
+                break;
+
+              case 3:
+                this.level = "Bajo";
+                break;
+
+              default:
+                this.level = "Sin datos...";
+                break;
+            }
+          }
+        }, {
+          key: "getLevel",
+          value: function getLevel(level) {
+            level = level.toLowerCase();
+
+            switch (level) {
+              case 'optimo':
+                return 1;
+                break;
+
+              case 'medio':
+                return 2;
+                break;
+
+              case 'bajo':
+                return 3;
+                break;
+
+              default:
+                return 2;
+            }
+          }
+        }, {
+          key: "editRoute",
+          value: function editRoute() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var _this = this;
+
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return this.loading.createLoading();
+
+                    case 2:
+                      //Añadir nuevo usuario
+                      this.http.updateRoute(this.route.id, this.routeEdit.get("title").value, this.getLevel(this.routeEdit.get("waterLevel").value)).then(function (data) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                          var dat;
+                          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                            while (1) {
+                              switch (_context3.prev = _context3.next) {
+                                case 0:
+                                  if (!data) {
+                                    _context3.next = 10;
+                                    break;
+                                  }
+
+                                  dat = JSON.parse(data.data);
+
+                                  if (!(dat.status == "0")) {
+                                    _context3.next = 7;
+                                    break;
+                                  }
+
+                                  //Todo ok
+                                  this.toastS.createToastBottom("Actualizado correctamente!", true, 350, "success");
+                                  this.modalController.dismiss();
+                                  _context3.next = 10;
+                                  break;
+
+                                case 7:
+                                  _context3.next = 9;
+                                  return this.toastS.createToastBottom("Fallo al actualizar 1", true, 400, "danger");
+
+                                case 9:
+                                  this.modalController.dismiss();
+
+                                case 10:
+                                  _context3.next = 12;
+                                  return this.loading.cancelLoading();
+
+                                case 12:
+                                case "end":
+                                  return _context3.stop();
+                              }
+                            }
+                          }, _callee3, this);
+                        }));
+                      })["catch"](function (err) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+                          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                            while (1) {
+                              switch (_context4.prev = _context4.next) {
+                                case 0:
+                                  _context4.next = 2;
+                                  return this.toastS.createToastBottom("Fallo al actualizar 2", true, 400, "danger");
+
+                                case 2:
+                                  this.modalController.dismiss(); //Eliminando loading
+
+                                  _context4.next = 5;
+                                  return this.loading.cancelLoading();
+
+                                case 5:
+                                case "end":
+                                  return _context4.stop();
+                              }
+                            }
+                          }, _callee4, this);
+                        }));
+                      });
+
+                    case 3:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
+            }));
+          }
+        }, {
+          key: "goBack",
+          value: function goBack() {
+            this.modalController.dismiss();
+          }
+        }]);
+
+        return EditPage;
+      }();
+
+      EditPage.ctorParameters = function () {
+        return [{
+          type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+        }, {
+          type: src_app_services_loading_service__WEBPACK_IMPORTED_MODULE_5__["LoadingService"]
+        }, {
+          type: src_app_services_toast_service__WEBPACK_IMPORTED_MODULE_6__["ToastService"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
+        }, {
+          type: src_app_services_http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"]
+        }, {
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
+        }];
+      };
+
+      EditPage.propDecorators = {
+        route: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }]
+      };
+      EditPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-edit',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! raw-loader!./edit.page.html */
+        "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit/edit.page.html"))["default"],
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! ./edit.page.scss */
+        "./src/app/pages/edit/edit.page.scss"))["default"]]
+      })], EditPage);
       /***/
     },
 
@@ -793,34 +1107,34 @@
         }, {
           key: "login",
           value: function login() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-              var _this = this;
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+              var _this2 = this;
 
-              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              return regeneratorRuntime.wrap(function _callee8$(_context8) {
                 while (1) {
-                  switch (_context5.prev = _context5.next) {
+                  switch (_context8.prev = _context8.next) {
                     case 0:
-                      _context5.next = 2;
+                      _context8.next = 2;
                       return this.loading.createLoading();
 
                     case 2:
                       //Buscando Usuario
                       this.http.getUser(this.tasks.get('username').value, this.tasks.get('password').value).then(function (data) {
-                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
                           var dat;
-                          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                          return regeneratorRuntime.wrap(function _callee6$(_context6) {
                             while (1) {
-                              switch (_context3.prev = _context3.next) {
+                              switch (_context6.prev = _context6.next) {
                                 case 0:
                                   if (!data) {
-                                    _context3.next = 12;
+                                    _context6.next = 12;
                                     break;
                                   }
 
                                   dat = JSON.parse(data.data);
 
                                   if (!(dat.status == "0")) {
-                                    _context3.next = 9;
+                                    _context6.next = 9;
                                     break;
                                   }
 
@@ -830,12 +1144,12 @@
                                     username: dat.result.username,
                                     avatar: dat.result.avatar
                                   };
-                                  _context3.next = 6;
+                                  _context6.next = 6;
                                   return this.authService.login(this.user);
 
                                 case 6:
                                   this.dismissLogin();
-                                  _context3.next = 12;
+                                  _context6.next = 12;
                                   break;
 
                                 case 9:
@@ -844,36 +1158,36 @@
                                     id: -1,
                                     username: ''
                                   };
-                                  _context3.next = 12;
+                                  _context6.next = 12;
                                   return this.toastS.createToastBottom("Usuario o contraseña incorrectos", true, 400, "danger");
 
                                 case 12:
-                                  _context3.next = 14;
+                                  _context6.next = 14;
                                   return this.loading.cancelLoading();
 
                                 case 14:
                                 case "end":
-                                  return _context3.stop();
+                                  return _context6.stop();
                               }
                             }
-                          }, _callee3, this);
+                          }, _callee6, this);
                         }));
                       })["catch"](function (err) {
-                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-                          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+                          return regeneratorRuntime.wrap(function _callee7$(_context7) {
                             while (1) {
-                              switch (_context4.prev = _context4.next) {
+                              switch (_context7.prev = _context7.next) {
                                 case 0:
                                   this.user = {
                                     id: -1,
                                     username: ''
                                   }; //Toast
 
-                                  _context4.next = 3;
+                                  _context7.next = 3;
                                   return this.toastS.createToastBottom("Tiempo de espera agotado... intentelo más tarde", true, 400, "danger");
 
                                 case 3:
-                                  _context4.next = 5;
+                                  _context7.next = 5;
                                   return this.loading.cancelLoading();
 
                                 case 5:
@@ -881,19 +1195,19 @@
 
                                 case 6:
                                 case "end":
-                                  return _context4.stop();
+                                  return _context7.stop();
                               }
                             }
-                          }, _callee4, this);
+                          }, _callee7, this);
                         }));
                       });
 
                     case 3:
                     case "end":
-                      return _context5.stop();
+                      return _context8.stop();
                   }
                 }
-              }, _callee5, this);
+              }, _callee8, this);
             }));
           }
         }, {
@@ -931,6 +1245,125 @@
         /*! ./login.page.scss */
         "./src/app/pages/login/login.page.scss"))["default"]]
       })], LoginPage);
+      /***/
+    },
+
+    /***/
+    "./src/app/pages/show-route/show-route.page.scss":
+    /*!*******************************************************!*\
+      !*** ./src/app/pages/show-route/show-route.page.scss ***!
+      \*******************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function srcAppPagesShowRouteShowRoutePageScss(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Nob3ctcm91dGUvc2hvdy1yb3V0ZS5wYWdlLnNjc3MifQ== */";
+      /***/
+    },
+
+    /***/
+    "./src/app/pages/show-route/show-route.page.ts":
+    /*!*****************************************************!*\
+      !*** ./src/app/pages/show-route/show-route.page.ts ***!
+      \*****************************************************/
+
+    /*! exports provided: ShowRoutePage */
+
+    /***/
+    function srcAppPagesShowRouteShowRoutePageTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "ShowRoutePage", function () {
+        return ShowRoutePage;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+      var ShowRoutePage = /*#__PURE__*/function () {
+        function ShowRoutePage(modalController) {
+          _classCallCheck(this, ShowRoutePage);
+
+          this.modalController = modalController;
+        }
+
+        _createClass(ShowRoutePage, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {
+            switch (this.route.waterLevel) {
+              case 1:
+                this.level = "Óptimo";
+                break;
+
+              case 2:
+                this.level = "Medio";
+                break;
+
+              case 3:
+                this.level = "Bajo";
+                break;
+
+              default:
+                this.level = "Sin datos...";
+                break;
+            }
+          }
+        }, {
+          key: "goBack",
+          value: function goBack() {
+            this.modalController.dismiss();
+          }
+        }]);
+
+        return ShowRoutePage;
+      }();
+
+      ShowRoutePage.ctorParameters = function () {
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+        }];
+      };
+
+      ShowRoutePage.propDecorators = {
+        route: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }]
+      };
+      ShowRoutePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-show-route',
+        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! raw-loader!./show-route.page.html */
+        "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/show-route/show-route.page.html"))["default"],
+        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
+        /*! ./show-route.page.scss */
+        "./src/app/pages/show-route/show-route.page.scss"))["default"]]
+      })], ShowRoutePage);
       /***/
     }
   }]);

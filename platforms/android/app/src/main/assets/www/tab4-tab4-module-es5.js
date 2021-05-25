@@ -134,11 +134,22 @@
             });
           }
         }, {
+          key: "getLikes",
+          value: function getLikes(id) {
+            var url = this.ip + '/route/likes';
+            return this.http.post(url, {
+              'id_route': id
+            }, {
+              'apikey': this.apiKey
+            });
+          }
+        }, {
           key: "getLike",
-          value: function getLike(id) {
-            var url = this.ip + '/photo/like';
-            return this.http.get(url, {
-              'id_photo': id
+          value: function getLike(id, id_user) {
+            var url = this.ip + '/route/user/like';
+            return this.http.post(url, {
+              'id_route': id,
+              'id_user': id_user
             }, {
               'apikey': this.apiKey
             });
@@ -217,10 +228,10 @@
           }
         }, {
           key: "addLike",
-          value: function addLike(idPhoto, idUser) {
-            var url = this.ip + '/photo/like';
+          value: function addLike(idRoute, idUser) {
+            var url = this.ip + '/route/like';
             return this.http.post(url, {
-              'id_photo': idPhoto,
+              'id_route': idRoute,
               'id_user': idUser
             }, {
               'apikey': this.apiKey
@@ -252,11 +263,12 @@
           }
         }, {
           key: "updateRoute",
-          value: function updateRoute(id, title) {
+          value: function updateRoute(id, title, level) {
             var url = this.ip + '/route/update';
             return this.http.put(url, {
               'id': id,
-              'title': title
+              'title': title,
+              'level': level
             }, {
               'apikey': this.apiKey
             });
@@ -308,10 +320,10 @@
           }
         }, {
           key: "deleteLike",
-          value: function deleteLike(id_photo, id_user) {
-            var url = this.ip + '/photo/like';
+          value: function deleteLike(id_route, id_user) {
+            var url = this.ip + '/route/like';
             return this.http["delete"](url, {
-              'id_photo': id_photo,
+              'id_route': id_route,
               'id_user': id_user
             }, {
               'apikey': this.apiKey

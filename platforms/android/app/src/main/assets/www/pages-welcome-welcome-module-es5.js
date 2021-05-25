@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-content> \n<div class=\"centerText\"><h2>BIENVENIDOS</h2></div>\n<div class=\"changeButton\">\n  <ion-button shape=\"round\" class=\"background-button\" (click)=\"this.login()\">Inicia Sesión<ion-icon name=\"log-in-outline\"></ion-icon></ion-button></div>\n  <div class=\"changeButton\"><ion-button shape=\"round\" class=\"color-register\" (click)=\"this.register()\">¿Eres nuevo? ¡Registrate! <ion-icon name=\"person-add-sharp\"></ion-icon></ion-button>\n</div>\n<ion-img src=\"assets/icon/pantanoapp.png\"></ion-img>\n</ion-content>\n";
+      __webpack_exports__["default"] = "<ion-content> \n<div class=\"centerText\"><h2 class=\"textColor\">BIENVENIDOS</h2></div>\n<div class=\"changeButton\">\n  <ion-button shape=\"round\" class=\"background-button\" (click)=\"this.login()\">Inicia Sesión<ion-icon name=\"log-in-outline\"></ion-icon></ion-button></div>\n  <div class=\"changeButton\"><ion-button shape=\"round\" class=\"color-register\" (click)=\"this.register()\">¿Eres nuevo? ¡Registrate! <ion-icon name=\"person-add-sharp\"></ion-icon></ion-button>\n</div>\n</ion-content>\n<footer><ion-img src=\"assets/icon/pantanoapp.png\"></ion-img></footer>\n\n\n";
       /***/
     },
 

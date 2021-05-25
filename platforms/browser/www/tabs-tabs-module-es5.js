@@ -74,7 +74,7 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() | tab1-tab1-module */
-            [__webpack_require__.e("default~tab1-tab1-module~tab3-tab3-module"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
+            [__webpack_require__.e("default~tab1-tab1-module~tab3-tab3-module"), __webpack_require__.e("common"), __webpack_require__.e("tab1-tab1-module")]).then(__webpack_require__.bind(null,
             /*! ../tab1/tab1.module */
             "./src/app/tab1/tab1.module.ts")).then(function (m) {
               return m.Tab1PageModule;

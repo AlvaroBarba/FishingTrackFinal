@@ -54,4 +54,8 @@ export class AuthService implements CanActivate {
   getUser() {
     return this.user;
   }
+
+  public async saveUser(User){
+    this.user = await this.storage.setItem("user", User);
+  }
 }

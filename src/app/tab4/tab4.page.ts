@@ -5,6 +5,8 @@ import { AuthService } from '../services/auth.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { HttpService } from '../services/http.service';
 import { ToastService } from '../services/toast.service';
+import { LoadingService } from '../services/loading.service';
+import { HTTP } from '@ionic-native/http/ngx';
 
 
 @Component({
@@ -17,21 +19,17 @@ export class Tab4Page implements OnInit {
   usuario: User;
   nRoutes: number;
   myphoto: any;
-
-  croppedImagepath = "";
+  userAvatar:any;
   isLoading = false;
-
-  imagePickerOptions = {
-    maximumImagesCount: 1,
-    quality: 50
-  };
 
   constructor(
     private toast: ToastService,
     private authS: AuthService,
     private router: Router,
+    private loading: LoadingService,
     private camera: Camera,
-    private http: HttpService) {
+    private http: HttpService,
+    private Http: HTTP) {
     this.usuario = authS.getUser();
   }
 
@@ -65,60 +63,36 @@ export class Tab4Page implements OnInit {
     if (this.usuario.avatar == undefined || this.usuario.avatar == "") {
       this.myphoto = "assets/icon/usuario.svg";
     } else {
-      this.myphoto = this.usuario.avatar;
+      this.myphoto = "https://fishingtrack.duckdns.org:3022/avatar/"+this.usuario.avatar;
     }
   }
 
-  public newAvatar(photo) {
-    this.http.addAvatar(photo, this.usuario.id).then((data) => {
-      if (data) {
-        let dat = JSON.parse(data.data);
-        if (dat.status != "0") {
-          this.toast.createToastBottom("Error cambiando el avatar", true, 400, "warning");
-        }
+
+  public async onFileSelected($event) {
+    this.userAvatar = $event.target.files[0];
+    await this.updateUserAvatar();
+  }
+
+  public async updateUserAvatar() {
+    let formData: FormData = new FormData();
+    formData.append('avatar',this.userAvatar,this.userAvatar.filename);
+    await this.loading.createLoading();
+    this.Http.setDataSerializer('multipart');
+    this.http.avatar(this.authS.getUser().id, formData).then(async (data) => {
+      let dat = JSON.parse(data.data);
+      if(dat.status == "1"){
+        this.usuario.avatar = dat.result
+        await this.authS.saveUser(this.usuario);
+        await this.toast.createToastBottom("Se ha actualizado la foto de perfil",true, 350 ,"success");
+      } else {
+        await this.toast.createToastBottom("No se ha podido actualizar la foto", true, 350,"danger");
       }
-    })
-  }
-
-  getImage(): Promise<void> {
-    const options: CameraOptions = {
-      quality: 10,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum: false
-    }
-    return this.camera.getPicture(options).then((imageData) => {
-      this.myphoto = 'data:image/jpeg;base64,' + imageData;
-      this.newAvatar(this.myphoto);
-    }, (err) => {
-      console.log(err)
+      await this.loading.cancelLoading();
+    }).catch(async (err) => {
+      console.log(err);
+      await this.loading.cancelLoading();
     });
-  }
-
-  public newPhoto(photo) {
-    this.http.addPhoto(this.usuario.id, "titulo", "prueba", photo).then((data) => {
-      if (data) {
-        let dat = JSON.parse(data.data);
-        if (dat.status != "0") {
-          this.toast.createToastBottom("Error subiendo la foto...", true, 400, "warning");
-        }
-      }
-    })
-  }
-
-  insertImagen(): Promise<void> {
-    const options: CameraOptions = {
-      quality: 10,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum: false
-    }
-    return this.camera.getPicture(options).then((imageData) => {
-      this.myphoto = 'data:image/jpeg;base64,' + imageData;
-      this.newPhoto(this.myphoto);
-    }, (err) => {
-      console.log(err)
-    });
+    this.Http.setDataSerializer('urlencoded');
   }
 
 }
