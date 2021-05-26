@@ -37,7 +37,7 @@
         </ion-button>
       </ion-buttons>
       <ion-avatar>
-        <img src="{{User.avatar}}">
+        <img src="{{User.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
       </ion-avatar>
       <ion-label>{{User.username}}</ion-label>
     </ion-item>
@@ -50,7 +50,7 @@
       <ion-icon (click)="this.acceptFriend(User.id)" slot="end" src="assets/icon/accept.svg"></ion-icon>
       <ion-icon (click)="this.rejectFriend(User.id)" slot="end" src="assets/icon/cancel.svg"></ion-icon>
         <ion-avatar>
-          <img src="{{User.avatar}}">
+          <img src="{{User.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
         </ion-avatar>
         <ion-label>{{User.username}}</ion-label>
     </ion-item>
@@ -66,7 +66,7 @@
     <ion-item *ngFor="let User of this.friendList; let i=index">
       <ion-icon (click)="this.deleteFriend(User.id)" slot="end" src="assets/icon/delete-friend.svg"></ion-icon>
       <ion-avatar>
-        <img src="{{User.avatar}}">
+        <img src="{{User.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
       </ion-avatar>
       <ion-label>{{User.username}}</ion-label>
     </ion-item>

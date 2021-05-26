@@ -15,13 +15,20 @@
   </ion-toolbar>
   <ion-card color="light">
     <div class="img-wrapper">
-       <img src="{{this.myphoto}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
+      <img src="{{this.usuario.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
     </div>
     <ion-card-content class="ion-text-center">
       <h2 style="margin-top: 5%;" class="textColor">{{this.usuario.username}}</h2>
     </ion-card-content>
   </ion-card>
 
-  <div>
-    <input type="file" accept="image/*" id="botonFoto" (change)="onFileSelected($event)">
+
+  <div style="text-align: center; border: none; margin-bottom: 5%;">
+    <ion-label>Cambiar avatar</ion-label>
+  </div>
+  <div style="text-align: center;">
+    <ion-button class="background-button">
+      <ion-icon name="image"></ion-icon>
+      <input type="file" accept="image/*" id="botonAvatar" (change)="onFileSelected($event)">
+    </ion-button>
   </div>

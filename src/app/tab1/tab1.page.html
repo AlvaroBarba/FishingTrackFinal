@@ -16,7 +16,7 @@
     <ion-list>
       <ion-item>
         <ion-avatar slot="start">
-          <img src="{{this.Route.avatar}}">
+          <img src="{{this.Route.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
         </ion-avatar>
         <ion-label>{{this.Route.username}}</ion-label>
         <ion-buttons>
@@ -40,7 +40,7 @@
     <ion-list>
       <ion-item>
         <ion-avatar slot="start">
-          <img src="{{this.you.avatar}}">
+          <img src="{{this.you.avatar}}" onError="this.onError=null;this.src='assets/icon/usuario.svg';">
         </ion-avatar>
         <ion-label>{{this.you.username}}</ion-label>
         <ion-buttons>
