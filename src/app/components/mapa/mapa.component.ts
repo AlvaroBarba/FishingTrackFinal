@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Draggable, GeoJSON,geoJSON, icon, LatLng, Map, Marker, marker, Point, tileLayer } from 'leaflet';
+import { Draggable, GeoJSON, Map, tileLayer } from 'leaflet';
 
 @Component({
   selector: 'app-mapa',

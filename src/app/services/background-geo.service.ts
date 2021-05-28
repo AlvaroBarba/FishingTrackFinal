@@ -194,7 +194,6 @@ export class BackgroundGeoService {
   }
 
   public saveRoute(title, level) {
-    console.log("Me cagao 2 " + this.polyline.getLatLngs());
     let input = this.polyline.toGeoJSON();
     this.http.addRoute(this.authS.getUser().id, title, input, level).then((data) => {
       if (data) {

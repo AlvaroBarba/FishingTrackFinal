@@ -68,7 +68,6 @@ export class LoginPage implements OnInit {
       //Toast
       await this.toastS.createToastBottom("Tiempo de espera agotado... intentelo más tarde", true, 400, "danger");
       await this.loading.cancelLoading();
-      console.log(err);
     })
 
   }

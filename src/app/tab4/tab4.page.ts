@@ -89,7 +89,6 @@ export class Tab4Page implements OnInit {
       }
       await this.loading.cancelLoading();
     }).catch(async (err) => {
-      console.log(err);
       await this.loading.cancelLoading();
     });
     this.Http.setDataSerializer('urlencoded');

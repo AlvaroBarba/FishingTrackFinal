@@ -46,11 +46,7 @@ export class Tab1Page {
   }
 
   public changeIcon(){
-    if(this.flagLike){
-      this.flagLike = false;
-    }else{
-      this.flagLike = true;
-    }
+    this.toast.createToastTop("Disponible proximamente!!", true, 350, "primary");
   }
 
   public pestanaParaTi() {
@@ -215,7 +211,7 @@ export class Tab1Page {
       if(data){
         let dat = JSON.parse(data.data);
         if(dat.status = "0"){
-          this.toast.createToastBottom("Ruta borrada con éxito", true, 350, "info");
+          this.toast.createToastBottom("Ruta borrada con éxito", true, 350, "primary");
         }else{
           this.toast.createToastBottom("Error borrando ruta", true, 350, "warning");
         }
