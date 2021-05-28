@@ -703,6 +703,28 @@
           value: function getUser() {
             return this.user;
           }
+        }, {
+          key: "saveUser",
+          value: function saveUser(User) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.storage.setItem("user", User);
+
+                    case 2:
+                      this.user = _context3.sent;
+
+                    case 3:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
+          }
         }]);
 
         return AuthService;

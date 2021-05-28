@@ -349,6 +349,14 @@
             }, {
               'apikey': this.apiKey
             });
+          }
+        }, {
+          key: "avatar",
+          value: function avatar(id_user, _avatar) {
+            var url = this.ip + '/user/' + id_user + "/avatar";
+            return this.http.post(url, _avatar, {
+              'apikey': this.apiKey
+            });
           } //PUT methods
 
         }, {

@@ -26,8 +26,8 @@
         </ion-buttons>
       </ion-item>
     </ion-list>
-    <div (click)="this.goShowRoute(Route)">
-      <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
+    <div>
+      <ion-card-title (click)="this.goShowRoute(Route)" style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
       <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
         style="position: absolute; height: 50%; width: 100%;">
       </app-mapa>
@@ -57,8 +57,8 @@
         </ion-buttons>
       </ion-item>
     </ion-list>
-    <div (click)="this.goShowRoute(Route)">
-      <ion-card-title style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
+    <div>
+      <ion-card-title (click)="this.goShowRoute(Route)" style="margin-left: 5%; margin-bottom: 3.5%;"> {{Route.title}}</ion-card-title>
       <app-mapa [attr.id]="i" route="{{i}}" line="{{this.Route.coordinates}}" title="this.title"
         style="position: absolute; height: 50%; width: 100%;">
       </app-mapa>

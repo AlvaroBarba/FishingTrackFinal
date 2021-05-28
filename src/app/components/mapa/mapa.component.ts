@@ -50,7 +50,7 @@ export class MapaComponent implements OnInit {
       features: [this.line]
     }as any);
     });
-    this.miMapa.setZoom(17);
+    this.miMapa.setZoom(13);
     myroute.setStyle({
       color: "red",
       opacity: 60

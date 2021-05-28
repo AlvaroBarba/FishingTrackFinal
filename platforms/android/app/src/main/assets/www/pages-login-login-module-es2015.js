@@ -168,6 +168,10 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/like';
         return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
     }
+    avatar(id_user, avatar) {
+        let url = this.ip + '/user/' + id_user + "/avatar";
+        return this.http.post(url, avatar, { 'apikey': this.apiKey });
+    }
     //PUT methods
     updateUser(password, username) {
         let url = this.ip + '/user/profile/update';

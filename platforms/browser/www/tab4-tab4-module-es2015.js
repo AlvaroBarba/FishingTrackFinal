@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n        <ion-menu-button menu=\"menu-main\"></ion-menu-button>\n    </ion-buttons>\n    <ion-buttons slot=\"end\">\n    <ion-button (click)=\"this.logout()\"><ion-icon name=\"log-out-outline\"></ion-icon></ion-button>\n  </ion-buttons>\n    \n    <ion-title class=\"textColor\">\n      Perfil\n    </ion-title>\n  </ion-toolbar>\n  <ion-card color=\"light\">\n      <div class=\"img-wrapper\">\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\n          <img src=\"{{this.myphoto}}\">\n        </ion-avatar>\n      </div>\n    <ion-card-content class=\"ion-text-center\">\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\n      <ion-text color=\"medium\">\n      </ion-text>\n    </ion-card-content>\n  </ion-card>\n  <ion-list>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Fotos</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Rutas</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Todo</ion-label>\n    </ion-item>\n  </ion-list>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button menu=\"menu-main\"></ion-menu-button>\n    </ion-buttons>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"this.logout()\">\n        <ion-icon name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-title class=\"textColor\">\n      Perfil\n    </ion-title>\n  </ion-toolbar>\n  <ion-card color=\"light\">\n    <div class=\"img-wrapper\">\n      <img src=\"{{this.usuario.avatar}}\" onError=\"this.onError=null;this.src='assets/icon/usuario.svg';\">\n    </div>\n    <ion-card-content class=\"ion-text-center\">\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\n    </ion-card-content>\n  </ion-card>\n\n\n  <div style=\"text-align: center; border: none; margin-bottom: 5%;\">\n    <ion-label>Cambiar avatar</ion-label>\n  </div>\n  <div style=\"text-align: center;\">\n    <ion-button class=\"background-button\">\n      <ion-icon name=\"image\"></ion-icon>\n      <input type=\"file\" accept=\"image/*\" id=\"botonAvatar\" (change)=\"onFileSelected($event)\">\n    </ion-button>\n  </div>");
 
 /***/ }),
 
@@ -101,6 +101,10 @@ let HttpService = class HttpService {
         let url = this.ip + '/route/like';
         return this.http.post(url, { 'id_route': idRoute, 'id_user': idUser }, { 'apikey': this.apiKey });
     }
+    avatar(id_user, avatar) {
+        let url = this.ip + '/user/' + id_user + "/avatar";
+        return this.http.post(url, avatar, { 'apikey': this.apiKey });
+    }
     //PUT methods
     updateUser(password, username) {
         let url = this.ip + '/user/profile/update';
@@ -148,6 +152,65 @@ HttpService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         providedIn: 'root'
     })
 ], HttpService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/loading.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/loading.service.ts ***!
+  \*********************************************/
+/*! exports provided: LoadingService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingService", function() { return LoadingService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+
+
+let LoadingService = class LoadingService {
+    constructor(loadingC) {
+        this.loadingC = loadingC;
+    }
+    createLoadingMsg(msg) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const loading = yield this.loadingC.create({
+                message: msg,
+                spinner: 'dots',
+                mode: 'ios',
+                translucent: true
+            });
+            yield loading.present();
+            const { role, data } = yield loading.onDidDismiss();
+        });
+    }
+    createLoading() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const loading = yield this.loadingC.create({
+                spinner: 'dots',
+                mode: 'ios',
+                translucent: true
+            });
+            yield loading.present();
+        });
+    }
+    cancelLoading() {
+        this.loadingC.dismiss();
+    }
+};
+LoadingService.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+];
+LoadingService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], LoadingService);
 
 
 
@@ -335,6 +398,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/__ivy_ngcc__/ngx/index.js");
 /* harmony import */ var _services_http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/http.service */ "./src/app/services/http.service.ts");
 /* harmony import */ var _services_toast_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/toast.service */ "./src/app/services/toast.service.ts");
+/* harmony import */ var _services_loading_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/loading.service */ "./src/app/services/loading.service.ts");
+/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/__ivy_ngcc__/ngx/index.js");
+
+
 
 
 
@@ -343,18 +410,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let Tab4Page = class Tab4Page {
-    constructor(toast, authS, router, camera, http) {
+    constructor(toast, authS, router, loading, camera, http, Http) {
         this.toast = toast;
         this.authS = authS;
         this.router = router;
+        this.loading = loading;
         this.camera = camera;
         this.http = http;
-        this.croppedImagepath = "";
+        this.Http = Http;
         this.isLoading = false;
-        this.imagePickerOptions = {
-            maximumImagesCount: 1,
-            quality: 50
-        };
         this.usuario = authS.getUser();
     }
     ngOnInit() {
@@ -387,55 +451,37 @@ let Tab4Page = class Tab4Page {
             this.myphoto = "assets/icon/usuario.svg";
         }
         else {
-            this.myphoto = this.usuario.avatar;
+            this.myphoto = "https://fishingtrack.duckdns.org:3022/avatar/" + this.usuario.avatar;
         }
     }
-    newAvatar(photo) {
-        this.http.addAvatar(photo, this.usuario.id).then((data) => {
-            if (data) {
+    onFileSelected($event) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.userAvatar = $event.target.files[0];
+            yield this.updateUserAvatar();
+        });
+    }
+    updateUserAvatar() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            let formData = new FormData();
+            formData.append('avatar', this.userAvatar, this.userAvatar.filename);
+            yield this.loading.createLoading();
+            this.Http.setDataSerializer('multipart');
+            this.http.avatar(this.authS.getUser().id, formData).then((data) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                 let dat = JSON.parse(data.data);
-                if (dat.status != "0") {
-                    this.toast.createToastBottom("Error cambiando el avatar", true, 400, "warning");
+                if (dat.status == "1") {
+                    this.usuario.avatar = dat.result;
+                    yield this.authS.saveUser(this.usuario);
+                    yield this.toast.createToastBottom("Se ha actualizado la foto de perfil", true, 350, "success");
                 }
-            }
-        });
-    }
-    getImage() {
-        const options = {
-            quality: 10,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-            saveToPhotoAlbum: false
-        };
-        return this.camera.getPicture(options).then((imageData) => {
-            this.myphoto = 'data:image/jpeg;base64,' + imageData;
-            this.newAvatar(this.myphoto);
-        }, (err) => {
-            console.log(err);
-        });
-    }
-    newPhoto(photo) {
-        this.http.addPhoto(this.usuario.id, "titulo", "prueba", photo).then((data) => {
-            if (data) {
-                let dat = JSON.parse(data.data);
-                if (dat.status != "0") {
-                    this.toast.createToastBottom("Error subiendo la foto...", true, 400, "warning");
+                else {
+                    yield this.toast.createToastBottom("No se ha podido actualizar la foto", true, 350, "danger");
                 }
-            }
-        });
-    }
-    insertImagen() {
-        const options = {
-            quality: 10,
-            destinationType: this.camera.DestinationType.DATA_URL,
-            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-            saveToPhotoAlbum: false
-        };
-        return this.camera.getPicture(options).then((imageData) => {
-            this.myphoto = 'data:image/jpeg;base64,' + imageData;
-            this.newPhoto(this.myphoto);
-        }, (err) => {
-            console.log(err);
+                yield this.loading.cancelLoading();
+            })).catch((err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+                console.log(err);
+                yield this.loading.cancelLoading();
+            }));
+            this.Http.setDataSerializer('urlencoded');
         });
     }
 };
@@ -443,8 +489,10 @@ Tab4Page.ctorParameters = () => [
     { type: _services_toast_service__WEBPACK_IMPORTED_MODULE_6__["ToastService"] },
     { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _services_loading_service__WEBPACK_IMPORTED_MODULE_7__["LoadingService"] },
     { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"] },
-    { type: _services_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"] }
+    { type: _services_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"] },
+    { type: _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_8__["HTTP"] }
 ];
 Tab4Page = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

@@ -561,6 +561,11 @@ let AuthService = class AuthService {
     getUser() {
         return this.user;
     }
+    saveUser(User) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.user = yield this.storage.setItem("user", User);
+        });
+    }
 };
 AuthService.ctorParameters = () => [
     { type: _ionic_native_native_storage_ngx__WEBPACK_IMPORTED_MODULE_3__["NativeStorage"] },

@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n        <ion-menu-button menu=\"menu-main\"></ion-menu-button>\n    </ion-buttons>\n    <ion-buttons slot=\"end\">\n    <ion-button (click)=\"this.logout()\"><ion-icon name=\"log-out-outline\"></ion-icon></ion-button>\n  </ion-buttons>\n    \n    <ion-title class=\"textColor\">\n      Perfil\n    </ion-title>\n  </ion-toolbar>\n  <ion-card color=\"light\">\n      <div class=\"img-wrapper\">\n        <ion-avatar slot=\"start\" (click)=\"this.getImage()\">\n          <img src=\"{{this.myphoto}}\">\n        </ion-avatar>\n      </div>\n    <ion-card-content class=\"ion-text-center\">\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\n      <ion-text color=\"medium\">\n      </ion-text>\n    </ion-card-content>\n  </ion-card>\n  <ion-list>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Fotos</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Rutas</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-icon slot=\"end\" name=\"chevron-forward-sharp\"></ion-icon>\n      <ion-label>Todo</ion-label>\n    </ion-item>\n  </ion-list>";
+      __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar class=\"background-toolbar\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button menu=\"menu-main\"></ion-menu-button>\n    </ion-buttons>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"this.logout()\">\n        <ion-icon name=\"log-out-outline\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-title class=\"textColor\">\n      Perfil\n    </ion-title>\n  </ion-toolbar>\n  <ion-card color=\"light\">\n    <div class=\"img-wrapper\">\n      <img src=\"{{this.usuario.avatar}}\" onError=\"this.onError=null;this.src='assets/icon/usuario.svg';\">\n    </div>\n    <ion-card-content class=\"ion-text-center\">\n      <h2 style=\"margin-top: 5%;\" class=\"textColor\">{{this.usuario.username}}</h2>\n    </ion-card-content>\n  </ion-card>\n\n\n  <div style=\"text-align: center; border: none; margin-bottom: 5%;\">\n    <ion-label>Cambiar avatar</ion-label>\n  </div>\n  <div style=\"text-align: center;\">\n    <ion-button class=\"background-button\">\n      <ion-icon name=\"image\"></ion-icon>\n      <input type=\"file\" accept=\"image/*\" id=\"botonAvatar\" (change)=\"onFileSelected($event)\">\n    </ion-button>\n  </div>";
       /***/
     },
 
@@ -236,6 +236,14 @@
             }, {
               'apikey': this.apiKey
             });
+          }
+        }, {
+          key: "avatar",
+          value: function avatar(id_user, _avatar) {
+            var url = this.ip + '/user/' + id_user + "/avatar";
+            return this.http.post(url, _avatar, {
+              'apikey': this.apiKey
+            });
           } //PUT methods
 
         }, {
@@ -347,6 +355,142 @@
     },
 
     /***/
+    "./src/app/services/loading.service.ts":
+    /*!*********************************************!*\
+      !*** ./src/app/services/loading.service.ts ***!
+      \*********************************************/
+
+    /*! exports provided: LoadingService */
+
+    /***/
+    function srcAppServicesLoadingServiceTs(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "LoadingService", function () {
+        return LoadingService;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "./node_modules/tslib/tslib.es6.js");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! @angular/core */
+      "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @ionic/angular */
+      "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
+
+      var LoadingService = /*#__PURE__*/function () {
+        function LoadingService(loadingC) {
+          _classCallCheck(this, LoadingService);
+
+          this.loadingC = loadingC;
+        }
+
+        _createClass(LoadingService, [{
+          key: "createLoadingMsg",
+          value: function createLoadingMsg(msg) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var loading, _yield$loading$onDidD, role, data;
+
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return this.loadingC.create({
+                        message: msg,
+                        spinner: 'dots',
+                        mode: 'ios',
+                        translucent: true
+                      });
+
+                    case 2:
+                      loading = _context.sent;
+                      _context.next = 5;
+                      return loading.present();
+
+                    case 5:
+                      _context.next = 7;
+                      return loading.onDidDismiss();
+
+                    case 7:
+                      _yield$loading$onDidD = _context.sent;
+                      role = _yield$loading$onDidD.role;
+                      data = _yield$loading$onDidD.data;
+
+                    case 10:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "createLoading",
+          value: function createLoading() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var loading;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return this.loadingC.create({
+                        spinner: 'dots',
+                        mode: 'ios',
+                        translucent: true
+                      });
+
+                    case 2:
+                      loading = _context2.sent;
+                      _context2.next = 5;
+                      return loading.present();
+
+                    case 5:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "cancelLoading",
+          value: function cancelLoading() {
+            this.loadingC.dismiss();
+          }
+        }]);
+
+        return LoadingService;
+      }();
+
+      LoadingService.ctorParameters = function () {
+        return [{
+          type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]
+        }];
+      };
+
+      LoadingService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+      })], LoadingService);
+      /***/
+    },
+
+    /***/
     "./src/app/services/toast.service.ts":
     /*!*******************************************!*\
       !*** ./src/app/services/toast.service.ts ***!
@@ -394,70 +538,6 @@
         _createClass(ToastService, [{
           key: "createToastTop",
           value: function createToastTop(msg, animation, time, color) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-              var cToast;
-              return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      _context.next = 2;
-                      return this.toast.create({
-                        message: msg,
-                        animated: animation,
-                        duration: time,
-                        position: "top",
-                        color: color,
-                        mode: "ios"
-                      });
-
-                    case 2:
-                      cToast = _context.sent;
-                      _context.next = 5;
-                      return cToast.present();
-
-                    case 5:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _callee, this);
-            }));
-          }
-        }, {
-          key: "createToastBottom",
-          value: function createToastBottom(msg, animation, time, color) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              var cToast;
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      _context2.next = 2;
-                      return this.toast.create({
-                        message: msg,
-                        animated: animation,
-                        duration: time,
-                        position: 'bottom',
-                        color: color,
-                        mode: "ios"
-                      });
-
-                    case 2:
-                      cToast = _context2.sent;
-                      _context2.next = 5;
-                      return cToast.present();
-
-                    case 5:
-                    case "end":
-                      return _context2.stop();
-                  }
-                }
-              }, _callee2, this);
-            }));
-          }
-        }, {
-          key: "createToastMiddle",
-          value: function createToastMiddle(msg, animation, time, color) {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
               var cToast;
               return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -469,7 +549,7 @@
                         message: msg,
                         animated: animation,
                         duration: time,
-                        position: 'middle',
+                        position: "top",
                         color: color,
                         mode: "ios"
                       });
@@ -485,6 +565,70 @@
                   }
                 }
               }, _callee3, this);
+            }));
+          }
+        }, {
+          key: "createToastBottom",
+          value: function createToastBottom(msg, animation, time, color) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var cToast;
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                  switch (_context4.prev = _context4.next) {
+                    case 0:
+                      _context4.next = 2;
+                      return this.toast.create({
+                        message: msg,
+                        animated: animation,
+                        duration: time,
+                        position: 'bottom',
+                        color: color,
+                        mode: "ios"
+                      });
+
+                    case 2:
+                      cToast = _context4.sent;
+                      _context4.next = 5;
+                      return cToast.present();
+
+                    case 5:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }
+              }, _callee4, this);
+            }));
+          }
+        }, {
+          key: "createToastMiddle",
+          value: function createToastMiddle(msg, animation, time, color) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var cToast;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return this.toast.create({
+                        message: msg,
+                        animated: animation,
+                        duration: time,
+                        position: 'middle',
+                        color: color,
+                        mode: "ios"
+                      });
+
+                    case 2:
+                      cToast = _context5.sent;
+                      _context5.next = 5;
+                      return cToast.present();
+
+                    case 5:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, this);
             }));
           }
         }]);
@@ -718,22 +862,31 @@
       var _services_toast_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ../services/toast.service */
       "./src/app/services/toast.service.ts");
+      /* harmony import */
+
+
+      var _services_loading_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! ../services/loading.service */
+      "./src/app/services/loading.service.ts");
+      /* harmony import */
+
+
+      var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! @ionic-native/http/ngx */
+      "./node_modules/@ionic-native/http/__ivy_ngcc__/ngx/index.js");
 
       var Tab4Page = /*#__PURE__*/function () {
-        function Tab4Page(toast, authS, router, camera, http) {
+        function Tab4Page(toast, authS, router, loading, camera, http, Http) {
           _classCallCheck(this, Tab4Page);
 
           this.toast = toast;
           this.authS = authS;
           this.router = router;
+          this.loading = loading;
           this.camera = camera;
           this.http = http;
-          this.croppedImagepath = "";
+          this.Http = Http;
           this.isLoading = false;
-          this.imagePickerOptions = {
-            maximumImagesCount: 1,
-            quality: 50
-          };
           this.usuario = authS.getUser();
         }
 
@@ -764,12 +917,12 @@
         }, {
           key: "logout",
           value: function logout() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+              return regeneratorRuntime.wrap(function _callee6$(_context6) {
                 while (1) {
-                  switch (_context4.prev = _context4.next) {
+                  switch (_context6.prev = _context6.next) {
                     case 0:
-                      _context4.next = 2;
+                      _context6.next = 2;
                       return this.authS.logout();
 
                     case 2:
@@ -779,10 +932,10 @@
 
                     case 3:
                     case "end":
-                      return _context4.stop();
+                      return _context6.stop();
                   }
                 }
-              }, _callee4, this);
+              }, _callee6, this);
             }));
           }
         }, {
@@ -791,76 +944,115 @@
             if (this.usuario.avatar == undefined || this.usuario.avatar == "") {
               this.myphoto = "assets/icon/usuario.svg";
             } else {
-              this.myphoto = this.usuario.avatar;
+              this.myphoto = "https://fishingtrack.duckdns.org:3022/avatar/" + this.usuario.avatar;
             }
           }
         }, {
-          key: "newAvatar",
-          value: function newAvatar(photo) {
-            var _this2 = this;
+          key: "onFileSelected",
+          value: function onFileSelected($event) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+              return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                while (1) {
+                  switch (_context7.prev = _context7.next) {
+                    case 0:
+                      this.userAvatar = $event.target.files[0];
+                      _context7.next = 3;
+                      return this.updateUserAvatar();
 
-            this.http.addAvatar(photo, this.usuario.id).then(function (data) {
-              if (data) {
-                var dat = JSON.parse(data.data);
-
-                if (dat.status != "0") {
-                  _this2.toast.createToastBottom("Error cambiando el avatar", true, 400, "warning");
+                    case 3:
+                    case "end":
+                      return _context7.stop();
+                  }
                 }
-              }
-            });
+              }, _callee7, this);
+            }));
           }
         }, {
-          key: "getImage",
-          value: function getImage() {
-            var _this3 = this;
+          key: "updateUserAvatar",
+          value: function updateUserAvatar() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+              var _this2 = this;
 
-            var options = {
-              quality: 10,
-              destinationType: this.camera.DestinationType.DATA_URL,
-              sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-              saveToPhotoAlbum: false
-            };
-            return this.camera.getPicture(options).then(function (imageData) {
-              _this3.myphoto = 'data:image/jpeg;base64,' + imageData;
+              var formData;
+              return regeneratorRuntime.wrap(function _callee10$(_context10) {
+                while (1) {
+                  switch (_context10.prev = _context10.next) {
+                    case 0:
+                      formData = new FormData();
+                      formData.append('avatar', this.userAvatar, this.userAvatar.filename);
+                      _context10.next = 4;
+                      return this.loading.createLoading();
 
-              _this3.newAvatar(_this3.myphoto);
-            }, function (err) {
-              console.log(err);
-            });
-          }
-        }, {
-          key: "newPhoto",
-          value: function newPhoto(photo) {
-            var _this4 = this;
+                    case 4:
+                      this.Http.setDataSerializer('multipart');
+                      this.http.avatar(this.authS.getUser().id, formData).then(function (data) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+                          var dat;
+                          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+                            while (1) {
+                              switch (_context8.prev = _context8.next) {
+                                case 0:
+                                  dat = JSON.parse(data.data);
 
-            this.http.addPhoto(this.usuario.id, "titulo", "prueba", photo).then(function (data) {
-              if (data) {
-                var dat = JSON.parse(data.data);
+                                  if (!(dat.status == "1")) {
+                                    _context8.next = 9;
+                                    break;
+                                  }
 
-                if (dat.status != "0") {
-                  _this4.toast.createToastBottom("Error subiendo la foto...", true, 400, "warning");
+                                  this.usuario.avatar = dat.result;
+                                  _context8.next = 5;
+                                  return this.authS.saveUser(this.usuario);
+
+                                case 5:
+                                  _context8.next = 7;
+                                  return this.toast.createToastBottom("Se ha actualizado la foto de perfil", true, 350, "success");
+
+                                case 7:
+                                  _context8.next = 11;
+                                  break;
+
+                                case 9:
+                                  _context8.next = 11;
+                                  return this.toast.createToastBottom("No se ha podido actualizar la foto", true, 350, "danger");
+
+                                case 11:
+                                  _context8.next = 13;
+                                  return this.loading.cancelLoading();
+
+                                case 13:
+                                case "end":
+                                  return _context8.stop();
+                              }
+                            }
+                          }, _callee8, this);
+                        }));
+                      })["catch"](function (err) {
+                        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+                          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+                            while (1) {
+                              switch (_context9.prev = _context9.next) {
+                                case 0:
+                                  console.log(err);
+                                  _context9.next = 3;
+                                  return this.loading.cancelLoading();
+
+                                case 3:
+                                case "end":
+                                  return _context9.stop();
+                              }
+                            }
+                          }, _callee9, this);
+                        }));
+                      });
+                      this.Http.setDataSerializer('urlencoded');
+
+                    case 7:
+                    case "end":
+                      return _context10.stop();
+                  }
                 }
-              }
-            });
-          }
-        }, {
-          key: "insertImagen",
-          value: function insertImagen() {
-            var _this5 = this;
-
-            var options = {
-              quality: 10,
-              destinationType: this.camera.DestinationType.DATA_URL,
-              sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-              saveToPhotoAlbum: false
-            };
-            return this.camera.getPicture(options).then(function (imageData) {
-              _this5.myphoto = 'data:image/jpeg;base64,' + imageData;
-
-              _this5.newPhoto(_this5.myphoto);
-            }, function (err) {
-              console.log(err);
-            });
+              }, _callee10, this);
+            }));
           }
         }]);
 
@@ -875,9 +1067,13 @@
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
         }, {
+          type: _services_loading_service__WEBPACK_IMPORTED_MODULE_7__["LoadingService"]
+        }, {
           type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_4__["Camera"]
         }, {
           type: _services_http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]
+        }, {
+          type: _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_8__["HTTP"]
         }];
       };
 
