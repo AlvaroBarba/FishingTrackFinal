@@ -58,6 +58,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.ionic.FishingTrack"
+    },
+    "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "io.ionic.FishingTrack"
     }
   },
   "dependent_plugins": {
@@ -66,6 +69,9 @@
     },
     "cordova-plugin-geolocation": {
       "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "io.ionic.FishingTrack"
+    },
+    "card.io.cordova.mobilesdk": {
       "PACKAGE_NAME": "io.ionic.FishingTrack"
     }
   }

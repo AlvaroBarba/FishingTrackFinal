@@ -425,6 +425,22 @@ module.exports = [
         "id": "cordova-plugin-inappbrowser.InAppBrowserProxy",
         "pluginId": "cordova-plugin-inappbrowser",
         "runs": true
+    },
+    {
+        "file": "plugins/card.io.cordova.mobilesdk/www/cdv-plugin-card-io.js",
+        "id": "card.io.cordova.mobilesdk.CardIO",
+        "pluginId": "card.io.cordova.mobilesdk",
+        "clobbers": [
+            "CardIO"
+        ]
+    },
+    {
+        "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
+        "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
+        "pluginId": "com.paypal.cordova.mobilesdk",
+        "clobbers": [
+            "PayPalMobile"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -445,7 +461,9 @@ module.exports.metadata =
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-background-geolocation": "1.0.6",
     "cordova-plugin-appavailability": "0.4.2",
-    "cordova-plugin-inappbrowser": "5.0.0"
+    "cordova-plugin-inappbrowser": "5.0.0",
+    "card.io.cordova.mobilesdk": "2.1.0",
+    "com.paypal.cordova.mobilesdk": "3.5.0"
 }
 // BOTTOM OF METADATA
 });

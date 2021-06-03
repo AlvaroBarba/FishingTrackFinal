@@ -148,6 +148,8 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../cordova-plugin-background-geolocation/FishingTrack-dependencies.gradle"
+apply from: "../card.io.cordova.mobilesdk/FishingTrack-build.gradle"
+apply from: "../com.paypal.cordova.mobilesdk/FishingTrack-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
