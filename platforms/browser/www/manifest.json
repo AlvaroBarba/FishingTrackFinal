@@ -7,5 +7,5 @@
   "description": "An awesome Ionic/Cordova app.",
   "author": "Ionic Framework Team",
   "icons": [],
-  "start_url": "index.html"
+  "start_url": "http://localhost:8100"
 }
