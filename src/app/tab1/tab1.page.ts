@@ -123,7 +123,6 @@ export class Tab1Page {
 
   public getFriendsRoutes() {
     let aux = [];
-    let flag = true;
     if (this.friends.length > 0) {
       this.friends.forEach((friend) => {
         this.http.getRoutes(friend.id).then((data) => {

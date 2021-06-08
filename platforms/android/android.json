@@ -94,6 +94,10 @@
             {
               "xml": "<feature name=\"PayPalMobile\"><param name=\"android-package\" value=\"com.paypal.cordova.sdk.PayPalMobileCordovaPlugin\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"BarcodeScanner\"><param name=\"android-package\" value=\"com.phonegap.plugins.barcodescanner.BarcodeScanner\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -170,6 +174,18 @@
             {
               "xml": "<uses-permission android:name=\"android.hardware.location\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.FLASHLIGHT\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
+              "count": 1
             }
           ],
           "/manifest/application": [
@@ -195,6 +211,14 @@
             },
             {
               "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"com.marianhello.bgloc.BootCompletedReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:clearTaskOnLaunch=\"true\" android:configChanges=\"orientation|keyboardHidden|screenSize\" android:exported=\"false\" android:name=\"com.google.zxing.client.android.CaptureActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:windowSoftInputMode=\"stateAlwaysHidden\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:label=\"Share\" android:name=\"com.google.zxing.client.android.encode.EncodeActivity\" />",
               "count": 1
             }
           ],
@@ -360,6 +384,10 @@
       "PACKAGE_NAME": "io.ionic.FishingTrack"
     },
     "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "io.ionic.FishingTrack"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
       "PACKAGE_NAME": "io.ionic.FishingTrack"
     }
   },
@@ -791,6 +819,14 @@
       "clobbers": [
         "PayPalMobile"
       ]
+    },
+    {
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -811,6 +847,7 @@
     "cordova-plugin-appavailability": "0.4.2",
     "cordova-plugin-inappbrowser": "5.0.0",
     "card.io.cordova.mobilesdk": "2.1.0",
-    "com.paypal.cordova.mobilesdk": "3.5.0"
+    "com.paypal.cordova.mobilesdk": "3.5.0",
+    "phonegap-plugin-barcodescanner": "8.1.0"
   }
 }

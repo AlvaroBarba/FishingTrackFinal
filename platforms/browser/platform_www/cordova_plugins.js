@@ -441,6 +441,20 @@ module.exports = [
         "clobbers": [
             "PayPalMobile"
         ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -463,7 +477,8 @@ module.exports.metadata =
     "cordova-plugin-appavailability": "0.4.2",
     "cordova-plugin-inappbrowser": "5.0.0",
     "card.io.cordova.mobilesdk": "2.1.0",
-    "com.paypal.cordova.mobilesdk": "3.5.0"
+    "com.paypal.cordova.mobilesdk": "3.5.0",
+    "phonegap-plugin-barcodescanner": "8.1.0"
 }
 // BOTTOM OF METADATA
 });

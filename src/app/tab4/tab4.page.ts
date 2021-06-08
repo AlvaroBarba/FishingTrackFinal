@@ -7,6 +7,7 @@ import { HttpService } from '../services/http.service';
 import { ToastService } from '../services/toast.service';
 import { LoadingService } from '../services/loading.service';
 import { HTTP } from '@ionic-native/http/ngx';
+import { QrService } from '../services/qr.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class Tab4Page implements OnInit {
     private authS: AuthService,
     private router: Router,
     private loading: LoadingService,
-    private camera: Camera,
+    private qr: QrService,
     private http: HttpService,
     private Http: HTTP) {
     this.usuario = authS.getUser();
@@ -92,6 +93,10 @@ export class Tab4Page implements OnInit {
       await this.loading.cancelLoading();
     });
     this.Http.setDataSerializer('urlencoded');
+  }
+
+  generateQR(){
+    this.qr.encodedText();
   }
 
 }

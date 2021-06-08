@@ -21,6 +21,7 @@
     "@angular/router": "~10.0.0",
     "@ionic-native/app-availability": "^5.33.0",
     "@ionic-native/background-geolocation": "^5.31.1",
+    "@ionic-native/barcode-scanner": "^5.33.1",
     "@ionic-native/camera": "^5.30.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/file": "^5.30.0",
@@ -77,6 +78,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
     "phonegap-plugin-local-notification": "^1.0.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
@@ -102,7 +104,10 @@
       "cordova-plugin-background-geolocation": {},
       "cordova-plugin-appavailability": {},
       "cordova-plugin-inappbrowser": {},
-      "com.paypal.cordova.mobilesdk": {}
+      "com.paypal.cordova.mobilesdk": {},
+      "phonegap-plugin-barcodescanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "browser",

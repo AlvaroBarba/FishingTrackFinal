@@ -53,6 +53,9 @@
     <feature name="PayPalMobile">
         <param name="android-package" value="com.paypal.cordova.sdk.PayPalMobileCordovaPlugin" />
     </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>

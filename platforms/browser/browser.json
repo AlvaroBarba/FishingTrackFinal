@@ -23,6 +23,10 @@
             {
               "xml": "<feature name=\"CordovaHttpPlugin\"><param name=\"browser-package\" value=\"CordovaHttpPlugin\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"BarcodeScanner\"><param name=\"browser-package\" value=\"BarcodeScanner\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -84,6 +88,9 @@
       "PACKAGE_NAME": "io.ionic.FishingTrack"
     },
     "com.paypal.cordova.mobilesdk": {
+      "PACKAGE_NAME": "io.ionic.FishingTrack"
+    },
+    "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "io.ionic.FishingTrack"
     }
   },
@@ -530,6 +537,20 @@
       "clobbers": [
         "PayPalMobile"
       ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -550,6 +571,7 @@
     "cordova-plugin-appavailability": "0.4.2",
     "cordova-plugin-inappbrowser": "5.0.0",
     "card.io.cordova.mobilesdk": "2.1.0",
-    "com.paypal.cordova.mobilesdk": "3.5.0"
+    "com.paypal.cordova.mobilesdk": "3.5.0",
+    "phonegap-plugin-barcodescanner": "8.1.0"
   }
 }

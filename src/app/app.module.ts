@@ -18,7 +18,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 
-//MAPA
+//QR
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx'
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx'
     NativeStorage,
     Camera,
     FileTransfer,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

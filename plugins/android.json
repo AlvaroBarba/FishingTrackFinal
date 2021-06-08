@@ -61,6 +61,10 @@
     },
     "com.paypal.cordova.mobilesdk": {
       "PACKAGE_NAME": "io.ionic.FishingTrack"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "io.ionic.FishingTrack"
     }
   },
   "dependent_plugins": {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
-import { LoadingService } from '../services/loading.service';
+import { QrService } from '../services/qr.service';
 import { ToastService } from '../services/toast.service';
 
 @Component({
@@ -27,7 +27,8 @@ export class Tab5Page implements OnInit {
   constructor(
     private http: HttpService,
     private toast: ToastService,
-    private authS: AuthService) {
+    private authS: AuthService,
+    private qr: QrService) {
     this.you = this.authS.getUser();
   }
 
@@ -179,7 +180,7 @@ export class Tab5Page implements OnInit {
 
   public sendFriendRequest(u2) {
     let user1 = this.you;
-    this.http.addFriendRequest(user1.id, u2.id, 1).then(async (data) => {
+    this.http.addFriendRequest(user1.id, u2, 1).then(async (data) => {
       if (data) {
         let dat = JSON.parse(data.data);
         if (dat.status == "0") {
@@ -221,5 +222,11 @@ export class Tab5Page implements OnInit {
       //Toast
       await this.toast.createToastBottom("Fallo al cargar peticiones de amistad", true, 400, "danger");
     })
+  }
+
+  async scanQR(){
+    await this.qr.scanCode();
+    this.sendFriendRequest(this.qr.scannedData);
+    this.qr.scannedData = undefined;
   }
 }

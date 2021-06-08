@@ -4,6 +4,9 @@
       <ion-button (click)="this.showSearch()">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
+      <ion-button (click)="this.scanQR()">
+        <ion-icon name="qr-code"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title class="textColor">
       Amigos
@@ -32,7 +35,7 @@
   <ion-list>
     <ion-item *ngFor="let User of this.users; let i=index">
       <ion-buttons slot="end">
-        <ion-button *ngIf="!this.User.isFriend" (click)="this.sendFriendRequest(User)">
+        <ion-button *ngIf="!this.User.isFriend" (click)="this.sendFriendRequest(User.id)">
           <ion-icon name="person-add-sharp"></ion-icon>
         </ion-button>
       </ion-buttons>
